@@ -1,0 +1,61 @@
+{
+  "name": "test-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:local": "npx playwright test",
+    "test:dev": "ENV=dev npx playwright test",
+    "test:local-trace": "npx playwright test --headed --trace on",
+    "test:dev-trace": "ENV=dev npx playwright test --headed --trace on",
+    "smoke-test": "npx playwright test --grep '@smoke'",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "prepare": "husky install",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write"
+  },
+  "keywords": [],
+  "author": "",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.38.1",
+    "@rushstack/eslint-patch": "^1.5.1",
+    "@types/fs-extra": "^11.0.2",
+    "@types/luxon": "^3.3.5",
+    "@types/node": "^20.8.3",
+    "@types/pdf-parse": "^1.1.4",
+    "@types/pg": "^8.11.6",
+    "@types/stream-buffers": "^3.0.6",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-define-config": "^1.24.1",
+    "fs-extra": "^11.1.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "luxon": "^3.4.3",
+    "node-xlsx": "^0.23.0",
+    "prettier": "3.3.2",
+    "stream-buffers": "^3.0.2",
+    "typescript": "^5.2.2",
+    "winston": "^3.11.0"
+  },
+  "dependencies": {
+    "@adabox/koios-ts-client": "^1.0.7",
+    "@types/pdfjs-dist": "^2.10.378",
+    "big-integer": "^1.6.52",
+    "csv": "^6.3.6",
+    "csv-parse": "^5.5.2",
+    "eslint-plugin-playwright": "^1.5.2",
+    "mongodb": "^6.2.0",
+    "pdf-parse": "^1.1.1",
+    "pg": "^8.12.0"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix"
+  }
+}
