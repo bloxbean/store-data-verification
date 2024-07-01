@@ -1,8 +1,7 @@
-import { Locator, expect } from '@playwright/test';
-import Logger from '@helpers/logger/logger.helper';
+import { Locator, expect } from "@playwright/test";
+import Logger from "@helpers/logger/logger.helper";
 
 export class Assertions {
-
   /**
    * Asserts that the actual text is not equal to the expected text.
    * This function logs a message and throws an error if the assertion fails.
@@ -18,12 +17,14 @@ export class Assertions {
       expect(actualText).not.toBe(expectedText);
       Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
+      );
       throw error;
     }
   }
 
-    /**
+  /**
    * Asserts that the actual text is equal to the expected text.
    * This function logs a message and throws an error if the assertion fails.
    *
@@ -33,15 +34,17 @@ export class Assertions {
    * @example
    * Assertions.assertEqual(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
-    static assertEqual(actualText: unknown, expectedText: string, message: string) {
-      try {
-        expect(actualText).toBe(expectedText);
-        Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
-      } catch (error) {
-        Logger.error(`Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
-        throw error;
-      }
+  static assertEqual(actualText: unknown, expectedText: string, message: string) {
+    try {
+      expect(actualText).toBe(expectedText);
+      Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
+    } catch (error) {
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
+      );
+      throw error;
     }
+  }
 
   /**
    * Asserts that a boolean value is true.
@@ -62,7 +65,7 @@ export class Assertions {
     }
   }
 
-    /**
+  /**
    * Asserts that a boolean value is false.
    * This function logs a message and throws an error if the assertion fails.
    *
@@ -71,16 +74,15 @@ export class Assertions {
    * @example
    * Assertions.assertFalse(user.isLoggedIn, 'User should be logged in.');
    */
-    static assertFalse(actualValue: boolean, message: string) {
-      try {
-        expect(actualValue).toBeFalsy();
-        Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
-      } catch (error) {
-        Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
-        throw error;
-      }
+  static assertFalse(actualValue: boolean, message: string) {
+    try {
+      expect(actualValue).toBeFalsy();
+      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+    } catch (error) {
+      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      throw error;
     }
-
+  }
 
   /**
    * Asserts that the actual text is equal to the expected text.
@@ -93,14 +95,16 @@ export class Assertions {
    * Assertions.assertContain(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
   static async assertContain(actualTextLocator: Locator, expectedText: string, message: string) {
-    let actualText = '';
+    let actualText = "";
     try {
       actualText = await actualTextLocator.innerText();
       const regex = new RegExp(expectedText);
       await expect(actualTextLocator).toHaveText(regex);
       Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'\nError: ${error}`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'\nError: ${error}`
+      );
       throw error;
     }
   }

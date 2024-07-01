@@ -1,10 +1,8 @@
-import {
-  Reporter, TestCase, TestError, TestResult, TestStep,
-} from '@playwright/test/reporter';
-import Logger from '@common/helpers/logger/logger.helper';
+import { Reporter, TestCase, TestError, TestResult, TestStep } from "@playwright/test/reporter";
+import Logger from "@common/helpers/logger/logger.helper";
 
-const TEST_SEPARATOR = '##############################################################################';
-const STEP_SEPARATOR = '------------------------------------------------------------------------------';
+const TEST_SEPARATOR = "##############################################################################";
+const STEP_SEPARATOR = "------------------------------------------------------------------------------";
 
 export default class TestListener implements Reporter {
   onTestBegin(test: TestCase, result: TestResult): void {
@@ -12,7 +10,7 @@ export default class TestListener implements Reporter {
   }
 
   onTestEnd(test: TestCase, result: TestResult): void {
-    if (result.status === 'failed') {
+    if (result.status === "failed") {
       Logger.error(`Test: ${test.title} - ${result.status}\n${result.error?.stack}`);
     }
     this.printLogs(`Test: ${test.title} - ${result.status.toUpperCase()}`, TEST_SEPARATOR);
@@ -23,8 +21,8 @@ export default class TestListener implements Reporter {
   }
 
   onStepBegin(test: TestCase, result: TestResult, step: TestStep): void {
-    if (step.category === 'test.step') {
-      if (typeof step.parent !== 'undefined') {
+    if (step.category === "test.step") {
+      if (typeof step.parent !== "undefined") {
         Logger.info(step.title);
       } else {
         this.printLogs(`Started Step - ${step.title}`, STEP_SEPARATOR);
@@ -33,7 +31,7 @@ export default class TestListener implements Reporter {
   }
 
   onStepEnd(test: TestCase, result: TestResult, step: TestStep): void {
-    if (step.category === 'test.step' && typeof step.parent === 'undefined') {
+    if (step.category === "test.step" && typeof step.parent === "undefined") {
       this.printLogs(`Completed Step - ${step.title}`, STEP_SEPARATOR);
     }
   }

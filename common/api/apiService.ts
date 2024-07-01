@@ -1,12 +1,12 @@
-import { APIRequestContext, request as pwrequest } from '@playwright/test';
-import Logger from '@common/helpers/logger/logger.helper';
-import { TimeOut } from '@common/constants/project.constants';
-import path from 'path';
+import { APIRequestContext, request as pwrequest } from "@playwright/test";
+import Logger from "@common/helpers/logger/logger.helper";
+import { TimeOut } from "@common/constants/project.constants";
+import path from "path";
 
 export enum HttpMethod {
-  Get = 'GET',
-  Post = 'POST',
-  Put = 'PUT',
+  Get = "GET",
+  Post = "POST",
+  Put = "PUT",
 }
 
 export interface Response {
@@ -15,7 +15,6 @@ export interface Response {
   headers: Record<string, string>;
   cookies: Record<string, string>;
 }
-
 
 export class APIService implements Disposable {
   private baseUrl: string;
@@ -45,7 +44,7 @@ export class APIService implements Disposable {
 
   withDefaultHeaders(): APIService {
     const defaultHeaders = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
     this.headers = defaultHeaders;
     return this;
@@ -71,20 +70,17 @@ export class APIService implements Disposable {
     httpMethod: HttpMethod,
     headers?: Record<string, string>,
     queries?: Record<string, any>,
-    body?: string | Record<string, any>,
+    body?: string | Record<string, any>
   ) {
-    const queryString = queries ? new URLSearchParams(queries).toString() : '';
+    const queryString = queries ? new URLSearchParams(queries).toString() : "";
     const requestUrl = queryString ? `${url}?${queryString}` : url;
     this.context = await pwrequest.newContext();
-    return this.context.fetch(
-      requestUrl,
-      {
-        timeout: TimeOut.ONE_MINUTE,
-        method: httpMethod,
-        headers: headers ?? {},
-        data: JSON.stringify(body),
-      },
-    );
+    return this.context.fetch(requestUrl, {
+      timeout: TimeOut.ONE_MINUTE,
+      method: httpMethod,
+      headers: headers ?? {},
+      data: JSON.stringify(body),
+    });
   }
 
   async send(httpMethod: HttpMethod) {
@@ -95,15 +91,18 @@ export class APIService implements Disposable {
         return;
       }
 
-      const contentType = response.headers()['content-type'];
-      const body = contentType.includes('text/plain') ? await response.text() : await response.json();
+      const contentType = response.headers()["content-type"];
+      const body = contentType.includes("text/plain") ? await response.text() : await response.json();
       const headers = response.headers();
 
       const cookies: Record<string, string> = await this.extractFirstCookieFromHeaders(headers);
 
-      return this.response = {
-        status, body, headers, cookies,
-      };
+      return (this.response = {
+        status,
+        body,
+        headers,
+        cookies,
+      });
     } catch (error) {
       console.log(`Failed to send ${httpMethod} request to ${this.baseUrl}: ${error}`);
     }
@@ -111,9 +110,9 @@ export class APIService implements Disposable {
 
   async extractFirstCookieFromHeaders(headers: Record<string, string>): Promise<Record<string, string>> {
     const cookies: Record<string, string> = {};
-    if ('set-cookie' in headers) {
-      const setCookieHeader: string = headers['set-cookie'];
-      const cookieValues: string[] = setCookieHeader.split('\n');
+    if ("set-cookie" in headers) {
+      const setCookieHeader: string = headers["set-cookie"];
+      const cookieValues: string[] = setCookieHeader.split("\n");
       const firstCookie: string = cookieValues[0];
       cookies.Cookie = firstCookie;
     }

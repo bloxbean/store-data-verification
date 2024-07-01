@@ -5,7 +5,7 @@ export default class DatabaseConstants {
 
   static readonly SHORT_WAIT_TIME_RETRY = 3 * 1000;
 
-  static readonly BLOCK_TABLE = 'Block';
+  static readonly BLOCK_TABLE = "Block";
 
-  static readonly DATABASE_NAME= 'ledger_sync';
+  static readonly DATABASE_NAME = "ledger_sync";
 }

@@ -1,5 +1,5 @@
-import { APIService, HttpMethod } from '@common/api/apiService';
-import { Env, Credentials } from '@env/env';
+import { APIService, HttpMethod } from "@common/api/apiService";
+import { Env, Credentials } from "@env/env";
 
 export default class APIHelper {
   private cookieAsHeader: Record<string, string> = {};
@@ -16,13 +16,13 @@ export default class APIHelper {
     };
 
     try {
-      const endpoint = '';
+      const endpoint = "";
       req.withDefaultHeaders().uri(endpoint).addBody(body);
       await req.send(HttpMethod.Post);
       return req.getResponse().cookies;
     } catch (error) {
       console.error(error);
-      throw new Error('Failed to reach server.');
+      throw new Error("Failed to reach server.");
     } finally {
       req.dispose();
     }

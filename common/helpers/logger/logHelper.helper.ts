@@ -1,4 +1,4 @@
-import Logger from './logger.helper';
+import Logger from "./logger.helper";
 
 export default class LogHelper {
   static logResult(message: string, actualResult: any, expectedResult: any) {

@@ -1,9 +1,9 @@
-import { Client, QueryResult } from 'pg';
-import DatabaseConstants from '@common/constants/database.constants';
-import { delay } from '@common/helpers/common/common.helper';
-import Logger from '@common/helpers/logger/logger.helper';
-import { Env } from '@env/env';
-import bigInt from 'big-integer';
+import { Client, QueryResult } from "pg";
+import DatabaseConstants from "@common/constants/database.constants";
+import { delay } from "@common/helpers/common/common.helper";
+import Logger from "@common/helpers/logger/logger.helper";
+import { Env } from "@env/env";
+import bigInt from "big-integer";
 
 export class PostgreSQL {
   private client!: Client;
@@ -13,21 +13,21 @@ export class PostgreSQL {
   private tableName: string;
 
   constructor(databaseName: string, tableName: string) {
-    Logger.info('Creating PostgreSQL client');
+    Logger.info("Creating PostgreSQL client");
     this.databaseName = databaseName;
     this.tableName = tableName;
   }
 
   private async init() {
-    const POSTGRES_URL = Env.DB_CONN_STRING || '';
+    const POSTGRES_URL = Env.DB_CONN_STRING || "";
     this.client = new Client({
       connectionString: POSTGRES_URL,
       connectionTimeoutMillis: DatabaseConstants.CONNECT_TIMEOUT_MS,
     });
 
-    Logger.info('Connecting PostgreSQL client');
+    Logger.info("Connecting PostgreSQL client");
     await this.client.connect();
-    Logger.info('Connected to PostgreSQL');
+    Logger.info("Connected to PostgreSQL");
 
     try {
       await this.client.query(`CREATE DATABASE IF NOT EXISTS ${this.databaseName}`);
@@ -42,7 +42,9 @@ export class PostgreSQL {
   async find(query: string, limit: number = 10): Promise<QueryResult<any>> {
     try {
       await this.init();
-      const result: QueryResult<any> = await this.client.query(`SELECT * FROM ${this.tableName} WHERE ${query} LIMIT ${limit}`);
+      const result: QueryResult<any> = await this.client.query(
+        `SELECT * FROM ${this.tableName} WHERE ${query} LIMIT ${limit}`
+      );
       return result;
     } finally {
       await this.teardown();
@@ -53,9 +55,9 @@ export class PostgreSQL {
     try {
       return await this.find(query, limit);
     } catch (error: any) {
-      if (error.code === 'TooManyRequests' && retries > 0) {
+      if (error.code === "TooManyRequests" && retries > 0) {
         retries--;
-        Logger.info('Retrying find');
+        Logger.info("Retrying find");
         await delay(DatabaseConstants.WAIT_TIME_RETRY);
         return await this.findWithRetries(query, limit);
       }
@@ -64,9 +66,9 @@ export class PostgreSQL {
   }
 
   private async teardown(): Promise<void> {
-    Logger.info('Closing PostgreSQL client');
+    Logger.info("Closing PostgreSQL client");
     await this.client.end();
-    Logger.info('Closed PostgreSQL client');
+    Logger.info("Closed PostgreSQL client");
   }
 
   async findAnnouncementWithSortDescendingByAnnouncedAt(limit: number): Promise<QueryResult<any>> {
@@ -84,9 +86,7 @@ export class PostgreSQL {
   async findBlockHeight(): Promise<number | null> {
     try {
       await this.init();
-      const result: QueryResult<any> = await this.client.query(
-        'SELECT MAX(block.blockNo) FROM Block block'
-      );
+      const result: QueryResult<any> = await this.client.query("SELECT MAX(block.blockNo) FROM Block block");
       const blockHeight: number | null = result.rows[0].max;
       return blockHeight;
     } finally {
@@ -104,14 +104,14 @@ export class PostgreSQL {
         const address = rs.getString("address");
         const unit = rs.getString("unit");
         const balance = BigInt(rs.getString("quantity"));
-  
+
         return {
           getAddress: () => address,
           getUnit: () => unit,
           getBalance: () => balance,
         };
       });
-  
+
       return addressBalancePojoLSList;
     } finally {
       await this.teardown();

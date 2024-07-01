@@ -4,19 +4,19 @@ Playwright TypeScript Automation Framework
 
 ## Playwright Introduction
 
-* Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. Playwright is built to enable cross-browser web automation that is ever-green, capable, reliable and fast. Headless execution is supported for all browsers on all platforms.
-* As Playwright is written by the creators of the Puppeteer, you would find a lot of similarities between them.
-* Playwright has its own test runner for end-to-end tests, we call it Playwright Test.
-* Cross-browser. Playwright supports all modern rendering engines including Chromium, WebKit, and Firefox.
-* Cross-platform. Test on Windows, Linux, and macOS, locally or on CI, headless or headed.
-* Cross-language. Use the Playwright API in TypeScript, JavaScript, Python, .NET, Java. The core framework is implemented using TypeScript.
-* Playwright development is sponsored by Microsoft.
+- Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. Playwright is built to enable cross-browser web automation that is ever-green, capable, reliable and fast. Headless execution is supported for all browsers on all platforms.
+- As Playwright is written by the creators of the Puppeteer, you would find a lot of similarities between them.
+- Playwright has its own test runner for end-to-end tests, we call it Playwright Test.
+- Cross-browser. Playwright supports all modern rendering engines including Chromium, WebKit, and Firefox.
+- Cross-platform. Test on Windows, Linux, and macOS, locally or on CI, headless or headed.
+- Cross-language. Use the Playwright API in TypeScript, JavaScript, Python, .NET, Java. The core framework is implemented using TypeScript.
+- Playwright development is sponsored by Microsoft.
 
 [GitHub](https://github.com/microsoft/playwright)
 [Documentation](https://playwright.dev/docs/intro)
 [API reference](https://playwright.dev/docs/api/class-playwright/)
 [Changelog](https://github.com/microsoft/playwright/releases)
-  
+
 # Playwright - Framework
 
 This is an automation framework using Playwright written in TypeScript.
@@ -71,7 +71,7 @@ npx playwright install
 
 ## Debug Tests
 
-```sh
+````sh
 Debug
 ENV=local npx playwright test --debug
 
@@ -84,7 +84,7 @@ please refer to script path in package.json
 ```sh
 npm run test:local
 npm run test:dev
-```
+````
 
 run with trace on
 
@@ -92,6 +92,7 @@ run with trace on
 npm run test:local-trace
 npm run test:dev-trace
 ```
+
 run smoke test on local machine
 
 ```sh

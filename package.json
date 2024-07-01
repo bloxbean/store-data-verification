@@ -9,8 +9,8 @@
     "test:local-trace": "npx playwright test --headed --trace on",
     "test:dev-trace": "ENV=dev npx playwright test --headed --trace on",
     "smoke-test": "npx playwright test --grep '@smoke'",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "prepare": "husky install",
+    "lint": "eslint .",
+    "prepare": "husky",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write"
@@ -33,6 +33,7 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-define-config": "^1.24.1",
     "fs-extra": "^11.1.1",
     "husky": "^9.0.11",

@@ -1,5 +1,5 @@
 import { BackendFactory } from "@adabox/koios-ts-client";
-import { StakeAddresses } from '@common/constants/project.constants';
+import { StakeAddresses } from "@common/constants/project.constants";
 
 const koiosBackendService = BackendFactory.getKoiosMainnetService();
 const koiosAccountService = koiosBackendService.getAccountService();
@@ -32,8 +32,8 @@ if (!isNaN(maxNumOfAddresses)) {
       console.log(randomAddresses);
     })
     .catch((error) => {
-      console.error('Error retrieving random account addresses:', error);
+      console.error("Error retrieving random account addresses:", error);
     });
 } else {
-  console.error('Invalid input. Please enter a valid number.');
+  console.error("Invalid input. Please enter a valid number.");
 }

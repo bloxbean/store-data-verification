@@ -1,11 +1,7 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page } from "@playwright/test";
 
 class BasePage {
-
-
-  constructor(page: Page) {
-  }
-
+  constructor(page: Page) {}
 }
 
 export { BasePage };
