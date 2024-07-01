@@ -1,10 +1,10 @@
-import { BackendFactory } from "@adabox/koios-ts-client";
 import { StakeAddresses } from "@common/constants/project.constants";
 
-const koiosBackendService = BackendFactory.getKoiosMainnetService();
-const koiosAccountService = koiosBackendService.getAccountService();
-
 export async function getRandomAccountAddresses(maxNumOfAddresses: number): Promise<Set<string>> {
+  const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
+    module.BackendFactory.getKoiosMainnetService()
+  );
+  const koiosAccountService = koiosBackendService.getAccountService();
   const stakeAddresses: string[] = Object.values(StakeAddresses);
   const allAccountAddresses: string[] = await koiosAccountService.getAccountAddresses(stakeAddresses);
 
@@ -26,7 +26,7 @@ export async function getRandomAccountAddresses(maxNumOfAddresses: number): Prom
 // Usage
 let maxNumOfAddresses: any;
 
-if (!isNaN(maxNumOfAddresses)) {
+if (isNaN(maxNumOfAddresses)) {
   getRandomAccountAddresses(maxNumOfAddresses)
     .then((randomAddresses) => {
       console.log(randomAddresses);

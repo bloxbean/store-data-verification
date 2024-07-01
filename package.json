@@ -2,7 +2,6 @@
   "name": "test-automation",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test:local": "npx playwright test",
     "test:dev": "ENV=dev npx playwright test",

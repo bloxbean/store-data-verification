@@ -1,12 +1,13 @@
 import { test, expect } from "@playwright/test";
-import { BackendFactory } from "@adabox/koios-ts-client";
 import { PostgreSQL } from "@helpers/database/database.helper";
 import DatabaseConstants from "@common/constants/database.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 
 test.describe("@smoke", () => {
   test("Compare the tip of Koios and Ledger Sync", async ({}) => {
-    const koiosBackendService = BackendFactory.getKoiosMainnetService();
+    const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
+      module.BackendFactory.getKoiosMainnetService()
+    );
     const koiosNetworkService = koiosBackendService.getNetworkService();
     test.step("STEP 1: Retrieve chain tip", async () => {
       const postgres = new PostgreSQL(DatabaseConstants.DATABASE_NAME, DatabaseConstants.BLOCK_TABLE);

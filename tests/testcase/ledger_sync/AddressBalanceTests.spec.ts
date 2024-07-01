@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { BackendFactory } from "@adabox/koios-ts-client";
 import { getRandomAccountAddresses } from "@common/service/AddressService";
 import { PostgreSQL } from "@helpers/database/database.helper";
 import DatabaseConstants from "@common/constants/database.constants";
@@ -7,7 +6,9 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 
 test.describe("@smoke", () => {
   test("Compare balance of random 10 addresses", async ({}) => {
-    const koiosBackendService = BackendFactory.getKoiosMainnetService();
+    const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
+      module.BackendFactory.getKoiosMainnetService()
+    );
     const koiosAddressService = koiosBackendService.getAddressService();
     await test.step("STEP 1: Get random addresses", async () => {
       let addresses: Set<string> = new Set<string>();
