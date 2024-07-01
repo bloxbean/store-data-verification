@@ -24,7 +24,6 @@
     "@types/fs-extra": "^11.0.2",
     "@types/luxon": "^3.3.5",
     "@types/node": "^20.8.3",
-    "@types/pdf-parse": "^1.1.4",
     "@types/pg": "^8.11.6",
     "@types/stream-buffers": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
@@ -47,13 +46,11 @@
   },
   "dependencies": {
     "@adabox/koios-ts-client": "^1.0.7",
-    "@types/pdfjs-dist": "^2.10.378",
     "big-integer": "^1.6.52",
     "csv": "^6.3.6",
     "csv-parse": "^5.5.2",
     "eslint-plugin-playwright": "^1.5.2",
     "mongodb": "^6.2.0",
-    "pdf-parse": "^1.1.1",
     "pg": "^8.12.0"
   },
   "lint-staged": {
