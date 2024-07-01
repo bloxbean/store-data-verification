@@ -74,13 +74,6 @@ npx playwright install
 ```sh
 Debug
 ENV=local npx playwright test --debug
-Debug one test on all browsers
-ENV=local npx playwright test testcase_name.spec.ts --debug     
-Debug on chrome
-ENV=local npx playwright test --project=chromium --debug
-Debug one test on chrome
-ENV=local npx playwright test testcase_name.spec.ts --project=chromium --debug     
-```
 
 ## Run Tests
 
@@ -89,8 +82,6 @@ please refer to script path in package.json
 
 
 ```sh
-npm run ui-test:local
-npm run ui-test:dev
 npm run test:local
 npm run test:dev
 ```
