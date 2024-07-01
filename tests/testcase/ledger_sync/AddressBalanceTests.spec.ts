@@ -6,23 +6,22 @@ import DatabaseConstants from "@common/constants/database.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 
 test.describe("@smoke", () => {
-  const koiosBackendService = BackendFactory.getKoiosMainnetService();
-  const koiosAddressService = koiosBackendService.getAddressService();
-
-  test.describe("@smoke Compare balance of random 10 addresses", () => {
-    test.step("STEP 1: Get random addresses", async () => {
+  test("Compare balance of random 10 addresses", async ({}) => {
+    const koiosBackendService = BackendFactory.getKoiosMainnetService();
+    const koiosAddressService = koiosBackendService.getAddressService();
+    await test.step("STEP 1: Get random addresses", async () => {
       let addresses: Set<string> = new Set<string>();
       do {
         addresses = await getRandomAccountAddresses(10);
       } while (addresses.size !== 10);
       const addressArray: string[] = Array.from(addresses);
 
-      test.step("STEP 2: Retrieve address balance comparison maps", async () => {
+      await test.step("STEP 2: Retrieve address balance comparison maps", async () => {
         const postgres = new PostgreSQL(DatabaseConstants.DATABASE_NAME, DatabaseConstants.BLOCK_TABLE);
         let addressBalanceComparisonMapLS = await postgres.getMapAddressBalanceFromAddress(addressArray);
         const addressBalanceComparisonMapKoios = await koiosAddressService.getAddressInformation(addressArray);
 
-        test.step("VP: Compare balances", () => {
+        await test.step("VP: Compare balances", () => {
           for (const [
             addressBalanceComparisonKey,
             addressBalanceComparison,

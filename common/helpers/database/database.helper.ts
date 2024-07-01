@@ -3,7 +3,6 @@ import DatabaseConstants from "@common/constants/database.constants";
 import { delay } from "@common/helpers/common/common.helper";
 import Logger from "@common/helpers/logger/logger.helper";
 import { Env } from "@env/env";
-import bigInt from "big-integer";
 
 export class PostgreSQL {
   private client!: Client;

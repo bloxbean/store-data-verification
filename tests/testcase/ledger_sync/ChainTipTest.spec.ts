@@ -5,10 +5,9 @@ import DatabaseConstants from "@common/constants/database.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 
 test.describe("@smoke", () => {
-  const koiosBackendService = BackendFactory.getKoiosMainnetService();
-  const koiosNetworkService = koiosBackendService.getNetworkService();
-
-  test.describe("Compare the tip of Koios and Ledger Sync", () => {
+  test("Compare the tip of Koios and Ledger Sync", async ({}) => {
+    const koiosBackendService = BackendFactory.getKoiosMainnetService();
+    const koiosNetworkService = koiosBackendService.getNetworkService();
     test.step("STEP 1: Retrieve chain tip", async () => {
       const postgres = new PostgreSQL(DatabaseConstants.DATABASE_NAME, DatabaseConstants.BLOCK_TABLE);
       let chainTipLS = await postgres.findBlockHeight();
