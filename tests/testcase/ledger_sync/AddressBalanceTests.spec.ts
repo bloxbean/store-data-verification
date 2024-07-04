@@ -4,6 +4,8 @@ import { PostgreSQL } from "@helpers/database/database.helper";
 import DatabaseConstants from "@common/constants/database.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 
+//switch to BDD style
+
 test.describe("@smoke", () => {
   test("Compare balance of random 10 addresses", async ({}) => {
     const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
@@ -16,6 +18,7 @@ test.describe("@smoke", () => {
         addresses = await getRandomAccountAddresses(10);
       } while (addresses.size !== 10);
       const addressArray: string[] = Array.from(addresses);
+      // 16-20 wrap in a helper ,function
 
       await test.step("STEP 2: Retrieve address balance comparison maps", async () => {
         const postgres = new PostgreSQL(DatabaseConstants.DATABASE_NAME, DatabaseConstants.BLOCK_TABLE);
