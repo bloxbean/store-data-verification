@@ -7,7 +7,7 @@ const returnLoggedResponse = async (
   payload?: object,
   isBodyNotSecret = true
 ) => {
-    Logger.info(`Request URL: ${endpoint}`);
+  Logger.info(`Request URL: ${endpoint}`);
   if (typeof payload !== "undefined" && isBodyNotSecret)
     Logger.info(`Request params/body:\n${JSON.stringify(payload, null, 2)}`);
   Logger.info(`Response status: ${response.status()}`);
@@ -25,7 +25,7 @@ export const del = async (
   returnLoggedResponse(
     await request.delete(endpoint, {
       data,
-      headers
+      headers,
     }),
     endpoint,
     data
@@ -41,7 +41,7 @@ export const getData = async (
   returnLoggedResponse(
     await request.get(endpoint, {
       headers,
-      params
+      params,
     }),
     endpoint,
     params,
@@ -58,7 +58,7 @@ export const postData = async (
   returnLoggedResponse(
     await request.post(endpoint, {
       data,
-      headers
+      headers,
     }),
     endpoint,
     data,
@@ -75,7 +75,7 @@ export const postForm = async (
   returnLoggedResponse(
     await request.post(endpoint, {
       form,
-      headers
+      headers,
     }),
     endpoint,
     form,

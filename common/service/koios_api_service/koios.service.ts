@@ -45,7 +45,7 @@ if (isNaN(maxNumOfAddresses)) {
 }
 
 export async function koiosService(request: APIRequestContext) {
-  const getEpochById = async (epochId: number) => {
+  const getTip = async (epochId: number) => {
     const getTipData = await koiosApi(request).getTip();
     //rewrite here
     expect(getTipData.status()).toEqual(HttpStatusCode.Ok);
@@ -54,6 +54,6 @@ export async function koiosService(request: APIRequestContext) {
   };
 
   return {
-    getEpochById
+    getTip,
   };
 }

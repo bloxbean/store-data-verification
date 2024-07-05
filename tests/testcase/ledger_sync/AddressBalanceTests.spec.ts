@@ -5,12 +5,11 @@ import DatabaseConstants from "@common/constants/database.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { BackendFactory } from "@adabox/koios-ts-client";
 
-
 test.describe("@smoke", () => {
   test("Compare balance of random 10 addresses", async ({}) => {
     // const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
     //   module.BackendFactory.getKoiosMainnetService()
-   // );
+    // );
     const koiosBackendService = await BackendFactory.getKoiosPreprodService();
     const koiosAddressService = koiosBackendService.getAddressService();
     await test.step("GIVEN: Get random addresses", async () => {
