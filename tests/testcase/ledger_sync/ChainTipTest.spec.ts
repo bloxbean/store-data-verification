@@ -2,17 +2,15 @@ import { test, expect } from "@playwright/test";
 import { PostgreSQL } from "@helpers/database/database.helper";
 import DatabaseConstants from "@common/constants/database.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
+import { koiosService } from "@common/service/koios_api_service/koios.service";
 
 test.describe("@smoke", () => {
-  test("Compare the tip of Koios and Ledger Sync", async ({}) => {
-    const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
-      module.BackendFactory.getKoiosMainnetService()
-    );
-    const koiosNetworkService = koiosBackendService.getNetworkService();
+  test("Compare the tip of Koios and Ledger Sync", async ({ request }) => {
+    // Rename the request function to avoid conflict
     test.step("GIVEN: Retrieve chain tip", async () => {
       const postgres = new PostgreSQL(DatabaseConstants.DATABASE_NAME, DatabaseConstants.BLOCK_TABLE);
       let chainTipLS = await postgres.findBlockHeight();
-      let chainTipKoios = await koiosNetworkService.getChainTip();
+      let chainTipKoios = await (await koiosService(request)).getTip();
 
       await test.step("THEN: Compare chain tip", () => {
         Assertions.assertEqual(chainTipLS, chainTipKoios, "Chain tips should be equal.");
@@ -24,7 +22,7 @@ test.describe("@smoke", () => {
 
       await test.step("WHEN: Retrieve chain tip again", async () => {
         let chainTipLSAfterWait = await postgres.findBlockHeight();
-        let chainTipKoiosAfterWait = await koiosNetworkService.getChainTip();
+        let chainTipKoiosAfterWait = await (await koiosService(request)).getTip();
 
         await test.step("THEN: Compare chain tip again", () => {
           Assertions.assertEqual(

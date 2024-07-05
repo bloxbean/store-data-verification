@@ -1,7 +1,7 @@
 import { StakeAddresses } from "@common/constants/project.constants";
 import type { APIRequestContext } from "@playwright/test";
 import { expect } from "@playwright/test";
-
+import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { koiosApi } from "./koios.api";
 import { KoiosGetTipInformationDto } from "@common/dtos/koiosGetTipInformation.dto";
 import { HttpStatusCode } from "@common/helpers/common/httpStatusCodes.helper";
@@ -45,10 +45,9 @@ if (isNaN(maxNumOfAddresses)) {
 }
 
 export async function koiosService(request: APIRequestContext) {
-  const getTip = async (epochId: number) => {
+  const getTip = async () => {
     const getTipData = await koiosApi(request).getTip();
-    //rewrite here
-    expect(getTipData.status()).toEqual(HttpStatusCode.Ok);
+    Assertions.assertEqual(getTipData.status(), HttpStatusCode.Ok, "status code is wrong.");
     const getTipArrayResponse: KoiosGetTipInformationDto[] = await getTipData.json();
     return getTipArrayResponse;
   };

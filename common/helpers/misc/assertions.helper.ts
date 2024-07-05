@@ -34,7 +34,7 @@ export class Assertions {
    * @example
    * Assertions.assertEqual(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
-  static assertEqual(actualText: unknown, expectedText: string, message: string) {
+  static assertEqual(actualText: unknown, expectedText: unknown, message: string) {
     try {
       expect(actualText).toBe(expectedText);
       Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
