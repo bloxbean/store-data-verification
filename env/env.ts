@@ -28,6 +28,14 @@ export class Env {
     return dbConnString;
   }
 
+  static get KOIOS_API_URL(): string {
+    const koiosApiUrl = process.env.KOIOS_API_URL;
+    if (!koiosApiUrl) {
+      throw new Error("Environment variable KOIOS_API_URL must be set");
+    }
+    return koiosApiUrl;
+  }
+
   static get LEDGER_SYNC_CREDENTIAL(): Credentials {
     return this.createCredentials("LEDGER_SYNC_USERNAME", "LEDGER_SYNC_PASSWORD");
   }

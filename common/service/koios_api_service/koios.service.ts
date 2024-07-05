@@ -1,4 +1,10 @@
 import { StakeAddresses } from "@common/constants/project.constants";
+import type { APIRequestContext } from "@playwright/test";
+import { expect } from "@playwright/test";
+
+import { koiosApi } from "./koios.api";
+import { KoiosGetTipInformationDto } from "@common/dtos/koiosGetTipInformation.dto";
+import { HttpStatusCode } from "@common/helpers/common/httpStatusCodes.helper";
 
 export async function getRandomAccountAddresses(maxNumOfAddresses: number): Promise<Set<string>> {
   const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
@@ -36,4 +42,18 @@ if (isNaN(maxNumOfAddresses)) {
     });
 } else {
   console.error("Invalid input. Please enter a valid number.");
+}
+
+export async function koiosService(request: APIRequestContext) {
+  const getEpochById = async (epochId: number) => {
+    const getTipData = await koiosApi(request).getTip();
+    //rewrite here
+    expect(getTipData.status()).toEqual(HttpStatusCode.Ok);
+    const getTipArrayResponse: KoiosGetTipInformationDto[] = await getTipData.json();
+    return getTipArrayResponse;
+  };
+
+  return {
+    getEpochById
+  };
 }
