@@ -13,7 +13,24 @@ export function koiosApi(request: APIRequestContext) {
     });
   };
 
+  const getAccountAddresses = async (accountAddresses: string) => {
+    return BaseApi.getData(
+      request,
+      Endpoint.Koios.getAccountAddresses.Base,
+      {
+        stake_address: accountAddresses,
+        addresses: [] as unknown as string | number | boolean,
+      },
+      {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+      }
+    );
+  };
+
   return {
     getTip,
+    getAccountAddresses,
   };
 }

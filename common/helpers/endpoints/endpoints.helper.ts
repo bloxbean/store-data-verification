@@ -8,4 +8,10 @@ export class Koios {
       return `${Koios.BASE_KOIOS_MAIN_NET_URL}/tip`;
     }
   };
+
+  static getAccountAddresses = class {
+    public static get Base() {
+      return `${Koios.BASE_KOIOS_MAIN_NET_URL}/account_addresses`;
+    }
+  };
 }

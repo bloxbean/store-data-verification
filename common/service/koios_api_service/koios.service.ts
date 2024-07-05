@@ -1,18 +1,14 @@
 import { StakeAddresses } from "@common/constants/project.constants";
 import type { APIRequestContext } from "@playwright/test";
-import { expect } from "@playwright/test";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { koiosApi } from "./koios.api";
 import { KoiosGetTipInformationDto } from "@common/dtos/koiosGetTipInformation.dto";
+import { KoiosGetAccountAddressesDto } from "@common/dtos/koiosGetAccountAddresses.dto";
 import { HttpStatusCode } from "@common/helpers/common/httpStatusCodes.helper";
 
-export async function getRandomAccountAddresses(maxNumOfAddresses: number): Promise<Set<string>> {
-  const koiosBackendService = await import("@adabox/koios-ts-client").then((module) =>
-    module.BackendFactory.getKoiosMainnetService()
-  );
-  const koiosAccountService = koiosBackendService.getAccountService();
+export async function getRandomAccountAddresses(maxNumOfAddresses: any): Promise<Set<string>> {
   const stakeAddresses: string[] = Object.values(StakeAddresses);
-  const allAccountAddresses: string[] = await koiosAccountService.getAccountAddresses(stakeAddresses);
+  const allAccountAddresses: string[] = await (await koiosService(request)).getAccountAddresses(stakeAddresses);
 
   function shuffleArray<T>(array: T[]): T[] {
     const shuffledArray = [...array];
@@ -28,9 +24,40 @@ export async function getRandomAccountAddresses(maxNumOfAddresses: number): Prom
 
   return randomAccountAddresses;
 }
+export async function getRandomAddressesSet(size: number): Promise<Set<string>> {
+  let addresses: Set<string> = new Set<string>();
+  do {
+    addresses = await getRandomAccountAddresses(size);
+  } while (addresses.size !== size);
+  return addresses;
+}
+
+export async function koiosService(request: APIRequestContext) {
+  const getTip = async () => {
+    const getTipData = await koiosApi(request).getTip();
+    Assertions.assertEqual(getTipData.status(), HttpStatusCode.Ok, "status code is wrong.");
+    const getTipArrayResponse: KoiosGetTipInformationDto[] = await getTipData.json();
+    return getTipArrayResponse;
+  };
+
+  let accountAddress: any;
+  const getAccountAddresses = async (stakeAddresses: string[]): Promise<string[]> => {
+    const getAccountAddressesData = await koiosApi(request).getAccountAddresses(accountAddress);
+    Assertions.assertEqual(getAccountAddressesData.status(), HttpStatusCode.Ok, "status code is wrong.");
+    const getAccountAddressesArrayResponse: KoiosGetAccountAddressesDto[] = await getAccountAddressesData.json();
+    const accountAddresses: string[] = getAccountAddressesArrayResponse.map((addressDto) => addressDto.addresses);
+    return accountAddresses;
+  };
+
+  return {
+    getTip,
+    getAccountAddresses,
+  };
+}
 
 // Usage
 let maxNumOfAddresses: any;
+let request: APIRequestContext;
 
 if (isNaN(maxNumOfAddresses)) {
   getRandomAccountAddresses(maxNumOfAddresses)
@@ -42,17 +69,4 @@ if (isNaN(maxNumOfAddresses)) {
     });
 } else {
   console.error("Invalid input. Please enter a valid number.");
-}
-
-export async function koiosService(request: APIRequestContext) {
-  const getTip = async () => {
-    const getTipData = await koiosApi(request).getTip();
-    Assertions.assertEqual(getTipData.status(), HttpStatusCode.Ok, "status code is wrong.");
-    const getTipArrayResponse: KoiosGetTipInformationDto[] = await getTipData.json();
-    return getTipArrayResponse;
-  };
-
-  return {
-    getTip,
-  };
 }
