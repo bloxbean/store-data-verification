@@ -1,8 +1,8 @@
-import { APIRequestContext, APIResponse } from "@playwright/test";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import Logger from "@common/helpers/logger/logger.helper";
 
-const returnLoggedResponse = async (
-  response: APIResponse,
+export const returnLoggedResponse = async (
+  response: AxiosResponse,
   endpoint: string,
   payload?: object,
   isBodyNotSecret = true
@@ -10,20 +10,15 @@ const returnLoggedResponse = async (
   Logger.info(`Request URL: ${endpoint}`);
   if (typeof payload !== "undefined" && isBodyNotSecret)
     Logger.info(`Request params/body:\n${JSON.stringify(payload, null, 2)}`);
-  Logger.info(`Response status: ${response.status()}`);
-  if (response.headers()["content-type"]?.includes("application/json"))
-    Logger.info(`Response body:\n${JSON.stringify(await response.json(), null, 2)}`);
+  Logger.info(`Response status: ${response.status}`);
+  if (response.headers["content-type"]?.includes("application/json"))
+    Logger.info(`Response body:\n${JSON.stringify(response.data, null, 2)}`);
   return response;
 };
 
-export const del = async (
-  request: APIRequestContext,
-  endpoint: string,
-  data?: object,
-  headers?: { [key: string]: string }
-) =>
+export const del = async (endpoint: string, data?: object, headers?: { [key: string]: string }) =>
   returnLoggedResponse(
-    await request.delete(endpoint, {
+    await axios.delete(endpoint, {
       data,
       headers,
     }),
@@ -32,14 +27,13 @@ export const del = async (
   );
 
 export const getData = async (
-  request: APIRequestContext,
   endpoint: string,
   params?: { [key: string]: string | number | boolean },
   headers?: { [key: string]: string },
   isBodyNotSecret = true
 ) =>
   returnLoggedResponse(
-    await request.get(endpoint, {
+    await axios.get(endpoint, {
       headers,
       params,
     }),
@@ -49,15 +43,13 @@ export const getData = async (
   );
 
 export const postData = async (
-  request: APIRequestContext,
   endpoint: string,
   data?: object,
   headers?: { [key: string]: string },
   isBodyNotSecret = true
 ) =>
   returnLoggedResponse(
-    await request.post(endpoint, {
-      data,
+    await axios.post(endpoint, data, {
       headers,
     }),
     endpoint,
@@ -66,15 +58,13 @@ export const postData = async (
   );
 
 export const postForm = async (
-  request: APIRequestContext,
   endpoint: string,
   form?: { [key: string]: string },
   headers?: { [key: string]: string },
   isBodyNotSecret = true
 ) =>
   returnLoggedResponse(
-    await request.post(endpoint, {
-      form,
+    await axios.post(endpoint, new URLSearchParams(form), {
       headers,
     }),
     endpoint,

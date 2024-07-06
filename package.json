@@ -45,7 +45,7 @@
     "winston": "^3.11.0"
   },
   "dependencies": {
-    "@adabox/koios-ts-client": "^1.0.7",
+    "axios": "^1.7.2",
     "big-integer": "^1.6.52",
     "csv": "^6.3.6",
     "csv-parse": "^5.5.2",
