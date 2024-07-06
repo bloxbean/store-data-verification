@@ -10,7 +10,7 @@ test.describe("@smoke", () => {
       const postgres = new PostgreSQL(DatabaseConstants.DATABASE_NAME, DatabaseConstants.BLOCK_TABLE);
       let chainTipLS = await postgres.findBlockHeight();
       console.log(chainTipLS);
-      let chainTipKoios = await (await koiosService(request)).getTip();
+      let chainTipKoios = await (await koiosService()).getTip();
       console.log(chainTipKoios);
 
       await test.step("THEN: Compare chain tip", () => {
@@ -23,7 +23,7 @@ test.describe("@smoke", () => {
 
       await test.step("WHEN: Retrieve chain tip again", async () => {
         let chainTipLSAfterWait = await postgres.findBlockHeight();
-        let chainTipKoiosAfterWait = await (await koiosService(request)).getTip();
+        let chainTipKoiosAfterWait = await (await koiosService()).getTip();
 
         await test.step("THEN: Compare chain tip again", () => {
           Assertions.assertEqual(

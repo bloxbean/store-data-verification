@@ -8,7 +8,7 @@ import { HttpStatusCode } from "@common/helpers/common/httpStatusCodes.helper";
 
 export async function getRandomAccountAddresses(maxNumOfAddresses: any): Promise<Set<string>> {
   const stakeAddresses: string[] = Object.values(StakeAddresses);
-  const allAccountAddresses: string[] = await (await koiosService(request)).getAccountAddresses(stakeAddresses);
+  const allAccountAddresses: string[] = await (await koiosService()).getAccountAddresses(stakeAddresses);
 
   function shuffleArray<T>(array: T[]): T[] {
     const shuffledArray = [...array];
@@ -32,19 +32,17 @@ export async function getRandomAddressesSet(size: number): Promise<Set<string>> 
   return addresses;
 }
 
-export async function koiosService(request: APIRequestContext) {
+export async function koiosService() {
   const getTip = async () => {
-    const getTipData = await koiosApi(request).getTip();
-    Assertions.assertEqual(getTipData.status(), HttpStatusCode.Ok, "status code is wrong.");
-    const getTipArrayResponse: KoiosGetTipInformationDto[] = await getTipData.json();
+    const getTipData = await koiosApi().getTip();
+    const getTipArrayResponse: KoiosGetTipInformationDto[] = await getTipData.data.json();
     return getTipArrayResponse;
   };
 
   let accountAddress: any;
   const getAccountAddresses = async (stakeAddresses: string[]): Promise<string[]> => {
-    const getAccountAddressesData = await koiosApi(request).getAccountAddresses(accountAddress);
-    Assertions.assertEqual(getAccountAddressesData.status(), HttpStatusCode.Ok, "status code is wrong.");
-    const getAccountAddressesArrayResponse: KoiosGetAccountAddressesDto[] = await getAccountAddressesData.json();
+    const getAccountAddressesData = await koiosApi().getAccountAddresses(accountAddress);
+    const getAccountAddressesArrayResponse: KoiosGetAccountAddressesDto[] = await getAccountAddressesData.data.json();
     const accountAddresses: string[] = getAccountAddressesArrayResponse.map((addressDto) => addressDto.addresses);
     return accountAddresses;
   };
