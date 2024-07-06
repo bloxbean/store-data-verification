@@ -47,4 +47,12 @@ export class Env {
     }
     return ledgerSyncUserName;
   }
+
+  static get LEDGER_SYNC_PASSWORD(): string {
+    const ledgerSyncPassword = process.env.LEDGER_SYNC_PASSWORD;
+    if (!ledgerSyncPassword) {
+      throw new Error("Environment variable LEDGER_SYNC_PASSWORD must be set");
+    }
+    return ledgerSyncPassword;
+  }
 }

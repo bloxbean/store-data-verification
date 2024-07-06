@@ -1,23 +1,21 @@
 import { test, expect } from "@playwright/test";
-import { getRandomAccountAddresses, getRandomAddressesSet } from "@common/service/koios_api_service/koios.service";
 import { PostgreSQL } from "@helpers/database/database.helper";
 import DatabaseConstants from "@common/constants/database.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
+import { StakeAddresses } from "@common/constants/project.constants";
+import { koiosService } from "@common/service/koios_api_service/koios.service";
 
 test.describe("@smoke", () => {
-  test("Compare balance of random 10 addresses", async ({}) => {
+  test("Compare balance of random addresses", async ({}) => {
     await test.step("GIVEN: Get random addresses", async () => {
-      const addresses: Set<string> = await getRandomAddressesSet(10);
-      const addressArray: string[] = Array.from(addresses);
+      const addressArray: string[] = Object.values(StakeAddresses);
 
-      await test.step("WHEN: Retrieve address balance comparison maps", async () => {
+      await test.step("WHEN: Retrieve address", async () => {
         const postgres = new PostgreSQL(DatabaseConstants.DATABASE_NAME, DatabaseConstants.BLOCK_TABLE);
         const addressBalanceComparisonMapLS = await postgres.getMapAddressBalanceFromAddress(addressArray);
-        const addressBalanceComparisonMapKoios: Record<string, number> = {};
-        for (const address of addresses) {
-          const balance = await getRandomAccountAddresses(address);
-          addressBalanceComparisonMapKoios[address] = balance.size;
-        }
+        const addressBalanceComparisonMapKoios: string[] = await (
+          await koiosService()
+        ).getAccountAddresses(Object.values(StakeAddresses));
 
         await test.step("THEN: Compare balances", () => {
           for (const addressBalanceComparisonKey in addressBalanceComparisonMapLS) {

@@ -18,21 +18,23 @@ export function koiosApi() {
   };
 
   const getAccountAddresses = async (accountAddresses: string[]) => {
+    const requestBody = {
+      _stake_addresses: accountAddresses,
+      _first_only: false,
+      _empty: false,
+    };
+
     const request: AxiosRequestConfig = {
       method: "POST",
       url: Endpoint.Koios.getAccountAddresses.Base,
-      data: {
-        stake_address: accountAddresses,
-        _first_only: false,
-        _empty: false,
-      },
+      data: requestBody,
       headers: {
         accept: "application/json",
         "content-type": "application/json",
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getAccountAddresses.Base);
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getAccountAddresses.Base, requestBody);
   };
 
   return {
