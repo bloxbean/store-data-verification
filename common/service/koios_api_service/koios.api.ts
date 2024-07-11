@@ -37,8 +37,23 @@ export function koiosApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getAccountAddresses.Base, requestBody);
   };
 
+  const getAccountTransaction = async (stakeAddress: string) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.Koios.getAccountTransaction.Base}?_stake_address=${stakeAddress}`,
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getAccountTransaction.Base);
+  };
+
   return {
     getTip,
     getAccountAddresses,
+    getAccountTransaction,
   };
 }

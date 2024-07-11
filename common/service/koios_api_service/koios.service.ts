@@ -1,6 +1,7 @@
 import { koiosApi } from "./koios.api";
-import { KoiosGetTipInformationDto } from "@common/dtos/koiosGetTipInformation.dto";
-import { KoiosGetAccountAddressesDto } from "@common/dtos/koiosGetAccountAddresses.dto";
+import { KoiosGetTipInformationDto } from "@common/dtos/koios/koiosGetTipInformation.dto";
+import { KoiosGetAccountAddressesDto } from "@common/dtos/koios/koiosGetAccountAddresses.dto";
+import { KoiosGetAccountTransactionDto } from "@common/dtos/koios/koiosGetAccountTransaction.dto";
 
 export async function koiosService() {
   const getTip = async () => {
@@ -16,8 +17,19 @@ export async function koiosService() {
     return accountAddresses;
   };
 
+  const getAccountTransaction = async (stakeAddresses: string): Promise<string[]> => {
+    const getAccountTransactionData = await koiosApi().getAccountTransaction(stakeAddresses);
+    const getAccountTransactionDataArrayResponse: KoiosGetAccountTransactionDto[] =
+      await getAccountTransactionData.data;
+    const accountTransaction: string[] = getAccountTransactionDataArrayResponse.map(
+      (transactionDto) => transactionDto.tx_hash
+    );
+    return accountTransaction;
+  };
+
   return {
     getTip,
     getAccountAddresses,
+    getAccountTransaction,
   };
 }
