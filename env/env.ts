@@ -5,11 +5,6 @@ dotenv.config({
   path: process.env.ENV ? `env/.env.${process.env.ENV}` : `env/.env.local`,
 });
 
-export interface Credentials {
-  username: string;
-  password: string;
-}
-
 export class Env {
   static get KOIOS_API_URL(): string {
     const koiosApiUrl = process.env.KOIOS_API_URL;
@@ -25,5 +20,13 @@ export class Env {
       throw new Error("Environment variable YACI_STORE_API_URL must be set");
     }
     return yaciStoreApiUrl;
+  }
+
+  static get YACI_STORE_AGGREGATOR_URL(): string {
+    const yaciStoreAggregatorUrl = process.env.YACI_STORE_AGGREGATOR_URL;
+    if (!yaciStoreAggregatorUrl) {
+      throw new Error("Environment variable YACI_STORE_AGGREGATOR_URL must be set");
+    }
+    return yaciStoreAggregatorUrl;
   }
 }

@@ -59,10 +59,55 @@ export function yaciApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getBlockList.Base);
   };
 
+  const getStakeRegistrations = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getStakeRegistrations.Base}`,
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getStakeRegistrations.Base);
+  };
+
+  const getStakeDeregistrations = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getStakeDeregistrations.Base}`,
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getStakeDeregistrations.Base);
+  };
+
+  const getStakeDelegations = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getStakeDelegations.Base}`,
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getStakeDelegations.Base);
+  };
+
   return {
     getTransaction,
     getBlockList,
     getBlockLatestInformation,
     getBlockInformationByHash,
+    getStakeRegistrations,
+    getStakeDeregistrations,
+    getStakeDelegations,
   };
 }

@@ -2,6 +2,8 @@ import { yaciApi } from "./yaci.api";
 import { YaciGetTransactionDto } from "@common/dtos/yaci/yaciGetTransaction.dto";
 import { YaciGetBlockListDto } from "@common/dtos/yaci/yaciGetBlockList.dto";
 import { YaciGetBlockInformationDto } from "@common/dtos/yaci/yaciGetBlockInformation.dto";
+import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/yaciGetStakeDelegation.dto";
+import { YaciGetStakeInformationDto } from "@common/dtos/yaci/yaciGetStakeInformation.dto";
 
 export async function yaciService() {
   const getTransaction = async () => {
@@ -40,11 +42,64 @@ export async function yaciService() {
     return getBlockInformationByHashDataArrayResponse;
   };
 
+  const getStakeRegistrations = async () => {
+    const getStakeRegistrationsData = await yaciApi().getStakeRegistrations();
+    const getStakeRegistrationsDataArrayResponse: YaciGetStakeInformationDto[] = await getStakeRegistrationsData.data;
+    return getStakeRegistrationsDataArrayResponse;
+  };
+
+  const getStakeDeregistrations = async () => {
+    const getStakeDeregistrationsData = await yaciApi().getStakeDeregistrations();
+    const getStakeDeregistrationsDataArrayResponse: YaciGetStakeInformationDto[] =
+      await getStakeDeregistrationsData.data;
+    return getStakeDeregistrationsDataArrayResponse;
+  };
+
+  const getStakeDelegations = async () => {
+    const getStakeDelegationsData = await yaciApi().getStakeDelegations();
+    const getStakeDelegationsDataArrayResponse: YaciGetStakeDelegationDto[] = await getStakeDelegationsData.data;
+    return getStakeDelegationsDataArrayResponse;
+  };
+
+  const getAddressFromStakeRegistrations = async () => {
+    const getStakeRegistrationsData = await yaciApi().getStakeRegistrations();
+    const getStakeRegistrationsDataArrayResponse: YaciGetStakeInformationDto[] = await getStakeRegistrationsData.data;
+    const addressInformation: unknown = getStakeRegistrationsDataArrayResponse.map(
+      (addressInformationDto) => addressInformationDto.address
+    );
+    return addressInformation;
+  };
+
+  const getAddressFromDeregistrations = async () => {
+    const getStakeDeregistrationsData = await yaciApi().getStakeDeregistrations();
+    const getStakeDeregistrationsDataArrayResponse: YaciGetStakeInformationDto[] =
+      await getStakeDeregistrationsData.data;
+    const addressInformation: unknown = getStakeDeregistrationsDataArrayResponse.map(
+      (addressInformationDto) => addressInformationDto.address
+    );
+    return addressInformation;
+  };
+
+  const getAddressFromDelegations = async () => {
+    const getStakeDelegationsData = await yaciApi().getStakeDelegations();
+    const getStakeDelegationsDataArrayResponse: YaciGetStakeDelegationDto[] = await getStakeDelegationsData.data;
+    const addressInformation: unknown = getStakeDelegationsDataArrayResponse.map(
+      (addressInformationDto) => addressInformationDto.address
+    );
+    return addressInformation;
+  };
+
   return {
     getTransaction,
     getBlockList,
     getBlockLatestInformation,
     getPreviousBlockHash,
     getBlockInformationByHash,
+    getStakeRegistrations,
+    getStakeDeregistrations,
+    getStakeDelegations,
+    getAddressFromDelegations,
+    getAddressFromDeregistrations,
+    getAddressFromStakeRegistrations,
   };
 }

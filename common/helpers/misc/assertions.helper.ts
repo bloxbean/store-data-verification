@@ -108,4 +108,42 @@ export class Assertions {
       throw error;
     }
   }
+
+  /**
+   * Asserts that a value is null.
+   * This function logs a message and throws an error if the assertion fails.
+   *
+   * @param actualValue - The value to be asserted as false.
+   * @param message - A message to log for the assertion result.
+   * @example
+   * Assertions.assertNull(empty, 'Value should be null.');
+   */
+  static assertNull(actualValue: unknown, message: string) {
+    try {
+      expect(actualValue).toBeNull;
+      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+    } catch (error) {
+      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      throw error;
+    }
+  }
+
+  /**
+   * Asserts that a value is not null.
+   * This function logs a message and throws an error if the assertion fails.
+   *
+   * @param actualValue - The value to be asserted as false.
+   * @param message - A message to log for the assertion result.
+   * @example
+   * Assertions.assertNull(empty, 'Value should not null.');
+   */
+  static assertNotNull(actualValue: unknown, message: string) {
+    try {
+      expect(actualValue).not.toBeNull;
+      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+    } catch (error) {
+      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      throw error;
+    }
+  }
 }

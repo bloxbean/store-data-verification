@@ -48,4 +48,32 @@ export class YaciStore {
       return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/blocks/latest`;
     }
   };
+
+  static getStakeRegistrations = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/stake/registrations`;
+    }
+  };
+
+  static getStakeDeregistrations = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/stake/deregistrations`;
+    }
+  };
+
+  static getStakeDelegations = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/stake/delegations`;
+    }
+  };
+}
+
+export class YaciStoreAggregator {
+  static readonly BASE_YACI_STORE_AGGREGATOR_NET_URL = Env.YACI_STORE_AGGREGATOR_URL;
+
+  static getAggregatorAddresses = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/addresses`;
+    }
+  };
 }
