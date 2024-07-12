@@ -51,9 +51,24 @@ export function koiosApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getAccountTransaction.Base);
   };
 
+  const getBlockList = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.Koios.getBlockList.Base,
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getBlockList.Base);
+  };
+
   return {
     getTip,
     getAccountAddresses,
     getAccountTransaction,
+    getBlockList,
   };
 }

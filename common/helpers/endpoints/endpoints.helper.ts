@@ -20,6 +20,12 @@ export class Koios {
       return `${Koios.BASE_KOIOS_MAIN_NET_URL}/account_txs`;
     }
   };
+
+  static getBlockList = class {
+    public static get Base() {
+      return `${Koios.BASE_KOIOS_MAIN_NET_URL}/blocks`;
+    }
+  };
 }
 
 export class YaciStore {
@@ -28,6 +34,18 @@ export class YaciStore {
   static getTransaction = class {
     public static get Base() {
       return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/txs`;
+    }
+  };
+
+  static getBlockList = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/blocks`;
+    }
+  };
+
+  static getBlockLatestInformation = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/blocks/latest`;
     }
   };
 }

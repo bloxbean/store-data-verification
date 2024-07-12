@@ -2,6 +2,7 @@ import { koiosApi } from "./koios.api";
 import { KoiosGetTipInformationDto } from "@common/dtos/koios/koiosGetTipInformation.dto";
 import { KoiosGetAccountAddressesDto } from "@common/dtos/koios/koiosGetAccountAddresses.dto";
 import { KoiosGetAccountTransactionDto } from "@common/dtos/koios/koiosGetAccountTransaction.dto";
+import { KoiosGetBlockListDto } from "@common/dtos/koios/koiosGetBlockList.dto";
 
 export async function koiosService() {
   const getTip = async () => {
@@ -25,6 +26,12 @@ export async function koiosService() {
       (transactionDto) => transactionDto.tx_hash
     );
     return accountTransaction;
+  };
+
+  const getBlockList = async () => {
+    const getBlockListData = await koiosApi().getBlockList();
+    const getBlockListDataArrayResponse: KoiosGetBlockListDto[] = await getBlockListData.data;
+    return getBlockListDataArrayResponse;
   };
 
   return {

@@ -4,8 +4,8 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { koiosService } from "@common/service/koios_api_service/koios.service";
 import { yaciService } from "@common/service/yaci_api_service/yaci.service";
 
-test.describe("@smoke", () => {
-  test("Compare the transaction of Koios and Yaci Store", async ({ request }) => {
+test.describe("@block", () => {
+  test("Check the rollback process", async ({ request }) => {
     test.step("GIVEN: Retrieve chain tip", async () => {
       let transactionKoios = await (await koiosService()).getAccountTransaction(StakeAddresses.STAKE_ADDRESS_1);
       let transactionYaci = await (await yaciService()).getTransaction();
