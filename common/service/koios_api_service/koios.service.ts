@@ -38,5 +38,6 @@ export async function koiosService() {
     getTip,
     getAccountAddresses,
     getAccountTransaction,
+    getBlockList,
   };
 }

@@ -45,9 +45,24 @@ export function yaciApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getBlockLatestInformation.Base);
   };
 
+  const getBlockInformationByHash = async (hash: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getBlockList.Base}/${hash}`,
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getBlockList.Base);
+  };
+
   return {
     getTransaction,
     getBlockList,
     getBlockLatestInformation,
+    getBlockInformationByHash,
   };
 }

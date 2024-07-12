@@ -1,17 +1,40 @@
 import { test, expect } from "@playwright/test";
-import { StakeAddresses } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
-import { koiosService } from "@common/service/koios_api_service/koios.service";
 import { yaciService } from "@common/service/yaci_api_service/yaci.service";
 
 test.describe("@block", () => {
-  test("Check the rollback process", async ({ request }) => {
-    test.step("GIVEN: Retrieve chain tip", async () => {
-      let transactionKoios = await (await koiosService()).getAccountTransaction(StakeAddresses.STAKE_ADDRESS_1);
-      let transactionYaci = await (await yaciService()).getTransaction();
+  test("Check the rollback process", async ({}) => {
+    test.step("GIVEN: Retrieve block latest information", async () => {
+      let blockLatestInformation = await (await yaciService()).getBlockLatestInformation();
 
-      await test.step("THEN: Compare chain tip", () => {
-        Assertions.assertEqual(transactionKoios, transactionYaci, "Transaction should be equal.");
+      await test.step("GIVEN: Retrieve previous block hash from the block latest information", async () => {
+        let blockPreviousHash = await (await yaciService()).getPreviousBlockHash();
+
+        await test.step("WHEN: Retrieve previous block information by Hash", async () => {
+          let previousBlockInformation = await (await yaciService()).getBlockInformationByHash(blockPreviousHash);
+
+          await test.step("WHEN: Retrieve block number from both block", async () => {
+            let previousBlockNumberList = blockLatestInformation.map((blockNumberDto) => blockNumberDto.number);
+            let previousBlockNumber: number = previousBlockNumberList[0];
+
+            let latestBlockNumberList = previousBlockInformation.map((blockNumberDto) => blockNumberDto.number);
+            let latestBlockNumber: number = latestBlockNumberList[0];
+
+            await test.step("WHEN: Retrieve block hash from both block", async () => {
+              let previousBlockHash = blockLatestInformation.map((blockHashDto) => blockHashDto.hash);
+              let latestBlockHash = previousBlockInformation.map((blockHashDto) => blockHashDto.hash);
+
+              await test.step("THEN: Block hash is different from both block ", () => {
+                Assertions.assertNotEqual(previousBlockHash, latestBlockHash, "Block Hash should be different.");
+              });
+
+              await test.step("THEN: Latest block number is larger than previous block number by 1 ", () => {
+                let blockNumberDifferent = latestBlockNumber - previousBlockNumber;
+                Assertions.assertEqual(blockNumberDifferent, 1, "Block Number should be different by 1 point.");
+              });
+            });
+          });
+        });
       });
     });
   });

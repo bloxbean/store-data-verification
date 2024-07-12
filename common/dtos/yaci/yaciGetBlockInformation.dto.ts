@@ -1,4 +1,4 @@
-export interface YaciGetBlockLatestInformationDto {
+export interface YaciGetBlockInformationDto {
   time: number;
   height: number;
   number: number;

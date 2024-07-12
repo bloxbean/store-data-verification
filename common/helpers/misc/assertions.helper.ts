@@ -12,7 +12,7 @@ export class Assertions {
    * @example
    * Assertions.assertNotEqual(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
-  static assertNotEqual(actualText: unknown, expectedText: string, message: string) {
+  static assertNotEqual(actualText: unknown, expectedText: unknown, message: string) {
     try {
       expect(actualText).not.toBe(expectedText);
       Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
