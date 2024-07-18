@@ -1,4 +1,4 @@
-import { Env } from "@env/env";
+import { Env } from "playwright-api-testing/env/env";
 
 export class Koios {
   static readonly BASE_KOIOS_MAIN_NET_URL = Env.KOIOS_API_URL;

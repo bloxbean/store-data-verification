@@ -1,6 +1,6 @@
 import { FullConfig, PlaywrightWorkerOptions } from "@playwright/test";
 import { APIService, HttpMethod, Response } from "@common/api/apiService";
-import { Env } from "@env/env";
+import { Env } from "playwright-api-testing/env/env";
 
 async function globalSetup(config: FullConfig, options: PlaywrightWorkerOptions): Promise<void> {
   // Create a new instance of the APIService with the desired API environment URL
