@@ -1,5 +1,5 @@
 import { FullConfig, PlaywrightWorkerOptions } from "@playwright/test";
-import { APIService, HttpMethod, Response } from "@common/api/apiService";
+import { APIService } from "@common/api/api-service";
 import { Env } from "playwright-api-testing/env/env";
 
 async function globalSetup(config: FullConfig, options: PlaywrightWorkerOptions): Promise<void> {

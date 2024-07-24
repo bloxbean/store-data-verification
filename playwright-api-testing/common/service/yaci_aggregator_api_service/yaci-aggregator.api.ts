@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-import * as BaseApi from "@common/api/thirdPartyApi";
+import * as BaseApi from "@common/api/third-party-api";
 import * as Endpoint from "@common/helpers/endpoints/endpoints.helper";
 
 export function yaciAggregatorApi() {

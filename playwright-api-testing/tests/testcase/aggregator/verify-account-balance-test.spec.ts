@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
-import { yaciAggregatorService } from "@common/service/yaci_aggregator_api_service/yaciAggregator.service";
-import { yaciService } from "@common/service/yaci_api_service/yaci.service";
+import { yaciAggregatorService } from "@common/service/yaci_aggregator_api_service/yaci-aggregator.service";
+import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 
 test.describe("@account", () => {
   test("Check the account amount is lovelace or not", async ({}) => {

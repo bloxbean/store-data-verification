@@ -1,5 +1,5 @@
 import { APIRequestContext } from "@playwright/test";
-import { ApiRequestBuilder } from "./apiRequestBuilder";
+import { ApiRequestBuilder } from "./api-request-builder";
 
 export type Serializable = unknown;
 

@@ -1,8 +1,8 @@
 import { koiosApi } from "./koios.api";
-import { KoiosGetTipInformationDto } from "@common/dtos/koios/koiosGetTipInformation.dto";
-import { KoiosGetAccountAddressesDto } from "@common/dtos/koios/koiosGetAccountAddresses.dto";
-import { KoiosGetAccountTransactionDto } from "@common/dtos/koios/koiosGetAccountTransaction.dto";
-import { KoiosGetBlockListDto } from "@common/dtos/koios/koiosGetBlockList.dto";
+import { KoiosGetTipInformationDto } from "@common/dtos/koios/koios-get-tip-information.dto";
+import { KoiosGetAccountAddressesDto } from "@common/dtos/koios/koios-get-account-addresses.dto";
+import { KoiosGetAccountTransactionDto } from "@common/dtos/koios/koios-get-account-transaction.dto";
+import { KoiosGetBlockListDto } from "@common/dtos/koios/koios-get-block-list.dto";
 
 export async function koiosService() {
   const getTip = async () => {
