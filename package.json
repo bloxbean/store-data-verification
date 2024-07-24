@@ -9,6 +9,7 @@
     "test:dev-trace": "ENV=dev npx playwright test --headed --trace on",
     "transaction-test": "npx playwright test --grep '@transaction'",
     "block-test": "npx playwright test --grep '@block'",
+    "account-test": "npx playwright test --grep '@account'",
     "lint": "eslint .",
     "prepare": "husky && husky install",
     "lint:fix": "eslint . --fix",
