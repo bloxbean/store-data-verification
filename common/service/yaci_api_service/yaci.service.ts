@@ -1,9 +1,9 @@
 import { yaciApi } from "./yaci.api";
-import { YaciGetTransactionDto } from "@common/dtos/yaci/yaciGetTransaction.dto";
-import { YaciGetBlockListDto } from "@common/dtos/yaci/yaciGetBlockList.dto";
-import { YaciGetBlockInformationDto } from "@common/dtos/yaci/yaciGetBlockInformation.dto";
-import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/yaciGetStakeDelegation.dto";
-import { YaciGetStakeInformationDto } from "@common/dtos/yaci/yaciGetStakeInformation.dto";
+import { YaciGetTransactionDto } from "@common/dtos/yaci/yaci-get-transaction.dto";
+import { YaciGetBlockListDto } from "@common/dtos/yaci/yaci-get-block-list.dto";
+import { YaciGetBlockInformationDto } from "@common/dtos/yaci/yaci-get-block-information.dto";
+import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/yaci-get-stake-delegation.dto";
+import { YaciGetStakeInformationDto } from "@common/dtos/yaci/yaci-get-stake-information.dto";
 
 export async function yaciService() {
   const getTransaction = async () => {
