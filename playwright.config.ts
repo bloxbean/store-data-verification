@@ -10,7 +10,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./tests",
-  globalSetup: "./tests/hooks/globalSetup",
+  globalSetup: "./tests/hooks/global-setup",
   timeout: 2 * 60 * 1000,
   expect: {
     timeout: 30 * 1000,
