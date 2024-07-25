@@ -4,6 +4,13 @@ import { YaciGetBlockListDto } from "@common/dtos/yaci/yaci-get-block-list.dto";
 import { YaciGetBlockInformationDto } from "@common/dtos/yaci/yaci-get-block-information.dto";
 import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/yaci-get-stake-delegation.dto";
 import { YaciGetStakeInformationDto } from "@common/dtos/yaci/yaci-get-stake-information.dto";
+import { YaciGetTransactionWithdrawalsDto } from "@common/dtos/yaci/yaci-get-transanction-withdrawals.dto";
+import { YaciGetTransactionDetailsWithdrawalsDto } from "@common/dtos/yaci/yaci-get-transanction-details-withdrawals.dto";
+import { YaciGetTransactionWitnessesDto } from "@common/dtos/yaci/yaci-get-transaction-witnesses.dto";
+import { YaciGetDetailTransactionDto } from "@common/dtos/yaci/yaci-get-detail-transaction.dto";
+import { YaciSubmitTransactionDto } from "@common/dtos/yaci/yaci-submit-transaction.dto";
+import { YaciGetEpochDto } from "@common/dtos/yaci/yaci-get-epoch.dto";
+import { YaciGetEpochParametersDto } from "@common/dtos/yaci/yaci-get-epoch-parameters.dto";
 
 export async function yaciService() {
   const getTransaction = async () => {
@@ -89,6 +96,65 @@ export async function yaciService() {
     return addressInformation;
   };
 
+  const getWithdrawals = async () => {
+    const getWithdrawalsData = await yaciApi().getWithdrawals();
+    const getWithdrawalsDataArrayResponse: YaciGetTransactionWithdrawalsDto[] = await getWithdrawalsData.data;
+    const txHashInformation: unknown = getWithdrawalsDataArrayResponse.map(
+      (txHashInformationDto) => txHashInformationDto.tx_hash
+    );
+    return txHashInformation;
+  };
+
+  const getDetailTransaction = async (txHash: unknown) => {
+    const getDetailTransactionData = await yaciApi().getDetailTransaction(txHash);
+    const getDetailTransactionDataArrayResponse: YaciGetDetailTransactionDto[] = await getDetailTransactionData.data;
+    return getDetailTransactionDataArrayResponse;
+  };
+
+  const getWitnesses = async (txHash: unknown) => {
+    const getTransactionWitnessesData = await yaciApi().getWitnesses(txHash);
+    const getTransactionWitnessesDataDataArrayResponse: YaciGetTransactionWitnessesDto[] =
+      await getTransactionWitnessesData.data;
+    return getTransactionWitnessesDataDataArrayResponse;
+  };
+
+  const getDetailWithdrawals = async (txHash: unknown) => {
+    const getDetailWithdrawalsData = await yaciApi().getDetailsWithdrawals(txHash);
+    const getDetailWithdrawalsDataArrayResponse: YaciGetTransactionDetailsWithdrawalsDto[] =
+      await getDetailWithdrawalsData.data;
+    return getDetailWithdrawalsDataArrayResponse;
+  };
+
+  const submitTransaction = async (txHash: unknown, index: number) => {
+    const submitTransactionData = await yaciApi().submitTransaction(txHash, index);
+    const submitTransactionDataArrayResponse: YaciSubmitTransactionDto[] = await submitTransactionData.data;
+    return submitTransactionDataArrayResponse;
+  };
+
+  const submitUtxo = async (txHash: unknown, index: number) => {
+    const submitTransactionData = await yaciApi().submitUtxo(txHash, index);
+    const submitTransactionDataArrayResponse: YaciSubmitTransactionDto[] = await submitTransactionData.data;
+    return submitTransactionDataArrayResponse;
+  };
+
+  const getLatestEpoch = async () => {
+    const getEpochNumber = await yaciApi().getLatestEpoch();
+    const getEpochNumberResponse: YaciGetEpochDto[] = await getEpochNumber.data;
+    return getEpochNumberResponse;
+  };
+
+  const getLatestEpochParameters = async () => {
+    const getEpochParameterData = await yaciApi().getLatestEpochParameters();
+    const getEpochParameterDataResponse: YaciGetEpochParametersDto[] = await getEpochParameterData.data;
+    return getEpochParameterDataResponse;
+  };
+
+  const getEpochParameter = async (number: number) => {
+    const getEpochParameterData = await yaciApi().getEpochParameter(number);
+    const getEpochParameterDataResponse: YaciGetEpochParametersDto[] = await getEpochParameterData.data;
+    return getEpochParameterDataResponse;
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -101,5 +167,14 @@ export async function yaciService() {
     getAddressFromDelegations,
     getAddressFromDeregistrations,
     getAddressFromStakeRegistrations,
+    getWithdrawals,
+    getDetailTransaction,
+    getWitnesses,
+    getDetailWithdrawals,
+    submitTransaction,
+    submitUtxo,
+    getLatestEpoch,
+    getLatestEpochParameters,
+    getEpochParameter,
   };
 }

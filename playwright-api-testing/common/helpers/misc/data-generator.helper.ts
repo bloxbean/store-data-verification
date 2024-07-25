@@ -107,7 +107,7 @@ export class DataGenerator {
   }
 
   // Helper function to generate a random number
-  private static generateRandomNumber(min: number, max: number): number {
+  static generateRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
