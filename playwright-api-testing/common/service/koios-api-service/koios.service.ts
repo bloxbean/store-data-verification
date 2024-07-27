@@ -1,13 +1,16 @@
 import { koiosApi } from "./koios.api";
 import { KoiosGetTipInformationDto } from "@common/dtos/koios/koios-get-tip-information.dto";
-import { KoiosGetAccountAddressesDto } from "@common/dtos/koios/koios-get-account-addresses.dto";
-import { KoiosGetAccountTransactionDto } from "@common/dtos/koios/koios-get-account-transaction.dto";
-import { KoiosGetBlockListDto } from "@common/dtos/koios/koios-get-block-list.dto";
-import { KoiosGetBlockTransactionDto } from "@common/dtos/koios/koios-get-block-transaction.dto";
-import { KoiosGetTransactionInfoDto } from "@common/dtos/koios/koios-get-transaction-info.dto";
-import { KoiosGetEpochInformationDto } from "@common/dtos/koios/koios-get-epoch-information.dto";
-import { KoiosGetEpochProtocolParametersDto } from "@common/dtos/koios/koios-get-epoch-protocol-parameters.dto";
-import { KoiosGetEpochBlockProtocolnDto } from "@common/dtos/koios/koios-get-epoch-block-protocols.dto";
+import { KoiosGetAccountAddressesDto } from "@common/dtos/koios/account/koios-get-account-addresses.dto";
+import { KoiosGetAccountTransactionDto } from "@common/dtos/koios/account/koios-get-account-transaction.dto";
+import { KoiosGetBlockListDto } from "@common/dtos/koios/block/koios-get-block-list.dto";
+import { KoiosGetBlockTransactionDto } from "@common/dtos/koios/block/koios-get-block-transaction.dto";
+import { KoiosGetTransactionInfoDto } from "@common/dtos/koios/transaction/koios-get-transaction-info.dto";
+import { KoiosGetEpochInformationDto } from "@common/dtos/koios/epoch/koios-get-epoch-information.dto";
+import { KoiosGetEpochProtocolParametersDto } from "@common/dtos/koios/epoch/koios-get-epoch-protocol-parameters.dto";
+import { KoiosGetEpochBlockProtocolnDto } from "@common/dtos/koios/epoch/koios-get-epoch-block-protocols.dto";
+import { KoiosGetAssetHistoryDto } from "@common/dtos/koios/asset/koios-get-asset-history.dto";
+import { KoiosGetAssetUtxoDto } from "@common/dtos/koios/asset/koios-get-asset-utxo.dto";
+import { KoiosGetPoolRegistrationsDto } from "@common/dtos/koios/pool/koios-get-pool-registration.dto";
 
 export async function koiosService() {
   const getTip = async () => {
@@ -88,6 +91,26 @@ export async function koiosService() {
     return epochBlockProtocols;
   };
 
+  const getAssetHistory = async (assetPolicy: string, assetName: string): Promise<string[]> => {
+    const getAssetHistoryData = await koiosApi().getAssetHistory(assetPolicy, assetName);
+    const getAssetHistoryDataArrayResponse: KoiosGetAssetHistoryDto[] = await getAssetHistoryData.data;
+    const getAssetHistory: string[] = getAssetHistoryDataArrayResponse.map((asset) => JSON.stringify(asset));
+    return getAssetHistory;
+  };
+
+  const getAssetUtxos = async (assetList: string[], isExtended: boolean): Promise<string[]> => {
+    const getAssetUtxosData = await koiosApi().getAssetUtxos(assetList, isExtended);
+    const getAssetUtxosDataArrayResponse: KoiosGetAssetUtxoDto[] = await getAssetUtxosData.data;
+    const getAssetUtxos: string[] = getAssetUtxosDataArrayResponse.map((asset) => JSON.stringify(asset));
+    return getAssetUtxos;
+  };
+
+  const getPoolRegistration = async (number: unknown) => {
+    const getPoolRegistrationData = await koiosApi().getPoolRegistration(number);
+    const getPoolRegistrationDataArrayResponse: KoiosGetPoolRegistrationsDto[] = await getPoolRegistrationData.data;
+    return getPoolRegistrationDataArrayResponse;
+  };
+
   return {
     getTip,
     getAccountAddresses,
@@ -99,5 +122,8 @@ export async function koiosService() {
     getEpochInformation,
     getEpochParameter,
     getEpochBlockProtocols,
+    getAssetHistory,
+    getAssetUtxos,
+    getPoolRegistration,
   };
 }

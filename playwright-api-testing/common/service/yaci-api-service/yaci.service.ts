@@ -1,16 +1,20 @@
 import { yaciApi } from "./yaci.api";
-import { YaciGetTransactionDto } from "@common/dtos/yaci/yaci-get-transaction.dto";
-import { YaciGetBlockListDto } from "@common/dtos/yaci/yaci-get-block-list.dto";
-import { YaciGetBlockInformationDto } from "@common/dtos/yaci/yaci-get-block-information.dto";
-import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/yaci-get-stake-delegation.dto";
-import { YaciGetStakeInformationDto } from "@common/dtos/yaci/yaci-get-stake-information.dto";
-import { YaciGetTransactionWithdrawalsDto } from "@common/dtos/yaci/yaci-get-transanction-withdrawals.dto";
-import { YaciGetTransactionDetailsWithdrawalsDto } from "@common/dtos/yaci/yaci-get-transanction-details-withdrawals.dto";
-import { YaciGetTransactionWitnessesDto } from "@common/dtos/yaci/yaci-get-transaction-witnesses.dto";
-import { YaciGetDetailTransactionDto } from "@common/dtos/yaci/yaci-get-detail-transaction.dto";
-import { YaciSubmitTransactionDto } from "@common/dtos/yaci/yaci-submit-transaction.dto";
-import { YaciGetEpochDto } from "@common/dtos/yaci/yaci-get-epoch.dto";
-import { YaciGetEpochParametersDto } from "@common/dtos/yaci/yaci-get-epoch-parameters.dto";
+import { YaciGetTransactionDto } from "@common/dtos/yaci/transaction/yaci-get-transaction.dto";
+import { YaciGetBlockListDto } from "@common/dtos/yaci/block/yaci-get-block-list.dto";
+import { YaciGetBlockInformationDto } from "@common/dtos/yaci/block/yaci-get-block-information.dto";
+import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/stake/yaci-get-stake-delegation.dto";
+import { YaciGetStakeInformationDto } from "@common/dtos/yaci/stake/yaci-get-stake-information.dto";
+import { YaciGetTransactionWithdrawalsDto } from "@common/dtos/yaci/transaction/yaci-get-transanction-withdrawals.dto";
+import { YaciGetTransactionDetailsWithdrawalsDto } from "@common/dtos/yaci/transaction/yaci-get-transanction-details-withdrawals.dto";
+import { YaciGetTransactionWitnessesDto } from "@common/dtos/yaci/transaction/yaci-get-transaction-witnesses.dto";
+import { YaciGetDetailTransactionDto } from "@common/dtos/yaci/transaction/yaci-get-detail-transaction.dto";
+import { YaciSubmitTransactionDto } from "@common/dtos/yaci/transaction/yaci-submit-transaction.dto";
+import { YaciGetEpochDto } from "@common/dtos/yaci/epoch/yaci-get-epoch.dto";
+import { YaciGetEpochParametersDto } from "@common/dtos/yaci/epoch/yaci-get-epoch-parameters.dto";
+import { YaciGetAssetUtxoDto } from "@common/dtos/yaci/asset/yaci-get-asset-utxo.dto";
+import { YaciGetAssetHistoryDto } from "@common/dtos/yaci/asset/yaci-get-asset-history.dto";
+import { YaciGetAssetSupplyByUnitDto } from "@common/dtos/yaci/asset/yaci-get-asset-supply-by-unit.dto";
+import { YaciGetPoolRegistrationsDto } from "@common/dtos/yaci/pool/yaci-get-pool-registration.dto";
 
 export async function yaciService() {
   const getTransaction = async () => {
@@ -111,6 +115,15 @@ export async function yaciService() {
     return getDetailTransactionDataArrayResponse;
   };
 
+  const getUnitFromDetailTransaction = async (txHash: unknown) => {
+    const getDetailTransactionData = await yaciApi().getDetailTransaction(txHash);
+    const getDetailTransactionDataArrayResponse: YaciGetDetailTransactionDto[] = await getDetailTransactionData.data;
+    const unitInformation: unknown = getDetailTransactionDataArrayResponse.map(
+      (unitInformationDto) => unitInformationDto.amount[0].unit
+    );
+    return unitInformation;
+  };
+
   const getWitnesses = async (txHash: unknown) => {
     const getTransactionWitnessesData = await yaciApi().getWitnesses(txHash);
     const getTransactionWitnessesDataDataArrayResponse: YaciGetTransactionWitnessesDto[] =
@@ -155,6 +168,30 @@ export async function yaciService() {
     return getEpochParameterDataResponse;
   };
 
+  const getUtxoOfAsset = async (unit: unknown) => {
+    const getUtxoOfAssetData = await yaciApi().getUtxoOfAsset(unit);
+    const getUtxoOfAssetDataResponse: YaciGetAssetUtxoDto[] = await getUtxoOfAssetData.data;
+    return getUtxoOfAssetDataResponse;
+  };
+
+  const getAssetHistoryByUnit = async (unit: unknown) => {
+    const getAssetHistoryByUnitData = await yaciApi().getAssetHistoryByUnit(unit);
+    const getAssetHistoryByUnitDataResponse: YaciGetAssetHistoryDto[] = await getAssetHistoryByUnitData.data;
+    return getAssetHistoryByUnitDataResponse;
+  };
+
+  const getAssetSupplyByUnit = async (unit: number) => {
+    const getAssetSupplyByUnitData = await yaciApi().getAssetSupplyByUnit(unit);
+    const getAssetSupplyByUnitDataResponse: YaciGetAssetSupplyByUnitDto[] = await getAssetSupplyByUnitData.data;
+    return getAssetSupplyByUnitDataResponse;
+  };
+
+  const getPoolRegistration = async (number: unknown) => {
+    const getPoolRegistrationData = await yaciApi().getPoolRegistration(number);
+    const getPoolRegistrationDataArrayResponse: YaciGetPoolRegistrationsDto[] = await getPoolRegistrationData.data;
+    return getPoolRegistrationDataArrayResponse;
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -176,5 +213,10 @@ export async function yaciService() {
     getLatestEpoch,
     getLatestEpochParameters,
     getEpochParameter,
+    getUtxoOfAsset,
+    getAssetHistoryByUnit,
+    getAssetSupplyByUnit,
+    getUnitFromDetailTransaction,
+    getPoolRegistration,
   };
 }

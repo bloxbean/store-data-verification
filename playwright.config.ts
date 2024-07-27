@@ -9,8 +9,8 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests",
-  globalSetup: "./tests/hooks/global-setup",
+  testDir: "./playwright-api-testing/tests/",
+  globalSetup: "./playwright-api-testing/tests/hooks/global-setup",
   timeout: 2 * 60 * 1000,
   expect: {
     timeout: 30 * 1000,
