@@ -68,24 +68,6 @@ export class Koios {
       return `${Koios.BASE_KOIOS_MAIN_NET_URL}/epoch_block_protocols`;
     }
   };
-
-  static getAssetUtxos = class {
-    public static get Base() {
-      return `${Koios.BASE_KOIOS_MAIN_NET_URL}/asset_utxos`;
-    }
-  };
-
-  static getAssetHistory = class {
-    public static get Base() {
-      return `${Koios.BASE_KOIOS_MAIN_NET_URL}/asset_history`;
-    }
-  };
-
-  static getPoolRegistration = class {
-    public static get Base() {
-      return `${Koios.BASE_KOIOS_MAIN_NET_URL}/pool_registrations`;
-    }
-  };
 }
 
 export class YaciStore {
@@ -136,18 +118,6 @@ export class YaciStore {
   static getEpoch = class {
     public static get Base() {
       return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/epochs`;
-    }
-  };
-
-  static getAsset = class {
-    public static get Base() {
-      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/assets`;
-    }
-  };
-
-  static getPoolRegistrations = class {
-    public static get Base() {
-      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/pools/registrations`;
     }
   };
 }
