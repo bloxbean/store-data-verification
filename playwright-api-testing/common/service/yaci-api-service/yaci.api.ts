@@ -101,6 +101,120 @@ export function yaciApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getStakeDelegations.Base);
   };
 
+  const getWithdrawals = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getTransaction.Base}/withdrawals`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+  };
+
+  const getDetailTransaction = async (txHash: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getTransaction.Base}/${txHash}`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+  };
+
+  const getWitnesses = async (txHash: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getTransaction.Base}/${txHash}/witnesses`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+  };
+
+  const getDetailsWithdrawals = async (txHash: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getTransaction.Base}/${txHash}/withdrawals`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+  };
+
+  const submitTransaction = async (txHash: unknown, index: number) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getUtxo.Base}/${txHash}/${index}`,
+      headers: {
+        Accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getUtxo.Base);
+  };
+
+  const submitUtxo = async (txHash: unknown, index: number) => {
+    const requestBody = {
+      tx_hash: txHash,
+      output_index: index,
+    };
+
+    const request: AxiosRequestConfig = {
+      method: "POST",
+      url: Endpoint.YaciStore.getUtxo.Base,
+      data: requestBody,
+      headers: {
+        Accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getUtxo.Base);
+  };
+
+  const getEpochParameter = async (number: number) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getEpoch.Base}/${number}/parameters`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getEpoch.Base);
+  };
+
+  const getLatestEpoch = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getEpoch.Base}/latest`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getEpoch.Base);
+  };
+
+  const getLatestEpochParameters = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getEpoch.Base}/latest/parameters`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getEpoch.Base);
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -109,5 +223,14 @@ export function yaciApi() {
     getStakeRegistrations,
     getStakeDeregistrations,
     getStakeDelegations,
+    getWithdrawals,
+    getDetailTransaction,
+    getWitnesses,
+    getDetailsWithdrawals,
+    submitTransaction,
+    submitUtxo,
+    getLatestEpochParameters,
+    getEpochParameter,
+    getLatestEpoch,
   };
 }
