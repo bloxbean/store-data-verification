@@ -215,6 +215,54 @@ export function yaciApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getEpoch.Base);
   };
 
+  const getUtxoOfAsset = async (unit: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getAsset.Base}/utxos/unit/${unit}`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getAsset.Base);
+  };
+
+  const getAssetHistoryByUnit = async (unit: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getAsset.Base}/assets/unit/${unit}`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getAsset.Base);
+  };
+
+  const getAssetSupplyByUnit = async (unit: number) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getAsset.Base}/supply/unit/${unit}`,
+      headers: {
+        Accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getAsset.Base);
+  };
+
+  const getPoolRegistration = async (number: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getPoolRegistrations.Base}?_epoch_no=${number}`,
+      headers: {
+        accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getPoolRegistrations.Base);
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -232,5 +280,9 @@ export function yaciApi() {
     getLatestEpochParameters,
     getEpochParameter,
     getLatestEpoch,
+    getUtxoOfAsset,
+    getAssetHistoryByUnit,
+    getAssetSupplyByUnit,
+    getPoolRegistration,
   };
 }
