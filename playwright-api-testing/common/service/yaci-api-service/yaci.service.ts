@@ -11,10 +11,6 @@ import { YaciGetDetailTransactionDto } from "@common/dtos/yaci/transaction/yaci-
 import { YaciSubmitTransactionDto } from "@common/dtos/yaci/transaction/yaci-submit-transaction.dto";
 import { YaciGetEpochDto } from "@common/dtos/yaci/epoch/yaci-get-epoch.dto";
 import { YaciGetEpochParametersDto } from "@common/dtos/yaci/epoch/yaci-get-epoch-parameters.dto";
-import { YaciGetAssetUtxoDto } from "@common/dtos/yaci/asset/yaci-get-asset-utxo.dto";
-import { YaciGetAssetHistoryDto } from "@common/dtos/yaci/asset/yaci-get-asset-history.dto";
-import { YaciGetAssetSupplyByUnitDto } from "@common/dtos/yaci/asset/yaci-get-asset-supply-by-unit.dto";
-import { YaciGetPoolRegistrationsDto } from "@common/dtos/yaci/pool/yaci-get-pool-registration.dto";
 
 export async function yaciService() {
   const getTransaction = async () => {
@@ -168,30 +164,6 @@ export async function yaciService() {
     return getEpochParameterDataResponse;
   };
 
-  const getUtxoOfAsset = async (unit: unknown) => {
-    const getUtxoOfAssetData = await yaciApi().getUtxoOfAsset(unit);
-    const getUtxoOfAssetDataResponse: YaciGetAssetUtxoDto[] = await getUtxoOfAssetData.data;
-    return getUtxoOfAssetDataResponse;
-  };
-
-  const getAssetHistoryByUnit = async (unit: unknown) => {
-    const getAssetHistoryByUnitData = await yaciApi().getAssetHistoryByUnit(unit);
-    const getAssetHistoryByUnitDataResponse: YaciGetAssetHistoryDto[] = await getAssetHistoryByUnitData.data;
-    return getAssetHistoryByUnitDataResponse;
-  };
-
-  const getAssetSupplyByUnit = async (unit: number) => {
-    const getAssetSupplyByUnitData = await yaciApi().getAssetSupplyByUnit(unit);
-    const getAssetSupplyByUnitDataResponse: YaciGetAssetSupplyByUnitDto[] = await getAssetSupplyByUnitData.data;
-    return getAssetSupplyByUnitDataResponse;
-  };
-
-  const getPoolRegistration = async (number: unknown) => {
-    const getPoolRegistrationData = await yaciApi().getPoolRegistration(number);
-    const getPoolRegistrationDataArrayResponse: YaciGetPoolRegistrationsDto[] = await getPoolRegistrationData.data;
-    return getPoolRegistrationDataArrayResponse;
-  };
-
   return {
     getTransaction,
     getBlockList,
@@ -213,10 +185,6 @@ export async function yaciService() {
     getLatestEpoch,
     getLatestEpochParameters,
     getEpochParameter,
-    getUtxoOfAsset,
-    getAssetHistoryByUnit,
-    getAssetSupplyByUnit,
     getUnitFromDetailTransaction,
-    getPoolRegistration,
   };
 }
