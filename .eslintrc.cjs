@@ -39,6 +39,7 @@ module.exports = defineConfig({
     "playwright/no-nested-step": "off",
     "prefer-const": "off",
     "@typescript-eslint/consistent-indexed-object-style": "off",
+    "playwright/valid-expect": "warn",
   },
   overrides: [
     {

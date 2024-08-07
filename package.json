@@ -7,7 +7,8 @@
     "test:dev": "ENV=dev npx playwright test",
     "test:local-trace": "npx playwright test --headed --trace on",
     "test:dev-trace": "ENV=dev npx playwright test --headed --trace on",
-    "smoke-test": "npx playwright test --grep '@smoke'",
+    "transaction-test": "npx playwright test --grep '@transaction'",
+    "block-test": "npx playwright test --grep '@block'",
     "lint": "eslint .",
     "prepare": "husky",
     "lint:fix": "eslint . --fix",
@@ -45,11 +46,12 @@
     "winston": "^3.11.0"
   },
   "dependencies": {
-    "@adabox/koios-ts-client": "^1.0.7",
+    "axios": "^1.7.2",
     "big-integer": "^1.6.52",
     "csv": "^6.3.6",
     "csv-parse": "^5.5.2",
     "eslint-plugin-playwright": "^1.5.2",
+    "husky-init": "^8.0.0",
     "mongodb": "^6.2.0",
     "pg": "^8.12.0",
     "tsc-alias": "^1.8.10"

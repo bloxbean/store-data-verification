@@ -1,7 +1,5 @@
 import { APIRequestContext, request as pwrequest } from "@playwright/test";
-import Logger from "@common/helpers/logger/logger.helper";
 import { TimeOut } from "@common/constants/project.constants";
-import path from "path";
 
 export enum HttpMethod {
   Get = "GET",
