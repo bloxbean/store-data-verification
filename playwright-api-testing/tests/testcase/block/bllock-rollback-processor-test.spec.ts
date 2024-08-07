@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
-import { yaciService } from "@common/service/yaci_api_service/yaci.service";
+import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 
 test.describe("@block", () => {
   test("Check the rollback process", async ({}) => {

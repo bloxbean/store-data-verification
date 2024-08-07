@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
-import { koiosService } from "@common/service/koios_api_service/koios.service";
-import { yaciService } from "@common/service/yaci_api_service/yaci.service";
+import { koiosService } from "@common/service/koios-api-service/koios.service";
+import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 
 test.describe("@block", () => {
   test("Check the logic of process a new block", async ({}) => {

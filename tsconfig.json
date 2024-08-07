@@ -27,16 +27,13 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@common/*": ["common/*"],
-      "@pages/*": ["pages/*"],
-      "@resources/*": ["resources/*"],
-      "@tests/*": ["tests/*"],
-      "@envConfig/*": ["pages/envConfig/*"],
-      "@helpers/*": ["common/helpers/*"],
-      "@utils/*": ["common/utils/*"],
-      "@fixture/*": ["tests/fixture/*"],
-      "@hooks/*": ["tests/hooks/*"],
-      "@env/*": ["env/*"]
+      "@common/*": ["playwright-api-testing/common/*"],
+      "@tests/*": ["playwright-api-testing/tests/*"],
+      "@helpers/*": ["playwright-api-testing/common/helpers/*"],
+      "@utils/*": ["playwright-api-testing/common/utils/*"],
+      "@fixture/*": ["playwright-api-testing/tests/fixture/*"],
+      "@hooks/*": ["playwright-api-testing/tests/hooks/*"],
+      "@env/*": ["playwright-api-testing/env/*"]
     },
     "typeRoots": ["./node_modules/@types"]
   }
