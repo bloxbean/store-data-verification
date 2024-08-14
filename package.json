@@ -14,6 +14,8 @@
     "epoch-test": "npx playwright test --grep '@epoch'",
     "asset-test": "npx playwright test --grep '@asset'",
     "pool-test": "npx playwright test --grep '@pool'",
+    "script-test": "npx playwright test --grep '@script'",
+    "governance-test": "npx playwright test --grep '@governance'",
     "lint": "eslint .",
     "prepare": "husky && husky install",
     "lint:fix": "eslint . --fix",

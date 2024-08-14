@@ -263,6 +263,78 @@ export function yaciApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getPoolRegistrations.Base);
   };
 
+  const getScript = async (scriptHash: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.YaciStore.getScript.Base}/${scriptHash}`,
+      headers: {
+        accept: "*/*",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getScript.Base);
+  };
+
+  const getVotes = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.YaciStore.getVotes.Base,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getVotes.Base);
+  };
+
+  const getDelegationVotes = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.YaciStore.getDelegationVotes.Base,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getDelegationVotes.Base);
+  };
+
+  const getDrepRegistrations = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.YaciStore.getDrepRegistrations.Base,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getDrepRegistrations.Base);
+  };
+
+  const getGovernanceActionProposals = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.YaciStore.getGovernanceActionProposals.Base,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getGovernanceActionProposals.Base);
+  };
+
+  const getGovernanceCommitteesRegistration = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.YaciStore.getCommitteeRegistrations.Base,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getCommitteeRegistrations.Base);
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -284,5 +356,11 @@ export function yaciApi() {
     getAssetHistoryByUnit,
     getAssetSupplyByUnit,
     getPoolRegistration,
+    getScript,
+    getVotes,
+    getDelegationVotes,
+    getDrepRegistrations,
+    getGovernanceActionProposals,
+    getGovernanceCommitteesRegistration,
   };
 }
