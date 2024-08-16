@@ -10,7 +10,7 @@ test.describe("@script", () => {
       let scriptRedeemerKoios = await (await koiosService()).getScriptRedeemers(ScriptHash.SCRIPT_HASH_1);
       let scriptRedeemerYaci = await (await yaciService()).getScript(TxHashes.TX_HASHES_3);
 
-      await test.step("WHEN: fetch script hash", () => {
+      await test.step("THEN: fetch script hash", () => {
         Assertions.assertEqual(scriptRedeemerKoios, scriptRedeemerYaci, "Script redeemer should be equal.");
       });
     });
