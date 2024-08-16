@@ -15,7 +15,7 @@ import { YaciGetAssetUtxoDto } from "@common/dtos/yaci/asset/yaci-get-asset-utxo
 import { YaciGetAssetHistoryDto } from "@common/dtos/yaci/asset/yaci-get-asset-history.dto";
 import { YaciGetAssetSupplyByUnitDto } from "@common/dtos/yaci/asset/yaci-get-asset-supply-by-unit.dto";
 import { YaciGetPoolRegistrationsDto } from "@common/dtos/yaci/pool/yaci-get-pool-registration.dto";
-import { YaciGetVotingProcedureDto } from "@common/dtos/yaci/governance/yacci-get-voting-procedure.dto";
+import { YaciGetVotingProcedureDto } from "@common/dtos/yaci/governance/yaci-get-voting-procedure.dto";
 import { YaciGetDelegationVoteDto } from "@common/dtos/yaci/governance/yaci-get-delegation-vote.dto";
 import { YaciGetDrepRegistrationsDto } from "@common/dtos/yaci/governance/yaci-get-drep-registrations.dto";
 import { YaciGetGovernanceActionProposalDto } from "@common/dtos/yaci/governance/yaci-get-governance-action-proposal.dto";
