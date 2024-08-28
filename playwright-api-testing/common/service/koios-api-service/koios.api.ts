@@ -159,6 +159,49 @@ export function koiosApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getEpochBlockProtocols.Base);
   };
 
+  const getAssetUtxos = async (assetList: string[], isExtended: boolean) => {
+    const requestBody = {
+      _asset_list: assetList,
+      _extended: isExtended,
+    };
+
+    const request: AxiosRequestConfig = {
+      method: "POST",
+      url: Endpoint.Koios.getAssetUtxos.Base,
+      data: requestBody,
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getAssetUtxos.Base, requestBody);
+  };
+
+  const getAssetHistory = async (assetPolicy: string, assetName: string) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.Koios.getAssetHistory.Base}?_asset_policy=${assetPolicy}&_asset_name=${assetName}`,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getAssetHistory.Base);
+  };
+
+  const getPoolRegistration = async (number: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.Koios.getPoolRegistration.Base}?_epoch_no=${number}`,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getEpochBlockProtocols.Base);
+  };
+
   return {
     getTip,
     getAccountAddresses,
@@ -170,5 +213,8 @@ export function koiosApi() {
     getEpochInformation,
     getEpochParameter,
     getEpochBlockProtocols,
+    getAssetUtxos,
+    getAssetHistory,
+    getPoolRegistration,
   };
 }

@@ -8,6 +8,9 @@ import { KoiosGetTransactionInfoDto } from "@common/dtos/koios/transaction/koios
 import { KoiosGetEpochInformationDto } from "@common/dtos/koios/epoch/koios-get-epoch-information.dto";
 import { KoiosGetEpochProtocolParametersDto } from "@common/dtos/koios/epoch/koios-get-epoch-protocol-parameters.dto";
 import { KoiosGetEpochBlockProtocolnDto } from "@common/dtos/koios/epoch/koios-get-epoch-block-protocols.dto";
+import { KoiosGetAssetHistoryDto } from "@common/dtos/koios/asset/koios-get-asset-history.dto";
+import { KoiosGetAssetUtxoDto } from "@common/dtos/koios/asset/koios-get-asset-utxo.dto";
+import { KoiosGetPoolRegistrationsDto } from "@common/dtos/koios/pool/koios-get-pool-registration.dto";
 
 export async function koiosService() {
   const getTip = async () => {
@@ -88,6 +91,26 @@ export async function koiosService() {
     return epochBlockProtocols;
   };
 
+  const getAssetHistory = async (assetPolicy: string, assetName: string): Promise<string[]> => {
+    const getAssetHistoryData = await koiosApi().getAssetHistory(assetPolicy, assetName);
+    const getAssetHistoryDataArrayResponse: KoiosGetAssetHistoryDto[] = await getAssetHistoryData.data;
+    const getAssetHistory: string[] = getAssetHistoryDataArrayResponse.map((asset) => JSON.stringify(asset));
+    return getAssetHistory;
+  };
+
+  const getAssetUtxos = async (assetList: string[], isExtended: boolean): Promise<string[]> => {
+    const getAssetUtxosData = await koiosApi().getAssetUtxos(assetList, isExtended);
+    const getAssetUtxosDataArrayResponse: KoiosGetAssetUtxoDto[] = await getAssetUtxosData.data;
+    const getAssetUtxos: string[] = getAssetUtxosDataArrayResponse.map((asset) => JSON.stringify(asset));
+    return getAssetUtxos;
+  };
+
+  const getPoolRegistration = async (number: unknown) => {
+    const getPoolRegistrationData = await koiosApi().getPoolRegistration(number);
+    const getPoolRegistrationDataArrayResponse: KoiosGetPoolRegistrationsDto[] = await getPoolRegistrationData.data;
+    return getPoolRegistrationDataArrayResponse;
+  };
+
   return {
     getTip,
     getAccountAddresses,
@@ -99,5 +122,8 @@ export async function koiosService() {
     getEpochInformation,
     getEpochParameter,
     getEpochBlockProtocols,
+    getAssetHistory,
+    getAssetUtxos,
+    getPoolRegistration,
   };
 }
