@@ -4,9 +4,11 @@
   "description": "",
   "scripts": {
     "test:local": "npx playwright test",
-    "test:dev": "ENV=dev npx playwright test",
+    "test:dev": "set ENV=dev && npx playwright test",
+    "test:server": "set ENV=server && npx playwright test",
     "test:local-trace": "npx playwright test --headed --trace on",
-    "test:dev-trace": "ENV=dev npx playwright test --headed --trace on",
+    "test:dev-trace": "set ENV=dev && npx playwright test --headed --trace on",
+    "test:server-trace": "set ENV=dev && npx playwright test --headed --trace on",
     "transaction-test": "npx playwright test --grep '@transaction'",
     "block-test": "npx playwright test --grep '@block'",
     "account-test": "npx playwright test --grep '@account'",
@@ -58,6 +60,7 @@
     "eslint-plugin-playwright": "^1.5.2",
     "husky-init": "^8.0.0",
     "mongodb": "^6.2.0",
+    "path": "^0.12.7",
     "pg": "^8.12.0",
     "tsc-alias": "^1.8.10"
   },

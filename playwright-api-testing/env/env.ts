@@ -1,8 +1,12 @@
 import dotenv from "dotenv";
+import path from "path";
+
+const envPath = process.env.ENV ? `env/.env.${process.env.ENV}` : `env/.env.server`;
+const resolvedPath = path.resolve(envPath);
 
 dotenv.config({
   override: true,
-  path: process.env.ENV ? `env/.env.${process.env.ENV}` : `env/.env.local`,
+  path: resolvedPath,
 });
 
 export class Env {
