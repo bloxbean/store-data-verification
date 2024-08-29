@@ -15,6 +15,11 @@ import { YaciGetAssetUtxoDto } from "@common/dtos/yaci/asset/yaci-get-asset-utxo
 import { YaciGetAssetHistoryDto } from "@common/dtos/yaci/asset/yaci-get-asset-history.dto";
 import { YaciGetAssetSupplyByUnitDto } from "@common/dtos/yaci/asset/yaci-get-asset-supply-by-unit.dto";
 import { YaciGetPoolRegistrationsDto } from "@common/dtos/yaci/pool/yaci-get-pool-registration.dto";
+import { YaciGetVotingProcedureDto } from "@common/dtos/yaci/governance/yaci-get-voting-procedure.dto";
+import { YaciGetDelegationVoteDto } from "@common/dtos/yaci/governance/yaci-get-delegation-vote.dto";
+import { YaciGetDrepRegistrationsDto } from "@common/dtos/yaci/governance/yaci-get-drep-registrations.dto";
+import { YaciGetGovernanceActionProposalDto } from "@common/dtos/yaci/governance/yaci-get-governance-action-proposal.dto";
+import { YaciGetGovernanceCommitteesRegistrationDto } from "@common/dtos/yaci/governance/yaci-get-governance-committees-registrations.dto";
 
 export async function yaciService() {
   const getTransaction = async () => {
@@ -192,6 +197,47 @@ export async function yaciService() {
     return getPoolRegistrationDataArrayResponse;
   };
 
+  const getScript = async (scriptHash: unknown) => {
+    const getScriptData = await yaciApi().getScript(scriptHash);
+    const getScriptDataArrayResponse: YaciGetPoolRegistrationsDto[] = await getScriptData.data;
+    return getScriptDataArrayResponse;
+  };
+
+  const getVotingProcedure = async () => {
+    const getVotingProcedureParameterData = await yaciApi().getVotes();
+    const getVotingProcedureParameterDataResponse: YaciGetVotingProcedureDto[] =
+      await getVotingProcedureParameterData.data;
+    return getVotingProcedureParameterDataResponse;
+  };
+
+  const getDelegationVotes = async () => {
+    const getDelegationVotesParameterData = await yaciApi().getDelegationVotes();
+    const getDelegationVotesParameterDataResponse: YaciGetDelegationVoteDto[] =
+      await getDelegationVotesParameterData.data;
+    return getDelegationVotesParameterDataResponse;
+  };
+
+  const getDrepRegistrations = async () => {
+    const getDrepRegistrationsParameterData = await yaciApi().getDrepRegistrations();
+    const getDrepRegistrationsParameterDataResponse: YaciGetDrepRegistrationsDto[] =
+      await getDrepRegistrationsParameterData.data;
+    return getDrepRegistrationsParameterDataResponse;
+  };
+
+  const getGovernanceActionProposals = async () => {
+    const getGovernanceActionProposalsParameterData = await yaciApi().getGovernanceActionProposals();
+    const getGovernanceActionProposalsParameterDataResponse: YaciGetGovernanceActionProposalDto[] =
+      await getGovernanceActionProposalsParameterData.data;
+    return getGovernanceActionProposalsParameterDataResponse;
+  };
+
+  const getGovernanceCommitteesRegistration = async () => {
+    const getGovernanceActionProposalsParameterData = await yaciApi().getGovernanceCommitteesRegistration();
+    const getGovernanceActionProposalsParameterDataResponse: YaciGetGovernanceCommitteesRegistrationDto[] =
+      await getGovernanceActionProposalsParameterData.data;
+    return getGovernanceActionProposalsParameterDataResponse;
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -218,5 +264,11 @@ export async function yaciService() {
     getAssetSupplyByUnit,
     getUnitFromDetailTransaction,
     getPoolRegistration,
+    getScript,
+    getVotingProcedure,
+    getDelegationVotes,
+    getDrepRegistrations,
+    getGovernanceActionProposals,
+    getGovernanceCommitteesRegistration,
   };
 }

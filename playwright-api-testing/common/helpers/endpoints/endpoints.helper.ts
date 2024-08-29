@@ -86,6 +86,12 @@ export class Koios {
       return `${Koios.BASE_KOIOS_MAIN_NET_URL}/pool_registrations`;
     }
   };
+
+  static getScriptRedeemers = class {
+    public static get Base() {
+      return `${Koios.BASE_KOIOS_MAIN_NET_URL}/script_redeemers`;
+    }
+  };
 }
 
 export class YaciStore {
@@ -148,6 +154,42 @@ export class YaciStore {
   static getPoolRegistrations = class {
     public static get Base() {
       return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/pools/registrations`;
+    }
+  };
+
+  static getScript = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/scripts`;
+    }
+  };
+
+  static getVotes = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/votes`;
+    }
+  };
+
+  static getDelegationVotes = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/delegation-votes`;
+    }
+  };
+
+  static getDrepRegistrations = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/dreps/registrations`;
+    }
+  };
+
+  static getGovernanceActionProposals = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/proposals`;
+    }
+  };
+
+  static getCommitteeRegistrations = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/committtees/regrstrations`;
     }
   };
 }

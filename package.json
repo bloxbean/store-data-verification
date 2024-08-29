@@ -16,6 +16,8 @@
     "epoch-test": "npx playwright test --grep '@epoch'",
     "asset-test": "npx playwright test --grep '@asset'",
     "pool-test": "npx playwright test --grep '@pool'",
+    "script-test": "npx playwright test --grep '@script'",
+    "governance-test": "npx playwright test --grep '@governance'",
     "lint": "eslint .",
     "prepare": "husky && husky install",
     "lint:fix": "eslint . --fix",
@@ -53,7 +55,7 @@
     "winston": "^3.11.0"
   },
   "dependencies": {
-    "axios": "^1.7.2",
+    "axios": "^1.7.4",
     "big-integer": "^1.6.52",
     "csv": "^6.3.6",
     "csv-parse": "^5.5.2",

@@ -202,6 +202,18 @@ export function koiosApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getEpochBlockProtocols.Base);
   };
 
+  const getScriptRedeemers = async (script_hash: unknown) => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: `${Endpoint.Koios.getScriptRedeemers.Base}?_script_hash=${script_hash}`,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.Koios.getScriptRedeemers.Base);
+  };
+
   return {
     getTip,
     getAccountAddresses,
@@ -216,5 +228,6 @@ export function koiosApi() {
     getAssetUtxos,
     getAssetHistory,
     getPoolRegistration,
+    getScriptRedeemers,
   };
 }

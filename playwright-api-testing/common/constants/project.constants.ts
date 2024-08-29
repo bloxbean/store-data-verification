@@ -24,6 +24,7 @@ export const BlockHashes = {
 export const TxHashes = {
   TX_HASHES_1: "f144a8264acf4bdfe2e1241170969c930d64ab6b0996a4a45237b623f1dd670e",
   TX_HASHES_2: "0b8ba3bed976fa4913f19adc9f6dd9063138db5b4dd29cecde369456b5155e94",
+  TX_HASHES_3: "0d66c70aa9efa6bc1a635191abef9a0cd386a42b3f43c3199f3b794986995865",
 } as const;
 
 export const AssetList = {
@@ -39,4 +40,8 @@ export const AssetPolicy = {
 export const AssetName = {
   ASSET_NAME_1: "424f4f4b",
   ASSET_NAME_2: "6b6f696f732e72657374",
+} as const;
+
+export const ScriptHash = {
+  SCRIPT_HASH_1: "d8480dc869b94b80e81ec91b0abe307279311fe0e7001a9488f61ff8",
 } as const;

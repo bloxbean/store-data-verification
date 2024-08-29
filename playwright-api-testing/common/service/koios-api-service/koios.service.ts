@@ -11,6 +11,7 @@ import { KoiosGetEpochBlockProtocolnDto } from "@common/dtos/koios/epoch/koios-g
 import { KoiosGetAssetHistoryDto } from "@common/dtos/koios/asset/koios-get-asset-history.dto";
 import { KoiosGetAssetUtxoDto } from "@common/dtos/koios/asset/koios-get-asset-utxo.dto";
 import { KoiosGetPoolRegistrationsDto } from "@common/dtos/koios/pool/koios-get-pool-registration.dto";
+import { KoiosGetScriptHashDto } from "@common/dtos/koios/script/koios-get-script-hash.dto";
 
 export async function koiosService() {
   const getTip = async () => {
@@ -111,6 +112,12 @@ export async function koiosService() {
     return getPoolRegistrationDataArrayResponse;
   };
 
+  const getScriptRedeemers = async (scriptHash: unknown) => {
+    const getScriptRedeemersData = await koiosApi().getScriptRedeemers(scriptHash);
+    const getScriptRedeemersnDataArrayResponse: KoiosGetScriptHashDto[] = await getScriptRedeemersData.data;
+    return getScriptRedeemersnDataArrayResponse;
+  };
+
   return {
     getTip,
     getAccountAddresses,
@@ -125,5 +132,6 @@ export async function koiosService() {
     getAssetHistory,
     getAssetUtxos,
     getPoolRegistration,
+    getScriptRedeemers,
   };
 }
