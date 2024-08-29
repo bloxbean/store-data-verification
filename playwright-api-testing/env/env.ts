@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config({
   override: true,
-  path: process.env.ENV ? `env/.env.${process.env.ENV}` : `env/.env.local`,
+  path: process.env.ENV ? `env/.env.${process.env.ENV}` : `env/.env.server`,
 });
 
 export class Env {
