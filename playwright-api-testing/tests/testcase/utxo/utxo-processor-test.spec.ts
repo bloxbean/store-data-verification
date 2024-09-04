@@ -25,20 +25,22 @@ test.describe("@utxo", () => {
   });
 });
 
-test("the transaction processor in Yaci if error happen", async ({}) => {
-  test.step("GIVEN: create a transaction with utxo", async () => {
-    const randomNumber = DataGenerator.generateRandomNumber(1, 9);
-    let transaction = await (await yaciService()).submitUtxo(StakeAddresses.STAKE_ADDRESS_2, randomNumber);
+test.describe("@transaction", () => {
+  test("the transaction processor in Yaci if error happens", async ({}) => {
+    test.step("GIVEN: create a transaction with utxo", async () => {
+      const randomNumber = DataGenerator.generateRandomNumber(1, 9);
+      let transaction = await (await yaciService()).submitUtxo(StakeAddresses.STAKE_ADDRESS_2, randomNumber);
 
-    await test.step("WHEN: get detail transaction", async () => {
-      let detailTransaction = await (await yaciService()).getDetailTransaction(StakeAddresses.STAKE_ADDRESS_1);
+      await test.step("WHEN: get detail transaction", async () => {
+        let detailTransaction = await (await yaciService()).getDetailTransaction(StakeAddresses.STAKE_ADDRESS_1);
 
-      await test.step("THEN: Compare transaction information", () => {
-        Assertions.assertNotJsonContain(
-          detailTransaction,
-          transaction,
-          "detail transaction should not contain transaction information."
-        );
+        await test.step("THEN: Compare transaction information", () => {
+          Assertions.assertNotJsonContain(
+            detailTransaction,
+            transaction,
+            "detail transaction should not contain transaction information."
+          );
+        });
       });
     });
   });
