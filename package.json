@@ -6,6 +6,7 @@
     "test:local": "npx playwright test",
     "test:dev": "set ENV=dev && npx playwright test",
     "test:server": "set ENV=server && npx playwright test",
+    "test:server-allure": "set ENV=server && npx playwright test --reporter=allure-playwright",
     "test:local-trace": "npx playwright test --headed --trace on",
     "test:dev-trace": "set ENV=dev && npx playwright test --headed --trace on",
     "test:server-trace": "set ENV=dev && npx playwright test --headed --trace on",
@@ -22,7 +23,8 @@
     "prepare": "husky && husky install",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier . --check",
-    "prettier:fix": "prettier . --write"
+    "prettier:fix": "prettier . --write",
+    "show-report": "allure generate allure-results --clean -o playwright-api-testing/allure-report && allure serve playwright-api-testing/allure-results"
   },
   "keywords": [],
   "author": "",
@@ -55,6 +57,8 @@
     "winston": "^3.11.0"
   },
   "dependencies": {
+    "allure": "^0.0.0",
+    "allure-playwright": "^3.0.0-beta.11",
     "axios": "^1.7.4",
     "big-integer": "^1.6.52",
     "csv": "^6.3.6",

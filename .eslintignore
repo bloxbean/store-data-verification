@@ -5,6 +5,8 @@ node_modules/
 test-results/
 playwright-report
 summary.json
+allure-report
+allure-results
 
 # IDE - VSCode
 .vscode/*
