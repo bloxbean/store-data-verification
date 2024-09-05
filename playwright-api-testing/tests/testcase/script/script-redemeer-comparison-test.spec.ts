@@ -4,7 +4,7 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 
-test.describe("@script", () => {
+test.describe("@regression @smoke @script", () => {
   test("Compare the script redeemer of Koios and Yaci Store", async ({}) => {
     test.step("GIVEN: Retrieve script redeemer information", async () => {
       let scriptRedeemerKoios = await (await koiosService()).getScriptRedeemers(ScriptHash.SCRIPT_HASH_1);

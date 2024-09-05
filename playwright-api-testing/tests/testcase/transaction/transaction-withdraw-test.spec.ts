@@ -4,7 +4,7 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
 
-test.describe("@transaction", () => {
+test.describe("@regression @smoke @transaction", () => {
   test("the withdraw processor in Yaci", async ({}) => {
     test.step("GIVEN: get withdraw list", async () => {
       let withdrawals = await (await yaciService()).getWithdrawals();

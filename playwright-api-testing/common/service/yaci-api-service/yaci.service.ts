@@ -20,6 +20,8 @@ import { YaciGetDelegationVoteDto } from "@common/dtos/yaci/governance/yaci-get-
 import { YaciGetDrepRegistrationsDto } from "@common/dtos/yaci/governance/yaci-get-drep-registrations.dto";
 import { YaciGetGovernanceActionProposalDto } from "@common/dtos/yaci/governance/yaci-get-governance-action-proposal.dto";
 import { YaciGetGovernanceCommitteesRegistrationDto } from "@common/dtos/yaci/governance/yaci-get-governance-committees-registrations.dto";
+import { YaciGetCurrentCommitteeInfoDto } from "@common/dtos/yaci/governance/yaci-get-current-committee-info.dto";
+import { YaciGetCurrentConsitutionDto } from "@common/dtos/yaci/governance/yaci-get-current-consitution.dto";
 
 export async function yaciService() {
   const getTransaction = async () => {
@@ -238,6 +240,20 @@ export async function yaciService() {
     return getGovernanceActionProposalsParameterDataResponse;
   };
 
+  const getCurrentCommitteeInfo = async () => {
+    const getCurrentCommitteeInfoParameterData = await yaciApi().getCurrentCommitteeInfo();
+    const getCurrentCommitteeInfoParameterDataResponse: YaciGetCurrentCommitteeInfoDto[] =
+      await getCurrentCommitteeInfoParameterData.data;
+    return getCurrentCommitteeInfoParameterDataResponse;
+  };
+
+  const getCurrentConsitution = async () => {
+    const getCurrentConsitutionParameterData = await yaciApi().getCurrentConsitution();
+    const getCurrentConsitutionParameterDataResponse: YaciGetCurrentConsitutionDto[] =
+      await getCurrentConsitutionParameterData.data;
+    return getCurrentConsitutionParameterDataResponse;
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -270,5 +286,7 @@ export async function yaciService() {
     getDrepRegistrations,
     getGovernanceActionProposals,
     getGovernanceCommitteesRegistration,
+    getCurrentCommitteeInfo,
+    getCurrentConsitution,
   };
 }

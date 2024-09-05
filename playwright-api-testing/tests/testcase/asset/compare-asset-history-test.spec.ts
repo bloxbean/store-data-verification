@@ -4,7 +4,7 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 
-test.describe("@asset", () => {
+test.describe("@regression @smoke @asset", () => {
   test("Compare the asset history of Koios and Yaci Store", async ({}) => {
     test.step("GIVEN: get unit information", async () => {
       let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.TX_HASHES_1);

@@ -4,7 +4,7 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
 
-test.describe("@utxo", () => {
+test.describe("@regression @smoke @utxo", () => {
   test("the transaction processor in Yaci", async ({}) => {
     test.step("GIVEN: create a transaction with utxo", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 9);

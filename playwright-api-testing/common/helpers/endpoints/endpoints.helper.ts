@@ -192,6 +192,18 @@ export class YaciStore {
       return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/committtees/regrstrations`;
     }
   };
+
+  static getCurrentConsitution = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/constitution`;
+    }
+  };
+
+  static getCurrentCommitteeInfo = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/committees/current`;
+    }
+  };
 }
 
 export class YaciStoreAggregator {

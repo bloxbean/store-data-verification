@@ -3,7 +3,7 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { TimeOut } from "@common/constants/project.constants";
 
-test.describe("@governance", () => {
+test.describe("@regression @smoke @governance", () => {
   test("Check the logic of process a governance action proposal", async ({}) => {
     test.step("GIVEN: Retrieve governance action proposal", async () => {
       let governanceActionProposals = await (await yaciService()).getGovernanceActionProposals();
