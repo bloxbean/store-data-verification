@@ -19,7 +19,7 @@ test.describe("@regression @governance", () => {
           Assertions.assertNotEqual(
             committeeInformation,
             committeeInformationAfterWait,
-            "Delegation vote should be different."
+            "committee information should be different."
           );
         });
       });

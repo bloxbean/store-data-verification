@@ -15,11 +15,11 @@ test.describe("@regression @governance", () => {
       await test.step("AND: Retrieve consitution information after wait", async () => {
         let consitutionInformationAfterWait = await (await yaciService()).getCurrentConsitution();
 
-        await test.step("THEN: delegation vote should be different after wait ", () => {
+        await test.step("THEN: consitution information should be different after wait ", () => {
           Assertions.assertNotEqual(
             consitutionInformation,
             consitutionInformationAfterWait,
-            "Delegation vote should be different."
+            "consitution information should be different."
           );
         });
       });
