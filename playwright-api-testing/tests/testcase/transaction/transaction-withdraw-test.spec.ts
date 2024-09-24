@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
 import { StakeAddresses } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
-import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
+import { yaciService } from "@common/service/yaci-api-service/yaci.service";
+import { test } from "@playwright/test";
 
 test.describe("@regression @smoke @transaction", () => {
   test("the withdraw processor in Yaci", async ({}) => {

@@ -1,5 +1,5 @@
-import { test as baseTest } from "@playwright/test";
 import { ApiFixtureType, apiFixture } from "@fixture/api.fixture";
+import { test as baseTest } from "@playwright/test";
 
 const test = baseTest.extend<ApiFixtureType>({
   ...apiFixture,

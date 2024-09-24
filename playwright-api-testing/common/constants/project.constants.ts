@@ -57,6 +57,6 @@ export const Empty = {
   EMPTY: "",
 } as const;
 
-export const Mull = {
+export const Null = {
   NULL: " ",
 } as const;

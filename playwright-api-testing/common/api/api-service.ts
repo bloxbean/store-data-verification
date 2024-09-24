@@ -1,5 +1,5 @@
-import { APIRequestContext, request as pwrequest } from "@playwright/test";
 import { TimeOut } from "@common/constants/project.constants";
+import { APIRequestContext, request as pwrequest } from "@playwright/test";
 
 export enum HttpMethod {
   Get = "GET",

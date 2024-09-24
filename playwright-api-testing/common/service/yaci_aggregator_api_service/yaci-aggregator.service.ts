@@ -1,6 +1,6 @@
-import { yaciAggregatorApi } from "./yaci-aggregator.api";
 import { YaciGetAddressAmountsDto } from "@common/dtos/yaci-aggregator/yaci-get-address-amounts.dto";
 import { YaciGetAddressBalanceDto } from "@common/dtos/yaci-aggregator/yaci-get-address-balance.dto";
+import { yaciAggregatorApi } from "./yaci-aggregator.api";
 
 export async function yaciAggregatorService() {
   const getAddressBalance = async (address: unknown) => {

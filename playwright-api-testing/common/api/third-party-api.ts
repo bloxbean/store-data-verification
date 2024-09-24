@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import Logger from "@common/helpers/logger/logger.helper";
+import axios, { AxiosResponse } from "axios";
 
 export const returnLoggedResponse = async (
   response: AxiosResponse,
