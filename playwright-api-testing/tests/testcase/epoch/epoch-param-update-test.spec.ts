@@ -4,7 +4,7 @@ import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
 
-test.describe("@epoch", () => {
+test.describe("@regression @smoke @epoch", () => {
   test("Check the logic of epoch parameter", async ({}) => {
     test.step("GIVEN: Retrieve epoch parameter", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 9);

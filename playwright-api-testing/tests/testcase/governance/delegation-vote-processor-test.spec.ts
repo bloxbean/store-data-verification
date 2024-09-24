@@ -3,7 +3,7 @@ import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { TimeOut } from "@common/constants/project.constants";
 
-test.describe("@governance", () => {
+test.describe("@regression @smoke @governance", () => {
   test("Check the logic of process a new delegation vote", async ({}) => {
     test.step("GIVEN: Retrieve delegation vote", async () => {
       let delegationVote = await (await yaciService()).getDelegationVotes();

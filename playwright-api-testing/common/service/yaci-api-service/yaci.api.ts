@@ -335,6 +335,30 @@ export function yaciApi() {
     return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getCommitteeRegistrations.Base);
   };
 
+  const getCurrentCommitteeInfo = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.YaciStore.getCurrentCommitteeInfo.Base,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getCurrentCommitteeInfo.Base);
+  };
+
+  const getCurrentConsitution = async () => {
+    const request: AxiosRequestConfig = {
+      method: "GET",
+      url: Endpoint.YaciStore.getCurrentConsitution.Base,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getCurrentConsitution.Base);
+  };
+
   return {
     getTransaction,
     getBlockList,
@@ -362,5 +386,7 @@ export function yaciApi() {
     getDrepRegistrations,
     getGovernanceActionProposals,
     getGovernanceCommitteesRegistration,
+    getCurrentCommitteeInfo,
+    getCurrentConsitution,
   };
 }

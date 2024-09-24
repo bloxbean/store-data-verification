@@ -19,6 +19,8 @@
     "pool-test": "npx playwright test --grep '@pool'",
     "script-test": "npx playwright test --grep '@script'",
     "governance-test": "npx playwright test --grep '@governance'",
+    "test:smoke": "npx playwright test --grep '@smoke'",
+    "test:regression": "npx playwright test --grep '@regression'",
     "lint": "eslint .",
     "prepare": "husky && husky install",
     "lint:fix": "eslint . --fix",

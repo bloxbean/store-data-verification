@@ -4,7 +4,7 @@ import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
 
-test.describe("@pool", () => {
+test.describe("@regression @smoke @pool", () => {
   test("Check the pool registration information in Yaci and Koios", async ({}) => {
     test.step("GIVEN: Retrieve pool information", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 999);

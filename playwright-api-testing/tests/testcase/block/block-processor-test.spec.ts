@@ -4,7 +4,7 @@ import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { TimeOut } from "@common/constants/project.constants";
 
-test.describe("@block", () => {
+test.describe("@regression @smoke @block", () => {
   test("Check the logic of process a new block", async ({}) => {
     test.step("GIVEN: Retrieve block list", async () => {
       let blockListKoios = await (await koiosService()).getBlockList();
