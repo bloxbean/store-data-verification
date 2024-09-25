@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
 import { StakeAddresses } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
-import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
+import { yaciService } from "@common/service/yaci-api-service/yaci.service";
+import { test } from "@playwright/test";
 
 test.describe("@regression @smoke @utxo", () => {
   test("the transaction processor in Yaci", async ({}) => {
@@ -25,7 +25,7 @@ test.describe("@regression @smoke @utxo", () => {
   });
 });
 
-test.describe("@transaction", () => {
+test.describe("@utxo", () => {
   test("the transaction processor in Yaci if error happens", async ({}) => {
     test.step("GIVEN: create a transaction with utxo", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 9);

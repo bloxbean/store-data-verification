@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
+import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
 import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
-import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
+import { test } from "@playwright/test";
 
 test.describe("@regression @smoke @epoch", () => {
   test("Check the logic of epoch parameter", async ({}) => {
@@ -17,6 +17,7 @@ test.describe("@regression @smoke @epoch", () => {
 
       await test.step("WHEN: Get latest epoch parameter", async () => {
         let latestEpochParameterYaci = await (await yaciService()).getLatestEpochParameters();
+
         await test.step("THEN: epoch param should be different ", () => {
           Assertions.assertNotEqual(
             latestEpochParameterYaci,

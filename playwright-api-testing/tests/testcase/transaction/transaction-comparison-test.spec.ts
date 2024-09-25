@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
 import { StakeAddresses } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
+import { test } from "@playwright/test";
 
 test.describe("@regression @smoke @transaction", () => {
   test("Compare the transaction of Koios and Yaci Store", async ({}) => {

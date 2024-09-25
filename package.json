@@ -54,6 +54,7 @@
     "luxon": "^3.4.3",
     "node-xlsx": "^0.4.0",
     "prettier": "3.3.2",
+    "prettier-plugin-organize-imports": "^4.0.0",
     "stream-buffers": "^3.0.2",
     "typescript": "^5.2.2",
     "winston": "^3.11.0"

@@ -1,5 +1,5 @@
-import { Locator, expect } from "@playwright/test";
 import Logger from "@helpers/logger/logger.helper";
+import { expect } from "@playwright/test";
 
 export class Assertions {
   /**

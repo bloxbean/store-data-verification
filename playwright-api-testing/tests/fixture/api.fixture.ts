@@ -1,6 +1,6 @@
-import { APIRequestContext, test as baseTest } from "@playwright/test";
-import APIHelper from "@helpers/api/api.helper";
 import { RestClient } from "@common/api/rest-client";
+import APIHelper from "@helpers/api/api.helper";
+import { APIRequestContext, test as baseTest } from "@playwright/test";
 
 export type ApiFixtureType = {
   createRestClient: (apiRequestContext: APIRequestContext) => RestClient;

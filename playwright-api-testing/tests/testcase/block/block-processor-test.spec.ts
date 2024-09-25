@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
+import { TimeOut } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { koiosService } from "@common/service/koios-api-service/koios.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
-import { TimeOut } from "@common/constants/project.constants";
+import { test } from "@playwright/test";
 
 test.describe("@regression @smoke @block", () => {
   test("Check the logic of process a new block", async ({}) => {

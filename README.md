@@ -98,3 +98,108 @@ run smoke test on local machine
 ```sh
 npm run smoke-test
 ```
+
+## Deploy the automation framework as a standalone job
+
+first we need to have a script to :
+
+1. run the automation framework
+2. generate Allure report
+3. store the Allure report in a history file
+
+```sh
+#!/bin/bash
+
+
+# Check the Docker build command and run the corresponding script
+if [[ $1 == "yaci" ]]; then
+  #sleep for 1 min for the build to finish
+  sleep 1m
+
+  # Set the working directory to the script repository
+  cd /app/store-data-verification
+
+  # navigate to the test folder
+  cd /playwright-api-testing
+
+  # Run the script then serve allure report
+  npx playwright test --reporter=allure-playwright
+  allure generate allure-results --clean -o playwright-api-testing/allure-report && allure serve playwright-api-testing/allure-results
+
+  # Store allure reports somewhere
+  cp -r allure-report/history/ allure-results
+
+# Check the Docker  build command and run the corresponding script
+elif [[ $1 == "ls" ]]; then
+  #sleep for 1 min for the build to finish
+  sleep 1m
+
+  # Set the working directory to the script repository
+  cd /app/cf-ls-sync-data-verification
+
+  # navigate to the test folder
+  cd /playwright-database-testing
+
+  # Run the script then serve allure report
+  npx playwright test --reporter=allure-playwright
+  allure generate allure-results --clean -o playwright-database-testing/allure-report && allure serve playwright-database-testing/allure-results
+
+  # Store allure reports somewhere
+    cp -r allure-report/history/ allure-results
+
+else
+  echo "Invalid Docker build command. Please specify either 'yaci' or 'ls'."
+  exit 1
+fi
+```
+
+then we need a docker file to build and deploy the script
+
+```sh
+# Use a base image with Node.js and SSH client installed
+FROM node:14
+
+# Install SSH client and cron
+RUN apt-get update && apt-get install -y openssh-client cron
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the SSH private key to the container
+COPY id_rsa /root/.ssh/id_rsa
+
+# Set the permissions for the SSH private key
+RUN chmod 600 /root/.ssh/id_rsa
+
+# Disable strict host key checking for SSH
+RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
+# Clone the script repository using SSH
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts && \
+    git clone git@github.com:bloxbean/store-data-verification.git
+
+# Set the working directory to the cloned repository
+WORKDIR /app/store-data-verification
+
+# Install dependencies using npm ci
+RUN npm cache clean --force
+RUN npm install --only=prod
+
+# Copy the shell script to the container
+COPY run-script.sh /usr/local/bin/run-script.sh
+
+# Give execution rights to the script
+RUN chmod +x /usr/local/bin/run-script.sh
+
+# Add cron job to run the script every 1 hour
+RUN echo "0 * * * * /usr/local/bin/run-script.sh >> /var/log/cron.log 2>&1" | crontab -
+
+# Run cron in the foreground
+CMD ["cron", "-f"]
+
+# Add cron job to run the script at midnight UTC+0
+RUN echo "0 0 * * * /usr/local/bin/run-script.sh >> /var/log/cron.log 2>&1" | crontab -
+
+# Run cron in the foreground
+CMD ["cron", "-f"]
+```

@@ -1,27 +1,28 @@
-import { yaciApi } from "./yaci.api";
-import { YaciGetTransactionDto } from "@common/dtos/yaci/transaction/yaci-get-transaction.dto";
-import { YaciGetBlockListDto } from "@common/dtos/yaci/block/yaci-get-block-list.dto";
-import { YaciGetBlockInformationDto } from "@common/dtos/yaci/block/yaci-get-block-information.dto";
-import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/stake/yaci-get-stake-delegation.dto";
-import { YaciGetStakeInformationDto } from "@common/dtos/yaci/stake/yaci-get-stake-information.dto";
-import { YaciGetTransactionWithdrawalsDto } from "@common/dtos/yaci/transaction/yaci-get-transanction-withdrawals.dto";
-import { YaciGetTransactionDetailsWithdrawalsDto } from "@common/dtos/yaci/transaction/yaci-get-transanction-details-withdrawals.dto";
-import { YaciGetTransactionWitnessesDto } from "@common/dtos/yaci/transaction/yaci-get-transaction-witnesses.dto";
-import { YaciGetDetailTransactionDto } from "@common/dtos/yaci/transaction/yaci-get-detail-transaction.dto";
-import { YaciSubmitTransactionDto } from "@common/dtos/yaci/transaction/yaci-submit-transaction.dto";
-import { YaciGetEpochDto } from "@common/dtos/yaci/epoch/yaci-get-epoch.dto";
-import { YaciGetEpochParametersDto } from "@common/dtos/yaci/epoch/yaci-get-epoch-parameters.dto";
-import { YaciGetAssetUtxoDto } from "@common/dtos/yaci/asset/yaci-get-asset-utxo.dto";
 import { YaciGetAssetHistoryDto } from "@common/dtos/yaci/asset/yaci-get-asset-history.dto";
 import { YaciGetAssetSupplyByUnitDto } from "@common/dtos/yaci/asset/yaci-get-asset-supply-by-unit.dto";
-import { YaciGetPoolRegistrationsDto } from "@common/dtos/yaci/pool/yaci-get-pool-registration.dto";
-import { YaciGetVotingProcedureDto } from "@common/dtos/yaci/governance/yaci-get-voting-procedure.dto";
+import { YaciGetAssetUtxoDto } from "@common/dtos/yaci/asset/yaci-get-asset-utxo.dto";
+import { YaciGetBlockInformationDto } from "@common/dtos/yaci/block/yaci-get-block-information.dto";
+import { YaciGetBlockListDto } from "@common/dtos/yaci/block/yaci-get-block-list.dto";
+import { YaciGetEpochParametersDto } from "@common/dtos/yaci/epoch/yaci-get-epoch-parameters.dto";
+import { YaciGetEpochDto } from "@common/dtos/yaci/epoch/yaci-get-epoch.dto";
+import { YaciGetCurrentCommitteeInfoDto } from "@common/dtos/yaci/governance/yaci-get-current-committee-info.dto";
+import { YaciGetCurrentConsitutionDto } from "@common/dtos/yaci/governance/yaci-get-current-consitution.dto";
 import { YaciGetDelegationVoteDto } from "@common/dtos/yaci/governance/yaci-get-delegation-vote.dto";
 import { YaciGetDrepRegistrationsDto } from "@common/dtos/yaci/governance/yaci-get-drep-registrations.dto";
 import { YaciGetGovernanceActionProposalDto } from "@common/dtos/yaci/governance/yaci-get-governance-action-proposal.dto";
 import { YaciGetGovernanceCommitteesRegistrationDto } from "@common/dtos/yaci/governance/yaci-get-governance-committees-registrations.dto";
-import { YaciGetCurrentCommitteeInfoDto } from "@common/dtos/yaci/governance/yaci-get-current-committee-info.dto";
-import { YaciGetCurrentConsitutionDto } from "@common/dtos/yaci/governance/yaci-get-current-consitution.dto";
+import { YaciGetVotingProcedureDto } from "@common/dtos/yaci/governance/yaci-get-voting-procedure.dto";
+import { YaciGetPoolRegistrationsDto } from "@common/dtos/yaci/pool/yaci-get-pool-registration.dto";
+import { YaciGetScriptHashDto } from "@common/dtos/yaci/script/yaci-get-script-hash.dto";
+import { YaciGetStakeDelegationDto } from "@common/dtos/yaci/stake/yaci-get-stake-delegation.dto";
+import { YaciGetStakeInformationDto } from "@common/dtos/yaci/stake/yaci-get-stake-information.dto";
+import { YaciGetDetailTransactionDto } from "@common/dtos/yaci/transaction/yaci-get-detail-transaction.dto";
+import { YaciGetTransactionWitnessesDto } from "@common/dtos/yaci/transaction/yaci-get-transaction-witnesses.dto";
+import { YaciGetTransactionDto } from "@common/dtos/yaci/transaction/yaci-get-transaction.dto";
+import { YaciGetTransactionDetailsWithdrawalsDto } from "@common/dtos/yaci/transaction/yaci-get-transanction-details-withdrawals.dto";
+import { YaciGetTransactionWithdrawalsDto } from "@common/dtos/yaci/transaction/yaci-get-transanction-withdrawals.dto";
+import { YaciSubmitTransactionDto } from "@common/dtos/yaci/transaction/yaci-submit-transaction.dto";
+import { yaciApi } from "./yaci.api";
 
 export async function yaciService() {
   const getTransaction = async () => {
@@ -201,7 +202,7 @@ export async function yaciService() {
 
   const getScript = async (scriptHash: unknown) => {
     const getScriptData = await yaciApi().getScript(scriptHash);
-    const getScriptDataArrayResponse: YaciGetPoolRegistrationsDto[] = await getScriptData.data;
+    const getScriptDataArrayResponse: YaciGetScriptHashDto[] = await getScriptData.data;
     return getScriptDataArrayResponse;
   };
 

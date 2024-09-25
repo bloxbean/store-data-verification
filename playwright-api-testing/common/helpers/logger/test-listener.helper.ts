@@ -1,5 +1,5 @@
-import { Reporter, TestCase, TestError, TestResult, TestStep } from "@playwright/test/reporter";
 import Logger from "@common/helpers/logger/logger.helper";
+import { Reporter, TestCase, TestError, TestResult, TestStep } from "@playwright/test/reporter";
 
 const TEST_SEPARATOR = "##############################################################################";
 const STEP_SEPARATOR = "------------------------------------------------------------------------------";

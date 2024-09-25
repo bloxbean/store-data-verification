@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig } from "axios";
 import * as BaseApi from "@common/api/third-party-api";
 import * as Endpoint from "@common/helpers/endpoints/endpoints.helper";
+import axios, { AxiosRequestConfig } from "axios";
 
 export function koiosApi() {
   const getTip = async () => {

@@ -2,7 +2,7 @@ export interface YaciGetDetailTransactionDto {
   block_number: number;
   block_time: number;
   tx_hash: string;
-  outtput_index: number;
+  output_index: number;
   slot: number;
   block_hash: string;
   epoch: number;

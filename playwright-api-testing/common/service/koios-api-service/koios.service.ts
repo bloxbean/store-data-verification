@@ -1,17 +1,17 @@
-import { koiosApi } from "./koios.api";
-import { KoiosGetTipInformationDto } from "@common/dtos/koios/koios-get-tip-information.dto";
 import { KoiosGetAccountAddressesDto } from "@common/dtos/koios/account/koios-get-account-addresses.dto";
 import { KoiosGetAccountTransactionDto } from "@common/dtos/koios/account/koios-get-account-transaction.dto";
-import { KoiosGetBlockListDto } from "@common/dtos/koios/block/koios-get-block-list.dto";
-import { KoiosGetBlockTransactionDto } from "@common/dtos/koios/block/koios-get-block-transaction.dto";
-import { KoiosGetTransactionInfoDto } from "@common/dtos/koios/transaction/koios-get-transaction-info.dto";
-import { KoiosGetEpochInformationDto } from "@common/dtos/koios/epoch/koios-get-epoch-information.dto";
-import { KoiosGetEpochProtocolParametersDto } from "@common/dtos/koios/epoch/koios-get-epoch-protocol-parameters.dto";
-import { KoiosGetEpochBlockProtocolnDto } from "@common/dtos/koios/epoch/koios-get-epoch-block-protocols.dto";
 import { KoiosGetAssetHistoryDto } from "@common/dtos/koios/asset/koios-get-asset-history.dto";
 import { KoiosGetAssetUtxoDto } from "@common/dtos/koios/asset/koios-get-asset-utxo.dto";
+import { KoiosGetBlockListDto } from "@common/dtos/koios/block/koios-get-block-list.dto";
+import { KoiosGetBlockTransactionDto } from "@common/dtos/koios/block/koios-get-block-transaction.dto";
+import { KoiosGetEpochBlockProtocolnDto } from "@common/dtos/koios/epoch/koios-get-epoch-block-protocols.dto";
+import { KoiosGetEpochInformationDto } from "@common/dtos/koios/epoch/koios-get-epoch-information.dto";
+import { KoiosGetEpochProtocolParametersDto } from "@common/dtos/koios/epoch/koios-get-epoch-protocol-parameters.dto";
+import { KoiosGetTipInformationDto } from "@common/dtos/koios/koios-get-tip-information.dto";
 import { KoiosGetPoolRegistrationsDto } from "@common/dtos/koios/pool/koios-get-pool-registration.dto";
 import { KoiosGetScriptHashDto } from "@common/dtos/koios/script/koios-get-script-hash.dto";
+import { KoiosGetTransactionInfoDto } from "@common/dtos/koios/transaction/koios-get-transaction-info.dto";
+import { koiosApi } from "./koios.api";
 
 export async function koiosService() {
   const getTip = async () => {
