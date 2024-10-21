@@ -1,10 +1,18 @@
 import { StakeAddresses } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
+import { sendSlackNotification } from "@common/helpers/misc/slack-notify.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { test } from "@playwright/test";
 
 test.describe("@regression @transaction", () => {
+  // This will run after each test
+  test.afterEach(async ({}, testInfo) => {
+    if (testInfo.status === "failed") {
+      await sendSlackNotification(`Test failed: ${testInfo.title}`);
+    }
+  });
+
   test("the withdraw processor in Yaci", async ({}) => {
     test.step("GIVEN: get submit transaction", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 9);

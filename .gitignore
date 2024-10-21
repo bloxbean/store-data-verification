@@ -6,3 +6,4 @@ node_modules/
 download
 allure-report/
 allure-results/
+*.pdf
