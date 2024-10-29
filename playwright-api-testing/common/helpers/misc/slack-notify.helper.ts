@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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";
+const SLACK_WEBHOOK_URL = "YOU_DESIRE_WEBHOOK_URL";
 
 export const sendSlackNotification = async (message: string) => {
   try {
