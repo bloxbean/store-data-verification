@@ -1,76 +1,33 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1730214502900,3051,Get Consitution,200,OK,Thread Group 1-1,text,true,,648,340,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/live/constitution,2380,0,2175
-1730214502900,2380,Get Consitution-0,301,Moved Permanently,Thread Group 1-1,text,true,,225,170,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/live/constitution,2380,0,2175
-1730214505281,670,Get Consitution-1,200,OK,Thread Group 1-1,text,true,,423,170,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/live/constitution,669,0,459
-1730214505952,414,Get Committee,200,OK,Thread Group 1-1,text,true,,1277,352,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/live/committees/current,204,0,0
-1730214505952,204,Get Committee-0,301,Moved Permanently,Thread Group 1-1,text,true,,231,176,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/live/committees/current,204,0,0
-1730214506156,210,Get Committee-1,200,OK,Thread Group 1-1,text,true,,1046,176,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/live/committees/current,210,0,0
-1730214506367,423,Get Transaction,200,OK,Thread Group 1-1,text,true,,5037,290,1,1,https://api.mainnet.yaci.xyz/api/v1/txs,204,0,0
-1730214506367,204,Get Transaction-0,301,Moved Permanently,Thread Group 1-1,text,true,,200,145,1,1,http://api.mainnet.yaci.xyz/api/v1/txs,204,0,0
-1730214506571,219,Get Transaction-1,200,OK,Thread Group 1-1,text,true,,4837,145,1,1,https://api.mainnet.yaci.xyz/api/v1/txs,218,0,0
-1730214506790,419,Get Withdrawals,200,OK,Thread Group 1-1,text,true,,2840,314,1,1,https://api.mainnet.yaci.xyz/api/v1/txs/withdrawals,204,0,0
-1730214506790,204,Get Withdrawals-0,301,Moved Permanently,Thread Group 1-1,text,true,,212,157,1,1,http://api.mainnet.yaci.xyz/api/v1/txs/withdrawals,204,0,0
-1730214506994,215,Get Withdrawals-1,200,OK,Thread Group 1-1,text,true,,2628,157,1,1,https://api.mainnet.yaci.xyz/api/v1/txs/withdrawals,215,0,0
-1730214507209,416,Get Stake Registrations,200,OK,Thread Group 1-1,text,true,,4665,322,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/registrations,204,0,0
-1730214507209,204,Get Stake Registrations-0,301,Moved Permanently,Thread Group 1-1,text,true,,216,161,1,1,http://api.mainnet.yaci.xyz/api/v1/stake/registrations,204,0,0
-1730214507414,211,Get Stake Registrations-1,200,OK,Thread Group 1-1,text,true,,4449,161,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/registrations,210,0,0
-1730214507629,418,Get Stake Deregistrations,200,OK,Thread Group 1-1,text,true,,4687,326,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/deregistrations,204,0,0
-1730214507629,204,Get Stake Deregistrations-0,301,Moved Permanently,Thread Group 1-1,text,true,,218,163,1,1,http://api.mainnet.yaci.xyz/api/v1/stake/deregistrations,204,0,0
-1730214507833,214,Get Stake Deregistrations-1,200,OK,Thread Group 1-1,text,true,,4469,163,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/deregistrations,213,0,0
-1730214508047,415,Get Stake Delegations,200,OK,Thread Group 1-1,text,true,,5073,318,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/delegations,204,0,0
-1730214508047,204,Get Stake Delegations-0,301,Moved Permanently,Thread Group 1-1,text,true,,214,159,1,1,http://api.mainnet.yaci.xyz/api/v1/stake/delegations,204,0,0
-1730214508251,211,Get Stake Delegations-1,200,OK,Thread Group 1-1,text,true,,4859,159,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/delegations,211,0,0
-1730214508462,418,Get Pool Retirements,200,OK,Thread Group 1-1,text,true,,4623,318,1,1,https://api.mainnet.yaci.xyz/api/v1/pools/retirements,205,0,0
-1730214508462,205,Get Pool Retirements-0,301,Moved Permanently,Thread Group 1-1,text,true,,214,159,1,1,http://api.mainnet.yaci.xyz/api/v1/pools/retirements,205,0,0
-1730214508667,213,Get Pool Retirements-1,200,OK,Thread Group 1-1,text,true,,4409,159,1,1,https://api.mainnet.yaci.xyz/api/v1/pools/retirements,213,0,0
-1730214508881,416,Get Pool Registrations,200,OK,Thread Group 1-1,text,true,,11639,322,1,1,https://api.mainnet.yaci.xyz/api/v1/pools/registrations,204,0,0
-1730214508881,204,Get Pool Registrations-0,301,Moved Permanently,Thread Group 1-1,text,true,,216,161,1,1,http://api.mainnet.yaci.xyz/api/v1/pools/registrations,204,0,0
-1730214509085,212,Get Pool Registrations-1,200,OK,Thread Group 1-1,text,true,,11423,161,1,1,https://api.mainnet.yaci.xyz/api/v1/pools/registrations,211,0,0
-1730214509297,419,Get Governance Votes,200,OK,Thread Group 1-1,text,true,,6072,316,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/votes,204,0,0
-1730214509297,204,Get Governance Votes-0,301,Moved Permanently,Thread Group 1-1,text,true,,213,158,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/votes,204,0,0
-1730214509501,215,Get Governance Votes-1,200,OK,Thread Group 1-1,text,true,,5859,158,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/votes,214,0,0
-1730214509716,414,Get Governance Proposals,200,OK,Thread Group 1-1,text,true,,1915,324,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/proposals,204,0,0
-1730214509716,204,Get Governance Proposals-0,301,Moved Permanently,Thread Group 1-1,text,true,,217,162,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/proposals,204,0,0
-1730214509920,210,Get Governance Proposals-1,200,OK,Thread Group 1-1,text,true,,1698,162,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/proposals,210,0,0
-1730214510130,414,Get Drep Updates,200,OK,Thread Group 1-1,text,true,,6016,332,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/updates,204,0,0
-1730214510130,204,Get Drep Updates-0,301,Moved Permanently,Thread Group 1-1,text,true,,221,166,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/dreps/updates,204,0,0
-1730214510334,210,Get Drep Updates-1,200,OK,Thread Group 1-1,text,true,,5795,166,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/updates,210,0,0
-1730214510544,415,Get Drep Registrations,200,OK,Thread Group 1-1,text,true,,5087,344,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/registrations,205,0,0
-1730214510544,205,Get Drep Registrations-0,301,Moved Permanently,Thread Group 1-1,text,true,,227,172,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/dreps/registrations,205,0,0
-1730214510749,210,Get Drep Registrations-1,200,OK,Thread Group 1-1,text,true,,4860,172,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/registrations,210,0,0
-1730214510959,416,Get Drep Deregistrations,200,OK,Thread Group 1-1,text,true,,4648,348,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/deregistrations,204,0,0
-1730214510959,205,Get Drep Deregistrations-0,301,Moved Permanently,Thread Group 1-1,text,true,,229,174,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/dreps/deregistrations,204,0,0
-1730214511164,211,Get Drep Deregistrations-1,200,OK,Thread Group 1-1,text,true,,4419,174,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/deregistrations,210,0,0
-1730214511376,423,Get Delegation Votes,200,OK,Thread Group 1-1,text,true,,4629,338,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/delegation-votes,204,0,0
-1730214511376,204,Get Delegation Votes-0,301,Moved Permanently,Thread Group 1-1,text,true,,224,169,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/delegation-votes,204,0,0
-1730214511581,218,Get Delegation Votes-1,200,OK,Thread Group 1-1,text,true,,4405,169,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/delegation-votes,218,0,0
-1730214511800,416,Get Governance Consitution,200,OK,Thread Group 1-1,text,true,,687,330,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/constitution,204,0,0
-1730214511800,204,Get Governance Consitution-0,301,Moved Permanently,Thread Group 1-1,text,true,,220,165,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/constitution,204,0,0
-1730214512004,212,Get Governance Consitution-1,200,OK,Thread Group 1-1,text,true,,467,165,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/constitution,211,0,0
-1730214512216,421,Get Current Committees,200,OK,Thread Group 1-1,text,true,,1423,342,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/current,205,0,0
-1730214512216,205,Get Current Committees-0,301,Moved Permanently,Thread Group 1-1,text,true,,226,171,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/committees/current,205,0,0
-1730214512421,216,Get Current Committees-1,200,OK,Thread Group 1-1,text,true,,1197,171,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/current,216,0,0
-1730214512638,418,Get Committee Dergistrations,200,OK,Thread Group 1-1,text,true,,451,358,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/deregistrations,204,0,0
-1730214512638,204,Get Committee Dergistrations-0,301,Moved Permanently,Thread Group 1-1,text,true,,234,179,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/committees/deregistrations,204,0,0
-1730214512842,214,Get Committee Dergistrations-1,200,OK,Thread Group 1-1,text,true,,217,179,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/deregistrations,214,0,0
-1730214513057,422,Get Committee Registrations,200,OK,Thread Group 1-1,text,true,,3130,354,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/registrations,204,0,0
-1730214513057,204,Get Committee Registrations-0,301,Moved Permanently,Thread Group 1-1,text,true,,232,177,1,1,http://api.mainnet.yaci.xyz/api/v1/governance/committees/registrations,204,0,0
-1730214513262,217,Get Committee Registrations-1,200,OK,Thread Group 1-1,text,true,,2898,177,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/registrations,217,0,0
-1730214513479,418,Get Epoch,200,OK,Thread Group 1-1,text,true,,458,296,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs,204,0,0
-1730214513479,204,Get Epoch-0,301,Moved Permanently,Thread Group 1-1,text,true,,203,148,1,1,http://api.mainnet.yaci.xyz/api/v1/epochs,204,0,0
-1730214513683,214,Get Epoch-1,200,OK,Thread Group 1-1,text,true,,255,148,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs,214,0,0
-1730214513897,415,Get Latest Epoch,200,OK,Thread Group 1-1,text,true,,438,310,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest,204,0,0
-1730214513897,205,Get Latest Epoch-0,301,Moved Permanently,Thread Group 1-1,text,true,,210,155,1,1,http://api.mainnet.yaci.xyz/api/v1/epochs/latest,204,0,0
-1730214514102,210,Get Latest Epoch-1,200,OK,Thread Group 1-1,text,true,,228,155,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest,210,0,0
-1730214514312,641,Get Latest Epoch Parameters,200,OK,Thread Group 1-1,text,true,,17892,332,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest/parameters,204,0,0
-1730214514312,204,Get Latest Epoch Parameters-0,301,Moved Permanently,Thread Group 1-1,text,true,,221,166,1,1,http://api.mainnet.yaci.xyz/api/v1/epochs/latest/parameters,204,0,0
-1730214514517,436,Get Latest Epoch Parameters-1,200,OK,Thread Group 1-1,text,true,,17671,166,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest/parameters,227,0,0
-1730214514954,419,Get Latest Epoch Details,404,Not Found,Thread Group 1-1,text,false,,574,326,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest/details,204,0,0
-1730214514954,204,Get Latest Epoch Details-0,301,Moved Permanently,Thread Group 1-1,text,true,,218,163,1,1,http://api.mainnet.yaci.xyz/api/v1/epochs/latest/details,204,0,0
-1730214515159,214,Get Latest Epoch Details-1,404,Not Found,Thread Group 1-1,text,false,,356,163,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest/details,213,0,0
-1730214515374,416,Get Blocks,200,OK,Thread Group 1-1,text,true,,3355,296,1,1,https://api.mainnet.yaci.xyz/api/v1/blocks,205,0,0
-1730214515374,205,Get Blocks-0,301,Moved Permanently,Thread Group 1-1,text,true,,203,148,1,1,http://api.mainnet.yaci.xyz/api/v1/blocks,205,0,0
-1730214515579,211,Get Blocks-1,200,OK,Thread Group 1-1,text,true,,3152,148,1,1,https://api.mainnet.yaci.xyz/api/v1/blocks,211,0,0
-1730214515791,417,Ge Latest Blocks,200,OK,Thread Group 1-1,text,true,,1736,310,1,1,https://api.mainnet.yaci.xyz/api/v1/blocks/latest,205,0,0
-1730214515791,205,Ge Latest Blocks-0,301,Moved Permanently,Thread Group 1-1,text,true,,210,155,1,1,http://api.mainnet.yaci.xyz/api/v1/blocks/latest,205,0,0
-1730214515996,212,Ge Latest Blocks-1,200,OK,Thread Group 1-1,text,true,,1526,155,1,1,https://api.mainnet.yaci.xyz/api/v1/blocks/latest,212,0,0
+1730387278596,1581,Get Consitution,200,OK,Thread Group 1-1,text,true,,423,170,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/live/constitution,1581,0,1217
+1730387280177,366,Get Committee,200,OK,Thread Group 1-1,text,true,,1046,176,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/live/committees/current,366,0,0
+1730387280543,371,Get Transaction,200,OK,Thread Group 1-1,text,true,,4697,145,1,1,https://api.mainnet.yaci.xyz/api/v1/txs,371,0,0
+1730387280915,830,Get Withdrawals,200,OK,Thread Group 1-1,text,true,,2617,157,1,1,https://api.mainnet.yaci.xyz/api/v1/txs/withdrawals,830,0,0
+1730387281745,1536,Get Stake Registrations - Account,200,OK,Thread Group 1-1,text,true,,4449,161,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/registrations,364,0,0
+1730387283281,363,Get Stake Deregistrations - Account,200,OK,Thread Group 1-1,text,true,,4469,163,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/deregistrations,363,0,0
+1730387283644,1188,Get Stake Delegations - Account,200,OK,Thread Group 1-1,text,true,,4859,159,1,1,https://api.mainnet.yaci.xyz/api/v1/stake/delegations,829,0,0
+1730387284833,724,Get Pool Retirements,200,OK,Thread Group 1-1,text,true,,4409,159,1,1,https://api.mainnet.yaci.xyz/api/v1/pools/retirements,724,0,0
+1730387285557,1558,Get Pool Registrations,200,OK,Thread Group 1-1,text,true,,11133,161,1,1,https://api.mainnet.yaci.xyz/api/v1/pools/registrations,836,0,0
+1730387287115,1697,Get Governance Votes,200,OK,Thread Group 1-1,text,true,,5523,158,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/votes,1697,0,0
+1730387288812,722,Get Governance Proposals,200,OK,Thread Group 1-1,text,true,,1698,162,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/proposals,362,0,0
+1730387289534,1684,Get Drep Updates,200,OK,Thread Group 1-1,text,true,,5702,166,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/updates,723,0,0
+1730387291218,728,Get Drep Registrations,200,OK,Thread Group 1-1,text,true,,5095,172,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/registrations,728,0,0
+1730387291946,722,Get Drep Deregistrations,200,OK,Thread Group 1-1,text,true,,4419,174,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/dreps/deregistrations,361,0,0
+1730387292669,733,Get Delegation Votes,200,OK,Thread Group 1-1,text,true,,4970,169,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/delegation-votes,373,0,0
+1730387293402,364,Get Governance Consitution,200,OK,Thread Group 1-1,text,true,,467,165,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/constitution,364,0,0
+1730387293766,363,Get Current Committees,200,OK,Thread Group 1-1,text,true,,1197,171,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/current,363,0,0
+1730387294129,363,Get Committee Dergistrations,200,OK,Thread Group 1-1,text,true,,217,179,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/deregistrations,363,0,0
+1730387294492,824,Get Committee Registrations,200,OK,Thread Group 1-1,text,true,,2898,177,1,1,https://api.mainnet.yaci.xyz/api/v1/governance/committees/registrations,824,0,0
+1730387295317,360,Get Epoch,200,OK,Thread Group 1-1,text,true,,255,148,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs,360,0,0
+1730387295677,359,Get Latest Epoch,200,OK,Thread Group 1-1,text,true,,228,155,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest,359,0,0
+1730387296037,2463,Get Latest Epoch Parameters,200,OK,Thread Group 1-1,text,true,,17671,166,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest/parameters,1084,0,0
+1730387298501,1355,Get Latest Epoch Details,404,Not Found,Thread Group 1-1,text,false,,356,163,1,1,https://api.mainnet.yaci.xyz/api/v1/epochs/latest/details,363,0,0
+1730387299856,362,Get Blocks,200,OK,Thread Group 1-1,text,true,,3165,148,1,1,https://api.mainnet.yaci.xyz/api/v1/blocks,362,0,0
+1730387300218,365,Get Latest Blocks,200,OK,Thread Group 1-1,text,true,,1505,155,1,1,https://api.mainnet.yaci.xyz/api/v1/blocks/latest,365,0,0
+1730387300583,361,Get UTXO,200,OK,Thread Group 1-1,text,true,,1322,335,1,1,https://api.mainnet.yaci.xyz/api/v1/utxos,360,0,0
+1730387300944,393,Get  UTXO of Address,200,OK,Thread Group 1-1,text,true,,611,217,1,1,https://api.mainnet.yaci.xyz/api/v1/addresses/stake1u8y37znvm86w9v5e89ghhyvxvddw6m0udp4969kjuxmdfwqpm5yjc/utxos,393,0,0
+1730387301337,2742,Get  Transaction UTXO,200,OK,Thread Group 1-1,text,true,,27140,216,1,1,https://api.mainnet.yaci.xyz/api/v1/txs/dd0221212d6350f5b606ceec925e8f81866553c3312a6d3049174dda43365574/utxos,833,0,0
+1730387304079,415,Get  Address Transaction,200,OK,Thread Group 1-1,text,true,,217,224,1,1,https://api.mainnet.yaci.xyz/api/v1/addresses/stake1u8y37znvm86w9v5e89ghhyvxvddw6m0udp4969kjuxmdfwqpm5yjc/transactions,415,0,0
+1730387304494,361,Get  Address Balance,501,Not Implemented,Thread Group 1-1,text,false,,254,219,1,1,https://api.mainnet.yaci.xyz/api/v1/addresses/stake1u8y37znvm86w9v5e89ghhyvxvddw6m0udp4969kjuxmdfwqpm5yjc/balance,361,0,0
+1730387304855,419,Get  Address Amount,200,OK,Thread Group 1-1,text,true,,259,219,1,1,https://api.mainnet.yaci.xyz/api/v1/addresses/stake1u8y37znvm86w9v5e89ghhyvxvddw6m0udp4969kjuxmdfwqpm5yjc/amounts,419,0,0
+1730387305274,362,Get  Asset Tx Hash,200,OK,Thread Group 1-1,text,true,,217,217,1,1,https://api.mainnet.yaci.xyz/api/v1/assets/txs/dd0221212d6350f5b606ceec925e8f81866553c3312a6d3049174dda43365574,362,0,0

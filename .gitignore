@@ -7,3 +7,6 @@ download
 allure-report/
 allure-results/
 *.pdf
+/jmeter-performance-testing/result/
+/jmeter-performance-testing/*.csv
+/jmeter-performance-testing/GraphsGenerator.jmx
