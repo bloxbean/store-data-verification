@@ -17,11 +17,15 @@ test.describe("@regression @smoke @governance", () => {
       let votesInformation = await (await yaciService()).getVotingProcedure();
 
       await test.step("WHEN: Wait for a certain period of time", async () => {
-        await new Promise((resolve) => setTimeout(resolve, TimeOut.FIVE_SECONDS)); // Wait for 5 seconds
+        await new Promise((resolve) =>
+          setTimeout(resolve, TimeOut.FIVE_SECONDS)
+        ); // Wait for 5 seconds
       });
 
       await test.step("AND: Retrieve vote information after wait", async () => {
-        let votesInformationAfterWait = await (await yaciService()).getVotingProcedure();
+        let votesInformationAfterWait = await (
+          await yaciService()
+        ).getVotingProcedure();
 
         await test.step("THEN: vote informationl should be different after wait ", () => {
           Assertions.assertNotEqual(

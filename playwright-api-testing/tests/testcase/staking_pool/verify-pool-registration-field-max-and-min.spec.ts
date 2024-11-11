@@ -15,33 +15,60 @@ test.describe("@regression @pool", () => {
   test("Check the pool registration information in Yaci and Koios", async ({}) => {
     test.step("GIVEN: Retrieve pool information", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 999);
-      let poolInformationYaci = await (await yaciService()).getPoolRegistration(randomNumber);
+      let poolInformationYaci = await (
+        await yaciService()
+      ).getPoolRegistration(randomNumber);
 
       await test.step("WHEN: Retrieve pool field information", async () => {
         let fields = [
           {
             name: "block_number",
-            values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.block_number),
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.block_number
+            ),
           },
           {
             name: "block_time",
-            values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.block_time),
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.block_time
+            ),
           },
           {
             name: "cert_index",
-            values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.cert_index),
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.cert_index
+            ),
           },
           {
             name: "pledge",
-            values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.pledge),
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.pledge
+            ),
           },
-          { name: "cost", values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.cost) },
+          {
+            name: "cost",
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.cost
+            ),
+          },
           {
             name: "margin",
-            values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.margin),
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.margin
+            ),
           },
-          { name: "epoch", values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.epoch) },
-          { name: "slot", values: poolInformationYaci.map((poolInformationYaciDto) => poolInformationYaciDto.slot) },
+          {
+            name: "epoch",
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.epoch
+            ),
+          },
+          {
+            name: "slot",
+            values: poolInformationYaci.map(
+              (poolInformationYaciDto) => poolInformationYaciDto.slot
+            ),
+          },
         ];
 
         fields.forEach(async (field) => {
@@ -49,7 +76,11 @@ test.describe("@regression @pool", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });

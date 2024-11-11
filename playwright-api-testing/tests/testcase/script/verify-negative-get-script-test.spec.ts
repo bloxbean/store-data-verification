@@ -14,10 +14,15 @@ test.describe("@regression @script", () => {
 
   test("Verfiy script API using faulty data -1", async ({}) => {
     test.step("GIVEN: Retrieve script redeemer information", async () => {
-      let scriptRedeemerYaci = await (await yaciService()).getScript(TxHashes.FAULT_TX_HASHES);
+      let scriptRedeemerYaci = await (
+        await yaciService()
+      ).getScript(TxHashes.FAULT_TX_HASHES);
 
       await test.step("THEN: fetch script hash", () => {
-        Assertions.assertNull(scriptRedeemerYaci, "Script redeemer should be null.");
+        Assertions.assertNull(
+          scriptRedeemerYaci,
+          "Script redeemer should be null."
+        );
       });
     });
   });
@@ -26,10 +31,15 @@ test.describe("@regression @script", () => {
 test.describe("@regression @script", () => {
   test("Verfiy script API using faulty data -2", async ({}) => {
     test.step("GIVEN: Retrieve script redeemer information", async () => {
-      let scriptRedeemerYaci = await (await yaciService()).getScript(Empty.EMPTY);
+      let scriptRedeemerYaci = await (
+        await yaciService()
+      ).getScript(Empty.EMPTY);
 
       await test.step("THEN: fetch script hash", () => {
-        Assertions.assertNull(scriptRedeemerYaci, "Script redeemer should be null.");
+        Assertions.assertNull(
+          scriptRedeemerYaci,
+          "Script redeemer should be null."
+        );
       });
     });
   });
@@ -41,7 +51,10 @@ test.describe("@regression @script", () => {
       let scriptRedeemerYaci = await (await yaciService()).getScript(Null.NULL);
 
       await test.step("THEN: fetch script hash", () => {
-        Assertions.assertNull(scriptRedeemerYaci, "Script redeemer should be null.");
+        Assertions.assertNull(
+          scriptRedeemerYaci,
+          "Script redeemer should be null."
+        );
       });
     });
   });

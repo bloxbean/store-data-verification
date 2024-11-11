@@ -1,8 +1,16 @@
 import Logger from "@common/helpers/logger/logger.helper";
-import { Reporter, TestCase, TestError, TestResult, TestStep } from "@playwright/test/reporter";
+import {
+  Reporter,
+  TestCase,
+  TestError,
+  TestResult,
+  TestStep,
+} from "@playwright/test/reporter";
 
-const TEST_SEPARATOR = "##############################################################################";
-const STEP_SEPARATOR = "------------------------------------------------------------------------------";
+const TEST_SEPARATOR =
+  "##############################################################################";
+const STEP_SEPARATOR =
+  "------------------------------------------------------------------------------";
 
 export default class TestListener implements Reporter {
   onTestBegin(test: TestCase, result: TestResult): void {
@@ -11,9 +19,14 @@ export default class TestListener implements Reporter {
 
   onTestEnd(test: TestCase, result: TestResult): void {
     if (result.status === "failed") {
-      Logger.error(`Test: ${test.title} - ${result.status}\n${result.error?.stack}`);
+      Logger.error(
+        `Test: ${test.title} - ${result.status}\n${result.error?.stack}`
+      );
     }
-    this.printLogs(`Test: ${test.title} - ${result.status.toUpperCase()}`, TEST_SEPARATOR);
+    this.printLogs(
+      `Test: ${test.title} - ${result.status.toUpperCase()}`,
+      TEST_SEPARATOR
+    );
   }
 
   onStdErr(chunk: string | Buffer, test?: TestCase, result?: TestResult): void {

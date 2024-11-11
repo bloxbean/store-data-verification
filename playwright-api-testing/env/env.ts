@@ -25,7 +25,9 @@ export class Env {
   static get YACI_STORE_AGGREGATOR_URL(): string {
     const yaciStoreAggregatorUrl = process.env.YACI_STORE_AGGREGATOR_URL;
     if (!yaciStoreAggregatorUrl) {
-      throw new Error("Environment variable YACI_STORE_AGGREGATOR_URL must be set");
+      throw new Error(
+        "Environment variable YACI_STORE_AGGREGATOR_URL must be set"
+      );
     }
     return yaciStoreAggregatorUrl;
   }

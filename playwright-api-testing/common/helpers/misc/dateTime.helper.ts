@@ -14,7 +14,12 @@ export default class DateTimeHelper {
    *
    * @returns A string representing the generated date in the specified format.
    */
-  public static dateGenerator(format: string, days: number = 0, months: number = 0, years: number = 0): string {
+  public static dateGenerator(
+    format: string,
+    days: number = 0,
+    months: number = 0,
+    years: number = 0
+  ): string {
     const date = DateTime.now().plus({ days, months, years }).toFormat(format);
     return date;
   }
@@ -42,7 +47,9 @@ export default class DateTimeHelper {
     months: number = 0,
     years: number = 0
   ): string {
-    const customDate = DateTime.fromFormat(date, format).plus({ days, months, years }).toFormat(format);
+    const customDate = DateTime.fromFormat(date, format)
+      .plus({ days, months, years })
+      .toFormat(format);
     return customDate;
   }
 
@@ -53,7 +60,11 @@ export default class DateTimeHelper {
    * @param format time format https://moment.github.io/luxon/#/formatting
    * @returns
    */
-  public static timeGenerator(hours: number, minutes: number, format: string = "yyyy-MM-dd'T'TTZZ"): string {
+  public static timeGenerator(
+    hours: number,
+    minutes: number,
+    format: string = "yyyy-MM-dd'T'TTZZ"
+  ): string {
     // const time = dayjs().add(minutes, "m").add(hours, "h").format(format);
     const time = DateTime.now().plus({ hours, minutes }).toFormat(format);
     return time;
@@ -69,14 +80,23 @@ export default class DateTimeHelper {
     return DateTime.fromFormat(date, format).toFormat(format) === date;
   }
 
-  public static getDateDiff(date1: string, date2: string, unit: DurationUnit = "day", format: string): number {
+  public static getDateDiff(
+    date1: string,
+    date2: string,
+    unit: DurationUnit = "day",
+    format: string
+  ): number {
     const d1 = DateTime.fromFormat(date1, format);
     const d2 = DateTime.fromFormat(date2, format);
 
     return d2.diff(d1, unit).get(unit);
   }
 
-  public static changeFormatDate(sDate: string, oldFormat: string, newFormat: string): string {
+  public static changeFormatDate(
+    sDate: string,
+    oldFormat: string,
+    newFormat: string
+  ): string {
     return DateTime.fromFormat(sDate, oldFormat).toFormat(newFormat);
   }
 
@@ -97,7 +117,10 @@ export default class DateTimeHelper {
     const twoDigitFormat = 2; // Used to specify the desired length in padStart
 
     const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + monthAdjustment).padStart(twoDigitFormat, "0");
+    const month = String(currentDate.getMonth() + monthAdjustment).padStart(
+      twoDigitFormat,
+      "0"
+    );
     const day = String(currentDate.getDate()).padStart(twoDigitFormat, "0");
 
     const adjustedDate = `${year}-${month}-${day}`;
@@ -127,7 +150,10 @@ export default class DateTimeHelper {
    * @param {string} endDate - The end date in 'YYYY-MM-DD' format.
    * @returns {number} - The number of days between the start and end dates.
    */
-  public static countDaysBetweenDates(startDate: string, endDate: string): number {
+  public static countDaysBetweenDates(
+    startDate: string,
+    endDate: string
+  ): number {
     const start = new Date(startDate);
     const end = new Date(endDate);
     const differenceInTime = end.getTime() - start.getTime();

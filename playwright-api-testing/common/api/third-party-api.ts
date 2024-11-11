@@ -16,7 +16,11 @@ export const returnLoggedResponse = async (
   return response;
 };
 
-export const del = async (endpoint: string, data?: object, headers?: { [key: string]: string }) =>
+export const del = async (
+  endpoint: string,
+  data?: object,
+  headers?: { [key: string]: string }
+) =>
   returnLoggedResponse(
     await axios.delete(endpoint, {
       data,

@@ -19,13 +19,40 @@ test.describe("@regression @governance", () => {
         let fields = [
           {
             name: "block_number",
-            values: drepRegistration.map((drepRegistrationDto) => drepRegistrationDto.block_number),
+            values: drepRegistration.map(
+              (drepRegistrationDto) => drepRegistrationDto.block_number
+            ),
           },
-          { name: "block_time", values: drepRegistration.map((drepRegistrationDto) => drepRegistrationDto.block_time) },
-          { name: "cert_index", values: drepRegistration.map((drepRegistrationDto) => drepRegistrationDto.cert_index) },
-          { name: "slot", values: drepRegistration.map((drepRegistrationDto) => drepRegistrationDto.slot) },
-          { name: "deposit", values: drepRegistration.map((drepRegistrationDto) => drepRegistrationDto.deposit) },
-          { name: "epoch", values: drepRegistration.map((drepRegistrationDto) => drepRegistrationDto.epoch) },
+          {
+            name: "block_time",
+            values: drepRegistration.map(
+              (drepRegistrationDto) => drepRegistrationDto.block_time
+            ),
+          },
+          {
+            name: "cert_index",
+            values: drepRegistration.map(
+              (drepRegistrationDto) => drepRegistrationDto.cert_index
+            ),
+          },
+          {
+            name: "slot",
+            values: drepRegistration.map(
+              (drepRegistrationDto) => drepRegistrationDto.slot
+            ),
+          },
+          {
+            name: "deposit",
+            values: drepRegistration.map(
+              (drepRegistrationDto) => drepRegistrationDto.deposit
+            ),
+          },
+          {
+            name: "epoch",
+            values: drepRegistration.map(
+              (drepRegistrationDto) => drepRegistrationDto.epoch
+            ),
+          },
         ];
 
         fields.forEach(async (field) => {
@@ -33,7 +60,11 @@ test.describe("@regression @governance", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });

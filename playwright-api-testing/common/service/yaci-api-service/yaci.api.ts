@@ -14,7 +14,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getTransaction.Base
+    );
   };
 
   const getBlockList = async () => {
@@ -28,7 +31,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getBlockList.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getBlockList.Base
+    );
   };
 
   const getBlockLatestInformation = async () => {
@@ -42,7 +48,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getBlockLatestInformation.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getBlockLatestInformation.Base
+    );
   };
 
   const getBlockInformationByHash = async (hash: unknown) => {
@@ -56,7 +65,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getBlockList.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getBlockList.Base
+    );
   };
 
   const getStakeRegistrations = async () => {
@@ -70,7 +82,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getStakeRegistrations.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getStakeRegistrations.Base
+    );
   };
 
   const getStakeDeregistrations = async () => {
@@ -84,7 +99,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getStakeDeregistrations.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getStakeDeregistrations.Base
+    );
   };
 
   const getStakeDelegations = async () => {
@@ -98,7 +116,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getStakeDelegations.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getStakeDelegations.Base
+    );
   };
 
   const getWithdrawals = async () => {
@@ -110,7 +131,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getTransaction.Base
+    );
   };
 
   const getDetailTransaction = async (txHash: unknown) => {
@@ -122,7 +146,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getTransaction.Base
+    );
   };
 
   const getWitnesses = async (txHash: unknown) => {
@@ -134,7 +161,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getTransaction.Base
+    );
   };
 
   const getDetailsWithdrawals = async (txHash: unknown) => {
@@ -146,7 +176,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getTransaction.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getTransaction.Base
+    );
   };
 
   const submitTransaction = async (txHash: unknown, index: number) => {
@@ -158,7 +191,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getUtxo.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getUtxo.Base
+    );
   };
 
   const submitUtxo = async (txHash: unknown, index: number) => {
@@ -176,7 +212,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getUtxo.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getUtxo.Base
+    );
   };
 
   const getEpochParameter = async (number: number) => {
@@ -188,7 +227,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getEpoch.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getEpoch.Base
+    );
   };
 
   const getLatestEpoch = async () => {
@@ -200,7 +242,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getEpoch.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getEpoch.Base
+    );
   };
 
   const getLatestEpochParameters = async () => {
@@ -212,7 +257,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getEpoch.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getEpoch.Base
+    );
   };
 
   const getUtxoOfAsset = async (unit: unknown) => {
@@ -224,7 +272,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getAsset.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getAsset.Base
+    );
   };
 
   const getAssetHistoryByUnit = async (unit: unknown) => {
@@ -236,7 +287,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getAsset.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getAsset.Base
+    );
   };
 
   const getAssetSupplyByUnit = async (unit: number) => {
@@ -248,7 +302,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getAsset.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getAsset.Base
+    );
   };
 
   const getPoolRegistration = async (number: unknown) => {
@@ -260,7 +317,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getPoolRegistrations.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getPoolRegistrations.Base
+    );
   };
 
   const getScript = async (scriptHash: unknown) => {
@@ -272,7 +332,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getScript.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getScript.Base
+    );
   };
 
   const getVotes = async () => {
@@ -284,7 +347,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getVotes.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getVotes.Base
+    );
   };
 
   const getDelegationVotes = async () => {
@@ -296,7 +362,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getDelegationVotes.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getDelegationVotes.Base
+    );
   };
 
   const getDrepRegistrations = async () => {
@@ -308,7 +377,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getDrepRegistrations.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getDrepRegistrations.Base
+    );
   };
 
   const getGovernanceActionProposals = async () => {
@@ -320,7 +392,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getGovernanceActionProposals.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getGovernanceActionProposals.Base
+    );
   };
 
   const getGovernanceCommitteesRegistration = async () => {
@@ -332,7 +407,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getCommitteeRegistrations.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getCommitteeRegistrations.Base
+    );
   };
 
   const getCurrentCommitteeInfo = async () => {
@@ -344,7 +422,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getCurrentCommitteeInfo.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getCurrentCommitteeInfo.Base
+    );
   };
 
   const getCurrentConsitution = async () => {
@@ -356,7 +437,10 @@ export function yaciApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStore.getCurrentConsitution.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStore.getCurrentConsitution.Base
+    );
   };
 
   return {

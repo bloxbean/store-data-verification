@@ -19,17 +19,46 @@ test.describe("@regression @governance", () => {
         let fields = [
           {
             name: "block_number",
-            values: votesInformation.map((votesInformationDto) => votesInformationDto.block_number),
+            values: votesInformation.map(
+              (votesInformationDto) => votesInformationDto.block_number
+            ),
           },
-          { name: "block_time", values: votesInformation.map((votesInformationDto) => votesInformationDto.block_time) },
-          { name: "index", values: votesInformation.map((votesInformationDto) => votesInformationDto.index) },
-          { name: "slot", values: votesInformation.map((votesInformationDto) => votesInformationDto.slot) },
-          { name: "epoch", values: votesInformation.map((votesInformationDto) => votesInformationDto.epoch) },
+          {
+            name: "block_time",
+            values: votesInformation.map(
+              (votesInformationDto) => votesInformationDto.block_time
+            ),
+          },
+          {
+            name: "index",
+            values: votesInformation.map(
+              (votesInformationDto) => votesInformationDto.index
+            ),
+          },
+          {
+            name: "slot",
+            values: votesInformation.map(
+              (votesInformationDto) => votesInformationDto.slot
+            ),
+          },
+          {
+            name: "epoch",
+            values: votesInformation.map(
+              (votesInformationDto) => votesInformationDto.epoch
+            ),
+          },
           {
             name: "gov_action_index",
-            values: votesInformation.map((votesInformationDto) => votesInformationDto.gov_action_index),
+            values: votesInformation.map(
+              (votesInformationDto) => votesInformationDto.gov_action_index
+            ),
           },
-          { name: "vote", values: votesInformation.map((votesInformationDto) => votesInformationDto.vote) },
+          {
+            name: "vote",
+            values: votesInformation.map(
+              (votesInformationDto) => votesInformationDto.vote
+            ),
+          },
         ];
 
         fields.forEach(async (field) => {
@@ -37,7 +66,11 @@ test.describe("@regression @governance", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });

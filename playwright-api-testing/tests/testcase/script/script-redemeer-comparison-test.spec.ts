@@ -15,11 +15,19 @@ test.describe("@regression @smoke @script", () => {
 
   test("Compare the script redeemer of Koios and Yaci Store", async ({}) => {
     test.step("GIVEN: Retrieve script redeemer information", async () => {
-      let scriptRedeemerKoios = await (await koiosService()).getScriptRedeemers(ScriptHash.SCRIPT_HASH_1);
-      let scriptRedeemerYaci = await (await yaciService()).getScript(TxHashes.TX_HASHES_3);
+      let scriptRedeemerKoios = await (
+        await koiosService()
+      ).getScriptRedeemers(ScriptHash.SCRIPT_HASH_1);
+      let scriptRedeemerYaci = await (
+        await yaciService()
+      ).getScript(TxHashes.TX_HASHES_3);
 
       await test.step("THEN: fetch script hash", () => {
-        Assertions.assertEqual(scriptRedeemerKoios, scriptRedeemerYaci, "Script redeemer should be equal.");
+        Assertions.assertEqual(
+          scriptRedeemerKoios,
+          scriptRedeemerYaci,
+          "Script redeemer should be equal."
+        );
       });
     });
   });

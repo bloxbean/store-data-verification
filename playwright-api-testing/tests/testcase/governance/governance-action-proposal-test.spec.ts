@@ -14,14 +14,20 @@ test.describe("@regression @smoke @governance", () => {
 
   test("Check the logic of process a governance action proposal", async ({}) => {
     test.step("GIVEN: Retrieve governance action proposal", async () => {
-      let governanceActionProposals = await (await yaciService()).getGovernanceActionProposals();
+      let governanceActionProposals = await (
+        await yaciService()
+      ).getGovernanceActionProposals();
 
       await test.step("WHEN: Wait for a certain period of time", async () => {
-        await new Promise((resolve) => setTimeout(resolve, TimeOut.FIVE_SECONDS)); // Wait for 5 seconds
+        await new Promise((resolve) =>
+          setTimeout(resolve, TimeOut.FIVE_SECONDS)
+        ); // Wait for 5 seconds
       });
 
       await test.step("AND: Retrieve governance action proposal after wait", async () => {
-        let governanceActionProposalsAfterWait = await (await yaciService()).getDrepRegistrations();
+        let governanceActionProposalsAfterWait = await (
+          await yaciService()
+        ).getDrepRegistrations();
 
         await test.step("THEN: governance action proposal should be different after wait ", () => {
           Assertions.assertNotEqual(

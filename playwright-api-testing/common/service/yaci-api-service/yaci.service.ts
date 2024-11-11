@@ -27,35 +27,41 @@ import { yaciApi } from "./yaci.api";
 export async function yaciService() {
   const getTransaction = async () => {
     const getTransactionData = await yaciApi().getTransaction();
-    const getTransactionDataArrayResponse: YaciGetTransactionDto[] = await getTransactionData.data;
+    const getTransactionDataArrayResponse: YaciGetTransactionDto[] =
+      await getTransactionData.data;
     return getTransactionDataArrayResponse;
   };
 
   const getBlockList = async () => {
     const getBlockListData = await yaciApi().getBlockList();
-    const getBlockListDataArrayResponse: YaciGetBlockListDto[] = await getBlockListData.data;
+    const getBlockListDataArrayResponse: YaciGetBlockListDto[] =
+      await getBlockListData.data;
     return getBlockListDataArrayResponse;
   };
 
   const getBlockLatestInformation = async () => {
-    const getBlockLatestInformationData = await yaciApi().getBlockLatestInformation();
+    const getBlockLatestInformationData =
+      await yaciApi().getBlockLatestInformation();
     const getBlockLatestInformationDataArrayResponse: YaciGetBlockInformationDto[] =
       await getBlockLatestInformationData.data;
     return getBlockLatestInformationDataArrayResponse;
   };
 
   const getPreviousBlockHash = async () => {
-    const getBlockLatestInformationData = await yaciApi().getBlockLatestInformation();
+    const getBlockLatestInformationData =
+      await yaciApi().getBlockLatestInformation();
     const getBlockLatestInformationDataArrayResponse: YaciGetBlockInformationDto[] =
       await getBlockLatestInformationData.data;
-    const previousBlockInformation: unknown = getBlockLatestInformationDataArrayResponse.map(
-      (blockInformationDto) => blockInformationDto.previous_block
-    );
+    const previousBlockInformation: unknown =
+      getBlockLatestInformationDataArrayResponse.map(
+        (blockInformationDto) => blockInformationDto.previous_block
+      );
     return previousBlockInformation;
   };
 
   const getBlockInformationByHash = async (hash: unknown) => {
-    const getBlockInformationByHashData = await yaciApi().getBlockInformationByHash(hash);
+    const getBlockInformationByHashData =
+      await yaciApi().getBlockInformationByHash(hash);
     const getBlockInformationByHashDataArrayResponse: YaciGetBlockInformationDto[] =
       await getBlockInformationByHashData.data;
     return getBlockInformationByHashDataArrayResponse;
@@ -63,12 +69,14 @@ export async function yaciService() {
 
   const getStakeRegistrations = async () => {
     const getStakeRegistrationsData = await yaciApi().getStakeRegistrations();
-    const getStakeRegistrationsDataArrayResponse: YaciGetStakeInformationDto[] = await getStakeRegistrationsData.data;
+    const getStakeRegistrationsDataArrayResponse: YaciGetStakeInformationDto[] =
+      await getStakeRegistrationsData.data;
     return getStakeRegistrationsDataArrayResponse;
   };
 
   const getStakeDeregistrations = async () => {
-    const getStakeDeregistrationsData = await yaciApi().getStakeDeregistrations();
+    const getStakeDeregistrationsData =
+      await yaciApi().getStakeDeregistrations();
     const getStakeDeregistrationsDataArrayResponse: YaciGetStakeInformationDto[] =
       await getStakeDeregistrationsData.data;
     return getStakeDeregistrationsDataArrayResponse;
@@ -76,41 +84,49 @@ export async function yaciService() {
 
   const getStakeDelegations = async () => {
     const getStakeDelegationsData = await yaciApi().getStakeDelegations();
-    const getStakeDelegationsDataArrayResponse: YaciGetStakeDelegationDto[] = await getStakeDelegationsData.data;
+    const getStakeDelegationsDataArrayResponse: YaciGetStakeDelegationDto[] =
+      await getStakeDelegationsData.data;
     return getStakeDelegationsDataArrayResponse;
   };
 
   const getAddressFromStakeRegistrations = async () => {
     const getStakeRegistrationsData = await yaciApi().getStakeRegistrations();
-    const getStakeRegistrationsDataArrayResponse: YaciGetStakeInformationDto[] = await getStakeRegistrationsData.data;
-    const addressInformation: unknown = getStakeRegistrationsDataArrayResponse.map(
-      (addressInformationDto) => addressInformationDto.address
-    );
+    const getStakeRegistrationsDataArrayResponse: YaciGetStakeInformationDto[] =
+      await getStakeRegistrationsData.data;
+    const addressInformation: unknown =
+      getStakeRegistrationsDataArrayResponse.map(
+        (addressInformationDto) => addressInformationDto.address
+      );
     return addressInformation;
   };
 
   const getAddressFromDeregistrations = async () => {
-    const getStakeDeregistrationsData = await yaciApi().getStakeDeregistrations();
+    const getStakeDeregistrationsData =
+      await yaciApi().getStakeDeregistrations();
     const getStakeDeregistrationsDataArrayResponse: YaciGetStakeInformationDto[] =
       await getStakeDeregistrationsData.data;
-    const addressInformation: unknown = getStakeDeregistrationsDataArrayResponse.map(
-      (addressInformationDto) => addressInformationDto.address
-    );
+    const addressInformation: unknown =
+      getStakeDeregistrationsDataArrayResponse.map(
+        (addressInformationDto) => addressInformationDto.address
+      );
     return addressInformation;
   };
 
   const getAddressFromDelegations = async () => {
     const getStakeDelegationsData = await yaciApi().getStakeDelegations();
-    const getStakeDelegationsDataArrayResponse: YaciGetStakeDelegationDto[] = await getStakeDelegationsData.data;
-    const addressInformation: unknown = getStakeDelegationsDataArrayResponse.map(
-      (addressInformationDto) => addressInformationDto.address
-    );
+    const getStakeDelegationsDataArrayResponse: YaciGetStakeDelegationDto[] =
+      await getStakeDelegationsData.data;
+    const addressInformation: unknown =
+      getStakeDelegationsDataArrayResponse.map(
+        (addressInformationDto) => addressInformationDto.address
+      );
     return addressInformation;
   };
 
   const getWithdrawals = async () => {
     const getWithdrawalsData = await yaciApi().getWithdrawals();
-    const getWithdrawalsDataArrayResponse: YaciGetTransactionWithdrawalsDto[] = await getWithdrawalsData.data;
+    const getWithdrawalsDataArrayResponse: YaciGetTransactionWithdrawalsDto[] =
+      await getWithdrawalsData.data;
     const txHashInformation: unknown = getWithdrawalsDataArrayResponse.map(
       (txHashInformationDto) => txHashInformationDto.tx_hash
     );
@@ -118,14 +134,18 @@ export async function yaciService() {
   };
 
   const getDetailTransaction = async (txHash: unknown) => {
-    const getDetailTransactionData = await yaciApi().getDetailTransaction(txHash);
-    const getDetailTransactionDataArrayResponse: YaciGetDetailTransactionDto[] = await getDetailTransactionData.data;
+    const getDetailTransactionData =
+      await yaciApi().getDetailTransaction(txHash);
+    const getDetailTransactionDataArrayResponse: YaciGetDetailTransactionDto[] =
+      await getDetailTransactionData.data;
     return getDetailTransactionDataArrayResponse;
   };
 
   const getUnitFromDetailTransaction = async (txHash: unknown) => {
-    const getDetailTransactionData = await yaciApi().getDetailTransaction(txHash);
-    const getDetailTransactionDataArrayResponse: YaciGetDetailTransactionDto[] = await getDetailTransactionData.data;
+    const getDetailTransactionData =
+      await yaciApi().getDetailTransaction(txHash);
+    const getDetailTransactionDataArrayResponse: YaciGetDetailTransactionDto[] =
+      await getDetailTransactionData.data;
     const unitInformation: unknown = getDetailTransactionDataArrayResponse.map(
       (unitInformationDto) => unitInformationDto.amount[0].unit
     );
@@ -140,21 +160,27 @@ export async function yaciService() {
   };
 
   const getDetailWithdrawals = async (txHash: unknown) => {
-    const getDetailWithdrawalsData = await yaciApi().getDetailsWithdrawals(txHash);
+    const getDetailWithdrawalsData =
+      await yaciApi().getDetailsWithdrawals(txHash);
     const getDetailWithdrawalsDataArrayResponse: YaciGetTransactionDetailsWithdrawalsDto[] =
       await getDetailWithdrawalsData.data;
     return getDetailWithdrawalsDataArrayResponse;
   };
 
   const submitTransaction = async (txHash: unknown, index: number) => {
-    const submitTransactionData = await yaciApi().submitTransaction(txHash, index);
-    const submitTransactionDataArrayResponse: YaciSubmitTransactionDto[] = await submitTransactionData.data;
+    const submitTransactionData = await yaciApi().submitTransaction(
+      txHash,
+      index
+    );
+    const submitTransactionDataArrayResponse: YaciSubmitTransactionDto[] =
+      await submitTransactionData.data;
     return submitTransactionDataArrayResponse;
   };
 
   const submitUtxo = async (txHash: unknown, index: number) => {
     const submitTransactionData = await yaciApi().submitUtxo(txHash, index);
-    const submitTransactionDataArrayResponse: YaciSubmitTransactionDto[] = await submitTransactionData.data;
+    const submitTransactionDataArrayResponse: YaciSubmitTransactionDto[] =
+      await submitTransactionData.data;
     return submitTransactionDataArrayResponse;
   };
 
@@ -166,43 +192,51 @@ export async function yaciService() {
 
   const getLatestEpochParameters = async () => {
     const getEpochParameterData = await yaciApi().getLatestEpochParameters();
-    const getEpochParameterDataResponse: YaciGetEpochParametersDto[] = await getEpochParameterData.data;
+    const getEpochParameterDataResponse: YaciGetEpochParametersDto[] =
+      await getEpochParameterData.data;
     return getEpochParameterDataResponse;
   };
 
   const getEpochParameter = async (number: number) => {
     const getEpochParameterData = await yaciApi().getEpochParameter(number);
-    const getEpochParameterDataResponse: YaciGetEpochParametersDto[] = await getEpochParameterData.data;
+    const getEpochParameterDataResponse: YaciGetEpochParametersDto[] =
+      await getEpochParameterData.data;
     return getEpochParameterDataResponse;
   };
 
   const getUtxoOfAsset = async (unit: unknown) => {
     const getUtxoOfAssetData = await yaciApi().getUtxoOfAsset(unit);
-    const getUtxoOfAssetDataResponse: YaciGetAssetUtxoDto[] = await getUtxoOfAssetData.data;
+    const getUtxoOfAssetDataResponse: YaciGetAssetUtxoDto[] =
+      await getUtxoOfAssetData.data;
     return getUtxoOfAssetDataResponse;
   };
 
   const getAssetHistoryByUnit = async (unit: unknown) => {
-    const getAssetHistoryByUnitData = await yaciApi().getAssetHistoryByUnit(unit);
-    const getAssetHistoryByUnitDataResponse: YaciGetAssetHistoryDto[] = await getAssetHistoryByUnitData.data;
+    const getAssetHistoryByUnitData =
+      await yaciApi().getAssetHistoryByUnit(unit);
+    const getAssetHistoryByUnitDataResponse: YaciGetAssetHistoryDto[] =
+      await getAssetHistoryByUnitData.data;
     return getAssetHistoryByUnitDataResponse;
   };
 
   const getAssetSupplyByUnit = async (unit: number) => {
     const getAssetSupplyByUnitData = await yaciApi().getAssetSupplyByUnit(unit);
-    const getAssetSupplyByUnitDataResponse: YaciGetAssetSupplyByUnitDto[] = await getAssetSupplyByUnitData.data;
+    const getAssetSupplyByUnitDataResponse: YaciGetAssetSupplyByUnitDto[] =
+      await getAssetSupplyByUnitData.data;
     return getAssetSupplyByUnitDataResponse;
   };
 
   const getPoolRegistration = async (number: unknown) => {
     const getPoolRegistrationData = await yaciApi().getPoolRegistration(number);
-    const getPoolRegistrationDataArrayResponse: YaciGetPoolRegistrationsDto[] = await getPoolRegistrationData.data;
+    const getPoolRegistrationDataArrayResponse: YaciGetPoolRegistrationsDto[] =
+      await getPoolRegistrationData.data;
     return getPoolRegistrationDataArrayResponse;
   };
 
   const getScript = async (scriptHash: unknown) => {
     const getScriptData = await yaciApi().getScript(scriptHash);
-    const getScriptDataArrayResponse: YaciGetScriptHashDto[] = await getScriptData.data;
+    const getScriptDataArrayResponse: YaciGetScriptHashDto[] =
+      await getScriptData.data;
     return getScriptDataArrayResponse;
   };
 
@@ -214,42 +248,48 @@ export async function yaciService() {
   };
 
   const getDelegationVotes = async () => {
-    const getDelegationVotesParameterData = await yaciApi().getDelegationVotes();
+    const getDelegationVotesParameterData =
+      await yaciApi().getDelegationVotes();
     const getDelegationVotesParameterDataResponse: YaciGetDelegationVoteDto[] =
       await getDelegationVotesParameterData.data;
     return getDelegationVotesParameterDataResponse;
   };
 
   const getDrepRegistrations = async () => {
-    const getDrepRegistrationsParameterData = await yaciApi().getDrepRegistrations();
+    const getDrepRegistrationsParameterData =
+      await yaciApi().getDrepRegistrations();
     const getDrepRegistrationsParameterDataResponse: YaciGetDrepRegistrationsDto[] =
       await getDrepRegistrationsParameterData.data;
     return getDrepRegistrationsParameterDataResponse;
   };
 
   const getGovernanceActionProposals = async () => {
-    const getGovernanceActionProposalsParameterData = await yaciApi().getGovernanceActionProposals();
+    const getGovernanceActionProposalsParameterData =
+      await yaciApi().getGovernanceActionProposals();
     const getGovernanceActionProposalsParameterDataResponse: YaciGetGovernanceActionProposalDto[] =
       await getGovernanceActionProposalsParameterData.data;
     return getGovernanceActionProposalsParameterDataResponse;
   };
 
   const getGovernanceCommitteesRegistration = async () => {
-    const getGovernanceActionProposalsParameterData = await yaciApi().getGovernanceCommitteesRegistration();
+    const getGovernanceActionProposalsParameterData =
+      await yaciApi().getGovernanceCommitteesRegistration();
     const getGovernanceActionProposalsParameterDataResponse: YaciGetGovernanceCommitteesRegistrationDto[] =
       await getGovernanceActionProposalsParameterData.data;
     return getGovernanceActionProposalsParameterDataResponse;
   };
 
   const getCurrentCommitteeInfo = async () => {
-    const getCurrentCommitteeInfoParameterData = await yaciApi().getCurrentCommitteeInfo();
+    const getCurrentCommitteeInfoParameterData =
+      await yaciApi().getCurrentCommitteeInfo();
     const getCurrentCommitteeInfoParameterDataResponse: YaciGetCurrentCommitteeInfoDto[] =
       await getCurrentCommitteeInfoParameterData.data;
     return getCurrentCommitteeInfoParameterDataResponse;
   };
 
   const getCurrentConsitution = async () => {
-    const getCurrentConsitutionParameterData = await yaciApi().getCurrentConsitution();
+    const getCurrentConsitutionParameterData =
+      await yaciApi().getCurrentConsitution();
     const getCurrentConsitutionParameterDataResponse: YaciGetCurrentConsitutionDto[] =
       await getCurrentConsitutionParameterData.data;
     return getCurrentConsitutionParameterDataResponse;

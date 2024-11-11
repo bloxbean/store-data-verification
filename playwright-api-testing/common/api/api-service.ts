@@ -83,17 +83,26 @@ export class APIService implements Disposable {
 
   async send(httpMethod: HttpMethod) {
     try {
-      const response = await this.request(this.baseUrl, httpMethod, this.headers, this.queries, this.data);
+      const response = await this.request(
+        this.baseUrl,
+        httpMethod,
+        this.headers,
+        this.queries,
+        this.data
+      );
       const status = response.status();
       if (httpMethod == HttpMethod.Put) {
         return;
       }
 
       const contentType = response.headers()["content-type"];
-      const body = contentType.includes("text/plain") ? await response.text() : await response.json();
+      const body = contentType.includes("text/plain")
+        ? await response.text()
+        : await response.json();
       const headers = response.headers();
 
-      const cookies: Record<string, string> = await this.extractFirstCookieFromHeaders(headers);
+      const cookies: Record<string, string> =
+        await this.extractFirstCookieFromHeaders(headers);
 
       return (this.response = {
         status,
@@ -102,11 +111,15 @@ export class APIService implements Disposable {
         cookies,
       });
     } catch (error) {
-      console.log(`Failed to send ${httpMethod} request to ${this.baseUrl}: ${error}`);
+      console.log(
+        `Failed to send ${httpMethod} request to ${this.baseUrl}: ${error}`
+      );
     }
   }
 
-  async extractFirstCookieFromHeaders(headers: Record<string, string>): Promise<Record<string, string>> {
+  async extractFirstCookieFromHeaders(
+    headers: Record<string, string>
+  ): Promise<Record<string, string>> {
     const cookies: Record<string, string> = {};
     if ("set-cookie" in headers) {
       const setCookieHeader: string = headers["set-cookie"];

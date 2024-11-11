@@ -1,4 +1,8 @@
-import { AssetName, AssetPolicy, TxHashes } from "@common/constants/project.constants";
+import {
+  AssetName,
+  AssetPolicy,
+  TxHashes,
+} from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { sendSlackNotification } from "@common/helpers/misc/slack-notify.helper";
 import { koiosService } from "@common/service/koios-api-service/koios.service";
@@ -15,16 +19,24 @@ test.describe("@regression @asset", () => {
 
   test("Compare the asset history of Koios and Yaci Store using faulty Yaci Store data -1", async ({}) => {
     test.step("GIVEN: get unit information", async () => {
-      let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
+      let unit = await (
+        await yaciService()
+      ).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
 
       await test.step("WHEN: Retrieve previous block hash from the block latest information", async () => {
         let assetHistoryKoios = await (
           await koiosService()
         ).getAssetHistory(AssetPolicy.ASSET_POLICY_1, AssetName.ASSET_NAME_1);
-        let assetHistoryYaci = await (await yaciService()).getAssetHistoryByUnit(unit);
+        let assetHistoryYaci = await (
+          await yaciService()
+        ).getAssetHistoryByUnit(unit);
 
         await test.step("THEN: Compare the asset history", async () => {
-          Assertions.assertNotEqual(assetHistoryKoios, assetHistoryYaci, "Asset history should be similar.");
+          Assertions.assertNotEqual(
+            assetHistoryKoios,
+            assetHistoryYaci,
+            "Asset history should be similar."
+          );
         });
       });
     });
@@ -34,16 +46,27 @@ test.describe("@regression @asset", () => {
 test.describe("@regression @asset", () => {
   test("Compare the asset history of Koios and Yaci Store using faulty koios data -2", async ({}) => {
     test.step("GIVEN: get unit information", async () => {
-      let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.TX_HASHES_1);
+      let unit = await (
+        await yaciService()
+      ).getUnitFromDetailTransaction(TxHashes.TX_HASHES_1);
 
       await test.step("WHEN: Retrieve previous block hash from the block latest information", async () => {
         let assetHistoryKoios = await (
           await koiosService()
-        ).getAssetHistory(AssetPolicy.FAULT_ASSET_POLICY, AssetName.ASSET_NAME_1);
-        let assetHistoryYaci = await (await yaciService()).getAssetHistoryByUnit(unit);
+        ).getAssetHistory(
+          AssetPolicy.FAULT_ASSET_POLICY,
+          AssetName.ASSET_NAME_1
+        );
+        let assetHistoryYaci = await (
+          await yaciService()
+        ).getAssetHistoryByUnit(unit);
 
         await test.step("THEN: Compare the asset history", async () => {
-          Assertions.assertNotEqual(assetHistoryKoios, assetHistoryYaci, "Asset history should be similar.");
+          Assertions.assertNotEqual(
+            assetHistoryKoios,
+            assetHistoryYaci,
+            "Asset history should be similar."
+          );
         });
       });
     });
@@ -53,16 +76,27 @@ test.describe("@regression @asset", () => {
 test.describe("@regression @asset", () => {
   test("Compare the asset history of Koios and Yaci Store using faulty Koios data -3", async ({}) => {
     test.step("GIVEN: get unit information", async () => {
-      let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.TX_HASHES_1);
+      let unit = await (
+        await yaciService()
+      ).getUnitFromDetailTransaction(TxHashes.TX_HASHES_1);
 
       await test.step("WHEN: Retrieve previous block hash from the block latest information", async () => {
         let assetHistoryKoios = await (
           await koiosService()
-        ).getAssetHistory(AssetPolicy.ASSET_POLICY_1, AssetName.FAULT_ASSET_NAME);
-        let assetHistoryYaci = await (await yaciService()).getAssetHistoryByUnit(unit);
+        ).getAssetHistory(
+          AssetPolicy.ASSET_POLICY_1,
+          AssetName.FAULT_ASSET_NAME
+        );
+        let assetHistoryYaci = await (
+          await yaciService()
+        ).getAssetHistoryByUnit(unit);
 
         await test.step("THEN: Compare the asset history", async () => {
-          Assertions.assertNotEqual(assetHistoryKoios, assetHistoryYaci, "Asset history should be similar.");
+          Assertions.assertNotEqual(
+            assetHistoryKoios,
+            assetHistoryYaci,
+            "Asset history should be similar."
+          );
         });
       });
     });
@@ -72,16 +106,27 @@ test.describe("@regression @asset", () => {
 test.describe("@regression @asset", () => {
   test("Compare the asset history of Koios and Yaci Store using faulty data -4", async ({}) => {
     test.step("GIVEN: get unit information", async () => {
-      let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
+      let unit = await (
+        await yaciService()
+      ).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
 
       await test.step("WHEN: Retrieve previous block hash from the block latest information", async () => {
         let assetHistoryKoios = await (
           await koiosService()
-        ).getAssetHistory(AssetPolicy.FAULT_ASSET_POLICY, AssetName.FAULT_ASSET_NAME);
-        let assetHistoryYaci = await (await yaciService()).getAssetHistoryByUnit(unit);
+        ).getAssetHistory(
+          AssetPolicy.FAULT_ASSET_POLICY,
+          AssetName.FAULT_ASSET_NAME
+        );
+        let assetHistoryYaci = await (
+          await yaciService()
+        ).getAssetHistoryByUnit(unit);
 
         await test.step("THEN: Compare the asset history", async () => {
-          Assertions.assertNotEqual(assetHistoryKoios, assetHistoryYaci, "Asset history should be similar.");
+          Assertions.assertNotEqual(
+            assetHistoryKoios,
+            assetHistoryYaci,
+            "Asset history should be similar."
+          );
         });
       });
     });
@@ -91,16 +136,27 @@ test.describe("@regression @asset", () => {
 test.describe("@regression @asset", () => {
   test("Compare the asset history of Koios and Yaci Store using faulty data -5", async ({}) => {
     test.step("GIVEN: get unit information", async () => {
-      let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
+      let unit = await (
+        await yaciService()
+      ).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
 
       await test.step("WHEN: Retrieve previous block hash from the block latest information", async () => {
         let assetHistoryKoios = await (
           await koiosService()
-        ).getAssetHistory(AssetPolicy.ASSET_POLICY_1, AssetName.FAULT_ASSET_NAME);
-        let assetHistoryYaci = await (await yaciService()).getAssetHistoryByUnit(unit);
+        ).getAssetHistory(
+          AssetPolicy.ASSET_POLICY_1,
+          AssetName.FAULT_ASSET_NAME
+        );
+        let assetHistoryYaci = await (
+          await yaciService()
+        ).getAssetHistoryByUnit(unit);
 
         await test.step("THEN: Compare the asset history", async () => {
-          Assertions.assertNotEqual(assetHistoryKoios, assetHistoryYaci, "Asset history should be similar.");
+          Assertions.assertNotEqual(
+            assetHistoryKoios,
+            assetHistoryYaci,
+            "Asset history should be similar."
+          );
         });
       });
     });
@@ -110,16 +166,27 @@ test.describe("@regression @asset", () => {
 test.describe("@regression @asset", () => {
   test("Compare the asset history of Koios and Yaci Store using faulty data -6", async ({}) => {
     test.step("GIVEN: get unit information", async () => {
-      let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
+      let unit = await (
+        await yaciService()
+      ).getUnitFromDetailTransaction(TxHashes.FAULT_TX_HASHES);
 
       await test.step("WHEN: Retrieve previous block hash from the block latest information", async () => {
         let assetHistoryKoios = await (
           await koiosService()
-        ).getAssetHistory(AssetPolicy.FAULT_ASSET_POLICY, AssetName.ASSET_NAME_1);
-        let assetHistoryYaci = await (await yaciService()).getAssetHistoryByUnit(unit);
+        ).getAssetHistory(
+          AssetPolicy.FAULT_ASSET_POLICY,
+          AssetName.ASSET_NAME_1
+        );
+        let assetHistoryYaci = await (
+          await yaciService()
+        ).getAssetHistoryByUnit(unit);
 
         await test.step("THEN: Compare the asset history", async () => {
-          Assertions.assertNotEqual(assetHistoryKoios, assetHistoryYaci, "Asset history should be similar.");
+          Assertions.assertNotEqual(
+            assetHistoryKoios,
+            assetHistoryYaci,
+            "Asset history should be similar."
+          );
         });
       });
     });

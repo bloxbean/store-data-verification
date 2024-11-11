@@ -14,13 +14,20 @@ test.describe("@regression @smoke @account", () => {
 
   test("Check the account amount is not null", async ({}) => {
     test.step("GIVEN: Retrieve address", async () => {
-      let address = await (await yaciService()).getAddressFromStakeRegistrations();
+      let address = await (
+        await yaciService()
+      ).getAddressFromStakeRegistrations();
 
       await test.step("WHEN: Retrieve address amount", async () => {
-        let addressAmount = await (await yaciAggregatorService()).getAddressAmounts(address);
+        let addressAmount = await (
+          await yaciAggregatorService()
+        ).getAddressAmounts(address);
 
         await test.step("THEN: Verify address amount is not null", async () => {
-          Assertions.assertNotNull(addressAmount, "address amount should not be null");
+          Assertions.assertNotNull(
+            addressAmount,
+            "address amount should not be null"
+          );
         });
       });
     });

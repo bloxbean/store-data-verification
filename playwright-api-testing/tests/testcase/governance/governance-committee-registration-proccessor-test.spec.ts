@@ -14,10 +14,14 @@ test.describe("@regression @smoke @governance", () => {
 
   test("Check the logic of process a governance committee registration", async ({}) => {
     test.step("GIVEN: Retrieve governance committee registration", async () => {
-      let governanceCommitteeRegistration = await (await yaciService()).getGovernanceCommitteesRegistration();
+      let governanceCommitteeRegistration = await (
+        await yaciService()
+      ).getGovernanceCommitteesRegistration();
 
       await test.step("WHEN: Wait for a certain period of time", async () => {
-        await new Promise((resolve) => setTimeout(resolve, TimeOut.FIVE_SECONDS)); // Wait for 5 seconds
+        await new Promise((resolve) =>
+          setTimeout(resolve, TimeOut.FIVE_SECONDS)
+        ); // Wait for 5 seconds
       });
 
       await test.step("AND: Retrieve governance committee registration after wait", async () => {

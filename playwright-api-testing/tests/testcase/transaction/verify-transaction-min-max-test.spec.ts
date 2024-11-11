@@ -19,14 +19,28 @@ test.describe("@regression @transaction", () => {
         let fields = [
           {
             name: "block_number",
-            values: transactionYaci.map((transactionYaciDto) => transactionYaciDto.block_number),
+            values: transactionYaci.map(
+              (transactionYaciDto) => transactionYaciDto.block_number
+            ),
           },
           {
             name: "total_output",
-            values: transactionYaci.map((transactionYaciDto) => transactionYaciDto.total_output),
+            values: transactionYaci.map(
+              (transactionYaciDto) => transactionYaciDto.total_output
+            ),
           },
-          { name: "fee", values: transactionYaci.map((transactionYaciDto) => transactionYaciDto.fee) },
-          { name: "slot", values: transactionYaci.map((transactionYaciDto) => transactionYaciDto.slot) },
+          {
+            name: "fee",
+            values: transactionYaci.map(
+              (transactionYaciDto) => transactionYaciDto.fee
+            ),
+          },
+          {
+            name: "slot",
+            values: transactionYaci.map(
+              (transactionYaciDto) => transactionYaciDto.slot
+            ),
+          },
         ];
 
         fields.forEach(async (field) => {
@@ -34,7 +48,11 @@ test.describe("@regression @transaction", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });
