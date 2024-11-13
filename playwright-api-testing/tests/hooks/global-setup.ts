@@ -2,7 +2,10 @@ import { APIService } from "@common/api/api-service";
 import { FullConfig, PlaywrightWorkerOptions } from "@playwright/test";
 import { Env } from "playwright-api-testing/env/env";
 
-async function globalSetup(config: FullConfig, options: PlaywrightWorkerOptions): Promise<void> {
+async function globalSetup(
+  config: FullConfig,
+  options: PlaywrightWorkerOptions
+): Promise<void> {
   // Create a new instance of the APIService with the desired API environment URL
   const koiosApiService = new APIService(Env.KOIOS_API_URL);
   const yaciApiService = new APIService(Env.YACI_STORE_API_URL);

@@ -14,34 +14,60 @@ test.describe("@regression @account", () => {
 
   test("Check the account amount is lovelace or not", async ({}) => {
     test.step("GIVEN: Retrieve address", async () => {
-      let address = await (await yaciService()).getAddressFromStakeRegistrations();
+      let address = await (
+        await yaciService()
+      ).getAddressFromStakeRegistrations();
 
       await test.step("WHEN: Retrieve address balance", async () => {
-        let addressBalance = await (await yaciAggregatorService()).getAddressBalance(address);
+        let addressBalance = await (
+          await yaciAggregatorService()
+        ).getAddressBalance(address);
 
         await test.step("AND: Retrieve min and max value of address amount field", async () => {
-          let block_number = addressBalance.map((addressBalanceDto) => addressBalanceDto.block_number);
+          let block_number = addressBalance.map(
+            (addressBalanceDto) => addressBalanceDto.block_number
+          );
           let minBlockNumber: number = block_number[0];
           let maxBlockNumber: number = Math.max(...block_number);
 
-          let block_time = addressBalance.map((addressBalanceDto) => addressBalanceDto.block_time);
+          let block_time = addressBalance.map(
+            (addressBalanceDto) => addressBalanceDto.block_time
+          );
           let minBlockTime: number = block_time[0];
           let maxBlockTime: number = Math.max(...block_time);
 
-          let slot = addressBalance.map((addressBalanceDto) => addressBalanceDto.slot);
+          let slot = addressBalance.map(
+            (addressBalanceDto) => addressBalanceDto.slot
+          );
           let minSlot: number = slot[0];
           let maxSlot: number = Math.max(...slot);
 
           let last_balance_calculation_block = addressBalance.map(
-            (addressBalanceDto) => addressBalanceDto.last_balance_calculation_block
+            (addressBalanceDto) =>
+              addressBalanceDto.last_balance_calculation_block
           );
-          let minBalanceCalculationBlock: number = last_balance_calculation_block[0];
-          let maxBalanceCalculationBlock: number = Math.max(...last_balance_calculation_block);
+          let minBalanceCalculationBlock: number =
+            last_balance_calculation_block[0];
+          let maxBalanceCalculationBlock: number = Math.max(
+            ...last_balance_calculation_block
+          );
 
           await test.step("THEN: Verify address amount field is not null", async () => {
-            Assertions.assertNotEqual(minBlockNumber, maxBlockNumber, "min and max value should not be equal");
-            Assertions.assertNotEqual(minBlockTime, maxBlockTime, "min and max value should not be equal");
-            Assertions.assertNotEqual(minSlot, maxSlot, "min and max value should not be equal");
+            Assertions.assertNotEqual(
+              minBlockNumber,
+              maxBlockNumber,
+              "min and max value should not be equal"
+            );
+            Assertions.assertNotEqual(
+              minBlockTime,
+              maxBlockTime,
+              "min and max value should not be equal"
+            );
+            Assertions.assertNotEqual(
+              minSlot,
+              maxSlot,
+              "min and max value should not be equal"
+            );
             Assertions.assertNotEqual(
               minBalanceCalculationBlock,
               maxBalanceCalculationBlock,

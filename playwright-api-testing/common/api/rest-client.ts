@@ -96,21 +96,24 @@ export class RestClient {
   async post(url: string, options?: PlaywrightRestOptions) {
     console.log(`Sending POST request to ${url}:`);
     // console.debug(`with options ${options.toString()}`);
-    if (options?.data) console.log(`JSON request: ${JSON.stringify(options.data)}`);
+    if (options?.data)
+      console.log(`JSON request: ${JSON.stringify(options.data)}`);
     return await this._requestContext.post(url, options);
   }
 
   async put(url: string, options?: PlaywrightRestOptions) {
     console.log(`Sending PUT request to ${url}:`);
     // console.debug(`with options ${options.toString()}`);
-    if (options?.data) console.log(`JSON request: ${JSON.stringify(options.data)}`);
+    if (options?.data)
+      console.log(`JSON request: ${JSON.stringify(options.data)}`);
     return await this._requestContext.put(url, options);
   }
 
   async delete(url: string, options?: PlaywrightRestOptions) {
     console.log(`Sending DELETE request to ${url}:`);
     // console.debug(`with options ${options.toString()}`);
-    if (options?.data) console.log(`JSON request: ${JSON.stringify(options.data)}`);
+    if (options?.data)
+      console.log(`JSON request: ${JSON.stringify(options.data)}`);
     return await this._requestContext.delete(url, options);
   }
 

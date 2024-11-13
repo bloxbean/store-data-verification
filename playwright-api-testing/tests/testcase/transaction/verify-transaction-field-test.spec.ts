@@ -17,12 +17,30 @@ test.describe("@regression @transaction", () => {
 
       await test.step(`THEN: Verify fields in transaction are not null`, () => {
         transactionYaci.forEach((transactionYaciDto) => {
-          Assertions.assertNotNull(transactionYaciDto.tx_hash, "tx_hash should not be null");
-          Assertions.assertNotNull(transactionYaciDto.block_number, "block_number should not be null");
-          Assertions.assertNotNull(transactionYaciDto.slot, "slot should not be null");
-          Assertions.assertNotNull(transactionYaciDto.output_addresses, "output_addresses should not be null");
-          Assertions.assertNotNull(transactionYaciDto.total_output, "total_output should not be null");
-          Assertions.assertNotNull(transactionYaciDto.fee, "fee should not be null");
+          Assertions.assertNotNull(
+            transactionYaciDto.tx_hash,
+            "tx_hash should not be null"
+          );
+          Assertions.assertNotNull(
+            transactionYaciDto.block_number,
+            "block_number should not be null"
+          );
+          Assertions.assertNotNull(
+            transactionYaciDto.slot,
+            "slot should not be null"
+          );
+          Assertions.assertNotNull(
+            transactionYaciDto.output_addresses,
+            "output_addresses should not be null"
+          );
+          Assertions.assertNotNull(
+            transactionYaciDto.total_output,
+            "total_output should not be null"
+          );
+          Assertions.assertNotNull(
+            transactionYaciDto.fee,
+            "fee should not be null"
+          );
         });
       });
     });

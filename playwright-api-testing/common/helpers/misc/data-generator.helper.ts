@@ -22,12 +22,14 @@ export class DataGenerator {
    */
   static randomFullName(): string {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const randomFirstName = Array.from({ length: 5 }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join(
-      ""
-    );
-    const randomLastName = Array.from({ length: 5 }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join(
-      ""
-    );
+    const randomFirstName = Array.from(
+      { length: 5 },
+      () => alphabet[Math.floor(Math.random() * alphabet.length)]
+    ).join("");
+    const randomLastName = Array.from(
+      { length: 5 },
+      () => alphabet[Math.floor(Math.random() * alphabet.length)]
+    ).join("");
     return `${randomFirstName} ${randomLastName}`;
   }
 
@@ -42,7 +44,10 @@ export class DataGenerator {
   static randomID(): string {
     const lengthOfId = 10;
     const characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    return Array.from({ length: lengthOfId }, () => characters[Math.floor(Math.random() * characters.length)]).join("");
+    return Array.from(
+      { length: lengthOfId },
+      () => characters[Math.floor(Math.random() * characters.length)]
+    ).join("");
   }
 
   /**
@@ -59,7 +64,10 @@ export class DataGenerator {
     const alphabetCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const randomLetters = Array.from(
       { length: lengthOfCode },
-      () => alphabetCharacters[Math.floor(Math.random() * alphabetCharacters.length)]
+      () =>
+        alphabetCharacters[
+          Math.floor(Math.random() * alphabetCharacters.length)
+        ]
     ).join("");
 
     const currentDate = new Date();
@@ -69,8 +77,13 @@ export class DataGenerator {
     const twoDigitFormat = 2; // Used to specify the desired length in padStart
 
     // Adjust month and format date
-    const twoDigitMonth = (currentDate.getMonth() + monthAdjustment).toString().padStart(twoDigitFormat, "0");
-    const twoDigitDay = currentDate.getDate().toString().padStart(twoDigitFormat, "0");
+    const twoDigitMonth = (currentDate.getMonth() + monthAdjustment)
+      .toString()
+      .padStart(twoDigitFormat, "0");
+    const twoDigitDay = currentDate
+      .getDate()
+      .toString()
+      .padStart(twoDigitFormat, "0");
 
     const formattedDate = `${twoDigitMonth}/${twoDigitDay}`;
 
@@ -99,8 +112,14 @@ export class DataGenerator {
 
     // Generate each part of the phone number
     const areaCodepart = this.generateRandomNumber(areaCodeMin, areaCodeMax);
-    const midSectionpart = this.generateRandomNumber(midSectionMin, midSectionMax);
-    const lastSectionpart = this.generateRandomNumber(lastSectionMin, lastSectionMax);
+    const midSectionpart = this.generateRandomNumber(
+      midSectionMin,
+      midSectionMax
+    );
+    const lastSectionpart = this.generateRandomNumber(
+      lastSectionMin,
+      lastSectionMax
+    );
 
     // Return the formatted phone number
     return `${areaCodepart}-${midSectionpart}-${lastSectionpart}+`;

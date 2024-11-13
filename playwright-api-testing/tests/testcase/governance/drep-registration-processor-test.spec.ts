@@ -17,11 +17,15 @@ test.describe("@regression @smoke @governance", () => {
       let drepRegistration = await (await yaciService()).getDrepRegistrations();
 
       await test.step("WHEN: Wait for a certain period of time", async () => {
-        await new Promise((resolve) => setTimeout(resolve, TimeOut.FIVE_SECONDS)); // Wait for 5 seconds
+        await new Promise((resolve) =>
+          setTimeout(resolve, TimeOut.FIVE_SECONDS)
+        ); // Wait for 5 seconds
       });
 
       await test.step("AND: Retrieve drep registration after wait", async () => {
-        let drepRegistrationAfterWait = await (await yaciService()).getDrepRegistrations();
+        let drepRegistrationAfterWait = await (
+          await yaciService()
+        ).getDrepRegistrations();
 
         await test.step("THEN: drep registration should be different after wait ", () => {
           Assertions.assertNotEqual(

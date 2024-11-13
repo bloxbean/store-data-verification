@@ -14,7 +14,10 @@ export function yaciAggregatorApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStoreAggregator.getAggregatorAddresses.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStoreAggregator.getAggregatorAddresses.Base
+    );
   };
 
   const getAddressAmounts = async (address: unknown) => {
@@ -28,7 +31,10 @@ export function yaciAggregatorApi() {
       },
     };
 
-    return BaseApi.returnLoggedResponse(await axios(request), Endpoint.YaciStoreAggregator.getAggregatorAddresses.Base);
+    return BaseApi.returnLoggedResponse(
+      await axios(request),
+      Endpoint.YaciStoreAggregator.getAggregatorAddresses.Base
+    );
   };
 
   return {

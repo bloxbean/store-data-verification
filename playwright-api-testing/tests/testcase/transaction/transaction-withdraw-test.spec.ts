@@ -18,7 +18,9 @@ test.describe("@regression @smoke @transaction", () => {
       let withdrawals = await (await yaciService()).getWithdrawals();
 
       await test.step("WHEN: get detail withdraws", async () => {
-        let detailWithdrawals = await (await yaciService()).getDetailWithdrawals(StakeAddresses.STAKE_ADDRESS_1);
+        let detailWithdrawals = await (
+          await yaciService()
+        ).getDetailWithdrawals(StakeAddresses.STAKE_ADDRESS_1);
 
         await test.step("THEN: Compare transaction information", () => {
           Assertions.assertJsonContain(
@@ -38,7 +40,9 @@ test("the withdraw processor in Yaci if error happen", async ({}) => {
     let withdrawals = await (await yaciService()).getWithdrawals();
 
     await test.step("WHEN: get detail transaction", async () => {
-      let detailWithdrawals = await (await yaciService()).getDetailWithdrawals(randomNumber);
+      let detailWithdrawals = await (
+        await yaciService()
+      ).getDetailWithdrawals(randomNumber);
 
       await test.step("THEN: Compare transaction information", () => {
         Assertions.assertNotJsonContain(

@@ -17,13 +17,48 @@ test.describe("@regression @governance", () => {
 
       await test.step("WHEN: verify delegation vote field ", () => {
         let fields = [
-          { name: "block_number", values: delegationVote.map((delegationVoteDto) => delegationVoteDto.block_number) },
-          { name: "block_time", values: delegationVote.map((delegationVoteDto) => delegationVoteDto.block_time) },
-          { name: "cert_index", values: delegationVote.map((delegationVoteDto) => delegationVoteDto.cert_index) },
-          { name: "slot", values: delegationVote.map((delegationVoteDto) => delegationVoteDto.slot) },
-          { name: "drep_type", values: delegationVote.map((delegationVoteDto) => delegationVoteDto.drep_type) },
-          { name: "cred_type", values: delegationVote.map((delegationVoteDto) => delegationVoteDto.cred_type) },
-          { name: "epoch", values: delegationVote.map((delegationVoteDto) => delegationVoteDto.epoch) },
+          {
+            name: "block_number",
+            values: delegationVote.map(
+              (delegationVoteDto) => delegationVoteDto.block_number
+            ),
+          },
+          {
+            name: "block_time",
+            values: delegationVote.map(
+              (delegationVoteDto) => delegationVoteDto.block_time
+            ),
+          },
+          {
+            name: "cert_index",
+            values: delegationVote.map(
+              (delegationVoteDto) => delegationVoteDto.cert_index
+            ),
+          },
+          {
+            name: "slot",
+            values: delegationVote.map(
+              (delegationVoteDto) => delegationVoteDto.slot
+            ),
+          },
+          {
+            name: "drep_type",
+            values: delegationVote.map(
+              (delegationVoteDto) => delegationVoteDto.drep_type
+            ),
+          },
+          {
+            name: "cred_type",
+            values: delegationVote.map(
+              (delegationVoteDto) => delegationVoteDto.cred_type
+            ),
+          },
+          {
+            name: "epoch",
+            values: delegationVote.map(
+              (delegationVoteDto) => delegationVoteDto.epoch
+            ),
+          },
         ];
 
         fields.forEach(async (field) => {
@@ -31,7 +66,11 @@ test.describe("@regression @governance", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });

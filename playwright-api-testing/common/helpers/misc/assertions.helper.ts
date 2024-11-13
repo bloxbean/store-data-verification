@@ -12,10 +12,16 @@ export class Assertions {
    * @example
    * Assertions.assertNotEqual(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
-  static assertNotEqual(actualText: unknown, expectedText: unknown, message: string) {
+  static assertNotEqual(
+    actualText: unknown,
+    expectedText: unknown,
+    message: string
+  ) {
     try {
       expect(actualText).not.toBe(expectedText);
-      Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
+      );
     } catch (error) {
       Logger.error(
         `Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
@@ -34,10 +40,16 @@ export class Assertions {
    * @example
    * Assertions.assertEqual(await page.locator('.example').textContent(), 'Expected Text', 'Text content matches expected.');
    */
-  static assertEqual(actualText: unknown, expectedText: unknown, message: string) {
+  static assertEqual(
+    actualText: unknown,
+    expectedText: unknown,
+    message: string
+  ) {
     try {
       expect(actualText).toBe(expectedText);
-      Logger.info(`Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
+      );
     } catch (error) {
       Logger.error(
         `Assertion failed: ${message}\nActual Result:   '${actualText}'\nExpected Result: '${expectedText}'`
@@ -58,9 +70,13 @@ export class Assertions {
   static assertTrue(actualValue: boolean, message: string) {
     try {
       expect(actualValue).toBeTruthy();
-      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
       throw error;
     }
   }
@@ -77,9 +93,13 @@ export class Assertions {
   static assertFalse(actualValue: boolean, message: string) {
     try {
       expect(actualValue).toBeFalsy();
-      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
       throw error;
     }
   }
@@ -94,7 +114,11 @@ export class Assertions {
    * @example
    * Assertions.assertJsonContain(actualJson, expectedJson, 'JSON object contains expected JSON.');
    */
-  static assertJsonContain(actualJson: unknown, expectedJson: unknown, message: string) {
+  static assertJsonContain(
+    actualJson: unknown,
+    expectedJson: unknown,
+    message: string
+  ) {
     try {
       const actualJsonString = JSON.stringify(actualJson);
       const expectedJsonString = JSON.stringify(expectedJson);
@@ -126,7 +150,11 @@ export class Assertions {
    * @example
    * Assertions.assertNotJsonContain(actualJson, expectedJson, 'JSON object contains expected JSON.');
    */
-  static assertNotJsonContain(actualJson: unknown, expectedJson: unknown, message: string) {
+  static assertNotJsonContain(
+    actualJson: unknown,
+    expectedJson: unknown,
+    message: string
+  ) {
     try {
       const actualJsonString = JSON.stringify(actualJson);
       const expectedJsonString = JSON.stringify(expectedJson);
@@ -160,9 +188,13 @@ export class Assertions {
   static assertNull(actualValue: unknown, message: string) {
     try {
       expect(actualValue).toBeNull;
-      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
       throw error;
     }
   }
@@ -179,9 +211,13 @@ export class Assertions {
   static assertNotNull(actualValue: unknown, message: string) {
     try {
       expect(actualValue).not.toBeNull;
-      Logger.info(`Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.info(
+        `Assertion passed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
     } catch (error) {
-      Logger.error(`Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`);
+      Logger.error(
+        `Assertion failed: ${message}\nActual Result:   ${actualValue}\nExpected Result: true`
+      );
       throw error;
     }
   }

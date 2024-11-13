@@ -13,18 +13,29 @@ test.describe("@regression @governance", () => {
 
   test("Check the field of", async ({}) => {
     test.step("GIVEN: Retrieve committee information", async () => {
-      let committeeInformation = await (await yaciService()).getCurrentCommitteeInfo();
+      let committeeInformation = await (
+        await yaciService()
+      ).getCurrentCommitteeInfo();
 
       await test.step("WHEN: get committee field information", async () => {
         let fields = [
-          { name: "hash", values: committeeInformation.map((committeeInformationDto) => committeeInformationDto.hash) },
+          {
+            name: "hash",
+            values: committeeInformation.map(
+              (committeeInformationDto) => committeeInformationDto.hash
+            ),
+          },
           {
             name: "start_epoch",
-            values: committeeInformation.map((committeeInformationDto) => committeeInformationDto.start_epoch),
+            values: committeeInformation.map(
+              (committeeInformationDto) => committeeInformationDto.start_epoch
+            ),
           },
           {
             name: "expired_epoch",
-            values: committeeInformation.map((committeeInformationDto) => committeeInformationDto.expired_epoch),
+            values: committeeInformation.map(
+              (committeeInformationDto) => committeeInformationDto.expired_epoch
+            ),
           },
         ];
 
@@ -33,7 +44,11 @@ test.describe("@regression @governance", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });

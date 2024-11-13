@@ -13,39 +13,53 @@ test.describe("@regression  @governance", () => {
 
   test("Check the logic of process a governance action proposal", async ({}) => {
     test.step("GIVEN: Retrieve governance action proposal", async () => {
-      let governanceActionProposals = await (await yaciService()).getGovernanceActionProposals();
+      let governanceActionProposals = await (
+        await yaciService()
+      ).getGovernanceActionProposals();
 
       await test.step("THEN: governance action proposal should not be null ", () => {
         let fields = [
           {
             name: "block_number",
             values: governanceActionProposals.map(
-              (governanceActionProposalsDto) => governanceActionProposalsDto.block_number
+              (governanceActionProposalsDto) =>
+                governanceActionProposalsDto.block_number
             ),
           },
           {
             name: "block_time",
             values: governanceActionProposals.map(
-              (governanceActionProposalsDto) => governanceActionProposalsDto.block_time
+              (governanceActionProposalsDto) =>
+                governanceActionProposalsDto.block_time
             ),
           },
           {
             name: "index",
-            values: governanceActionProposals.map((governanceActionProposalsDto) => governanceActionProposalsDto.index),
+            values: governanceActionProposals.map(
+              (governanceActionProposalsDto) =>
+                governanceActionProposalsDto.index
+            ),
           },
           {
             name: "slot",
-            values: governanceActionProposals.map((governanceActionProposalsDto) => governanceActionProposalsDto.slot),
+            values: governanceActionProposals.map(
+              (governanceActionProposalsDto) =>
+                governanceActionProposalsDto.slot
+            ),
           },
           {
             name: "deposit",
             values: governanceActionProposals.map(
-              (governanceActionProposalsDto) => governanceActionProposalsDto.deposit
+              (governanceActionProposalsDto) =>
+                governanceActionProposalsDto.deposit
             ),
           },
           {
             name: "epoch",
-            values: governanceActionProposals.map((governanceActionProposalsDto) => governanceActionProposalsDto.epoch),
+            values: governanceActionProposals.map(
+              (governanceActionProposalsDto) =>
+                governanceActionProposalsDto.epoch
+            ),
           },
         ];
 
@@ -54,7 +68,11 @@ test.describe("@regression  @governance", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });

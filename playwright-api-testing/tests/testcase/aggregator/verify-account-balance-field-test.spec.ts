@@ -14,27 +14,58 @@ test.describe("@regression @account", () => {
 
   test("Check the account amount is lovelace or not", async ({}) => {
     test.step("GIVEN: Retrieve address", async () => {
-      let address = await (await yaciService()).getAddressFromStakeRegistrations();
+      let address = await (
+        await yaciService()
+      ).getAddressFromStakeRegistrations();
 
       await test.step("WHEN: Retrieve address balance", async () => {
-        let addressBalance = await (await yaciAggregatorService()).getAddressBalance(address);
+        let addressBalance = await (
+          await yaciAggregatorService()
+        ).getAddressBalance(address);
 
         await test.step("AND: Retrieve address amount field", async () => {
-          let address = addressBalance.map((addressBalanceDto) => addressBalanceDto.address);
-          let block_number = addressBalance.map((addressBalanceDto) => addressBalanceDto.block_number);
-          let block_time = addressBalance.map((addressBalanceDto) => addressBalanceDto.block_time);
-          let slot = addressBalance.map((addressBalanceDto) => addressBalanceDto.slot);
+          let address = addressBalance.map(
+            (addressBalanceDto) => addressBalanceDto.address
+          );
+          let block_number = addressBalance.map(
+            (addressBalanceDto) => addressBalanceDto.block_number
+          );
+          let block_time = addressBalance.map(
+            (addressBalanceDto) => addressBalanceDto.block_time
+          );
+          let slot = addressBalance.map(
+            (addressBalanceDto) => addressBalanceDto.slot
+          );
           let last_balance_calculation_block = addressBalance.map(
-            (addressBalanceDto) => addressBalanceDto.last_balance_calculation_block
+            (addressBalanceDto) =>
+              addressBalanceDto.last_balance_calculation_block
           );
 
           await test.step("THEN: Verify address amount field is not null", async () => {
-            Assertions.assertNotNull(address, "address amount field should not be null");
-            Assertions.assertNotNull(block_number, "address amount field should not be null");
-            Assertions.assertNotNull(block_time, "address amount field should not be null");
-            Assertions.assertNotNull(slot, "address amount field should not be null");
-            Assertions.assertNotNull(address, "address amount field should not be null");
-            Assertions.assertNotNull(last_balance_calculation_block, "address amount field should not be null");
+            Assertions.assertNotNull(
+              address,
+              "address amount field should not be null"
+            );
+            Assertions.assertNotNull(
+              block_number,
+              "address amount field should not be null"
+            );
+            Assertions.assertNotNull(
+              block_time,
+              "address amount field should not be null"
+            );
+            Assertions.assertNotNull(
+              slot,
+              "address amount field should not be null"
+            );
+            Assertions.assertNotNull(
+              address,
+              "address amount field should not be null"
+            );
+            Assertions.assertNotNull(
+              last_balance_calculation_block,
+              "address amount field should not be null"
+            );
           });
         });
       });

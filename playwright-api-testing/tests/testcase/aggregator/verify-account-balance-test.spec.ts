@@ -14,13 +14,20 @@ test.describe("@regression @smoke @account", () => {
 
   test("Check the account amount is lovelace or not", async ({}) => {
     test.step("GIVEN: Retrieve address", async () => {
-      let address = await (await yaciService()).getAddressFromStakeRegistrations();
+      let address = await (
+        await yaciService()
+      ).getAddressFromStakeRegistrations();
 
       await test.step("WHEN: Retrieve address balance", async () => {
-        let addressBalance = await (await yaciAggregatorService()).getAddressBalance(address);
+        let addressBalance = await (
+          await yaciAggregatorService()
+        ).getAddressBalance(address);
 
         await test.step("THEN: Verify address amount is not null", async () => {
-          Assertions.assertNotNull(addressBalance, "address amount should not be null");
+          Assertions.assertNotNull(
+            addressBalance,
+            "address amount should not be null"
+          );
         });
       });
     });

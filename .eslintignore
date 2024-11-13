@@ -18,3 +18,6 @@ Thumbs.db
 
 # Docs files
 *_spec3.json
+
+# Load test file
+jmeter-performance-testing

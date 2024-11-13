@@ -16,16 +16,44 @@ test.describe("@regression @transaction", () => {
   test("the withdraw processor in Yaci", async ({}) => {
     test.step("GIVEN: get submit transaction", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 9);
-      let transaction = await (await yaciService()).submitTransaction(StakeAddresses.STAKE_ADDRESS_1, randomNumber);
+      let transaction = await (
+        await yaciService()
+      ).submitTransaction(StakeAddresses.STAKE_ADDRESS_1, randomNumber);
 
       await test.step("WHEN: get fields details in transaction information", () => {
         let fields = [
-          { name: "block_number", values: transaction.map((transactionDto) => transactionDto.block_number) },
-          { name: "block_time", values: transaction.map((transactionDto) => transactionDto.block_time) },
-          { name: "output_index", values: transaction.map((transactionDto) => transactionDto.output_index) },
-          { name: "slot", values: transaction.map((transactionDto) => transactionDto.slot) },
-          { name: "epoch", values: transaction.map((transactionDto) => transactionDto.epoch) },
-          { name: "lovelace_amount", values: transaction.map((transactionDto) => transactionDto.lovelace_amount) },
+          {
+            name: "block_number",
+            values: transaction.map(
+              (transactionDto) => transactionDto.block_number
+            ),
+          },
+          {
+            name: "block_time",
+            values: transaction.map(
+              (transactionDto) => transactionDto.block_time
+            ),
+          },
+          {
+            name: "output_index",
+            values: transaction.map(
+              (transactionDto) => transactionDto.output_index
+            ),
+          },
+          {
+            name: "slot",
+            values: transaction.map((transactionDto) => transactionDto.slot),
+          },
+          {
+            name: "epoch",
+            values: transaction.map((transactionDto) => transactionDto.epoch),
+          },
+          {
+            name: "lovelace_amount",
+            values: transaction.map(
+              (transactionDto) => transactionDto.lovelace_amount
+            ),
+          },
         ];
 
         fields.forEach(async (field) => {
@@ -33,7 +61,11 @@ test.describe("@regression @transaction", () => {
           let maxValue = Math.max(...field.values);
 
           await test.step(`THEN: Verify ${field.name} min and max values are not equal`, () => {
-            Assertions.assertNotEqual(minValue, maxValue, `${field.name} min and max values should not be equal`);
+            Assertions.assertNotEqual(
+              minValue,
+              maxValue,
+              `${field.name} min and max values should not be equal`
+            );
           });
         });
       });

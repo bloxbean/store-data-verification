@@ -7,7 +7,10 @@ export default winston.createLogger({
         winston.format.uncolorize({ level: true, message: true, raw: true }),
         winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
         winston.format.align(),
-        winston.format.printf((info) => `${info.timestamp} ${info.level.toUpperCase()}: ${info.message}`)
+        winston.format.printf(
+          (info) =>
+            `${info.timestamp} ${info.level.toUpperCase()}: ${info.message}`
+        )
       ),
     }),
   ],

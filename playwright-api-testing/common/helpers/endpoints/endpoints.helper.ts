@@ -207,7 +207,8 @@ export class YaciStore {
 }
 
 export class YaciStoreAggregator {
-  static readonly BASE_YACI_STORE_AGGREGATOR_NET_URL = Env.YACI_STORE_AGGREGATOR_URL;
+  static readonly BASE_YACI_STORE_AGGREGATOR_NET_URL =
+    Env.YACI_STORE_AGGREGATOR_URL;
 
   static getAggregatorAddresses = class {
     public static get Base() {
