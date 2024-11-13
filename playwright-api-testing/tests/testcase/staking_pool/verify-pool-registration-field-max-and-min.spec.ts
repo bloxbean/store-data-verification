@@ -1,9 +1,17 @@
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { DataGenerator } from "@common/helpers/misc/data-generator.helper";
+import { sendSlackNotification } from "@common/helpers/misc/slack-notify.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { test } from "@playwright/test";
 
 test.describe("@regression @pool", () => {
+  // This will run after each test
+  test.afterEach(async ({}, testInfo) => {
+    if (testInfo.status === "failed") {
+      await sendSlackNotification(`Test failed: ${testInfo.title}`);
+    }
+  });
+
   test("Check the pool registration information in Yaci and Koios", async ({}) => {
     test.step("GIVEN: Retrieve pool information", async () => {
       const randomNumber = DataGenerator.generateRandomNumber(1, 999);

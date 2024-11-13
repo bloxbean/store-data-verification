@@ -99,6 +99,13 @@ run smoke test on local machine
 npm run smoke-test
 ```
 
+run in preprod and mainnet
+
+```sh
+npm run test:mainnet
+npm run test:preprod
+```
+
 ## Deploy the automation framework as a standalone job
 
 first we need to have a script to :
@@ -202,4 +209,50 @@ RUN echo "0 0 * * * /usr/local/bin/run-script.sh >> /var/log/cron.log 2>&1" | cr
 
 # Run cron in the foreground
 CMD ["cron", "-f"]
+```
+
+## Export a report into a pdf file
+
+first we need to have a script to :
+
+1. run the automation framework
+2. generate Playwright report
+3. store the playwright report somewhere
+4. then we use this command to export the report
+5. WARNING : because Allure report is a web-server host report and it got multi layer so it cannot be export in a PDF file
+
+```sh
+npm run export-pdf
+```
+
+## Slack notify
+
+first we need to create a slack-notify helper :
+
+```typescript
+import axios from "axios";
+
+const SLACK_WEBHOOK_URL = "YOU_DESIRE_WEBHOOK_URL";
+
+export const sendSlackNotification = async (message: string) => {
+  try {
+    await axios.post(SLACK_WEBHOOK_URL, {
+      text: message,
+    });
+    console.log("Notification sent to Slack successfully");
+  } catch (error) {
+    console.error("Error sending notification to Slack:", error);
+  }
+};
+```
+
+then we import it to your test and make it to run after a test have run and that test is failed :
+
+```typescript
+// This will run after each test
+test.afterEach(async ({}, testInfo) => {
+  if (testInfo.status === "failed") {
+    await sendSlackNotification(`Test failed: ${testInfo.title}`);
+  }
+});
 ```

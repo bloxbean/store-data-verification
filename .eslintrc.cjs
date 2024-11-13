@@ -40,6 +40,7 @@ module.exports = defineConfig({
     "prefer-const": "off",
     "@typescript-eslint/consistent-indexed-object-style": "off",
     "playwright/valid-expect": "warn",
+    "no-undef": "warn",
   },
   overrides: [
     {

@@ -1,9 +1,17 @@
 import { TxHashes } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
+import { sendSlackNotification } from "@common/helpers/misc/slack-notify.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { test } from "@playwright/test";
 
 test.describe("@regression @smoke @asset", () => {
+  // This will run after each test
+  test.afterEach(async ({}, testInfo) => {
+    if (testInfo.status === "failed") {
+      await sendSlackNotification(`Test failed: ${testInfo.title}`);
+    }
+  });
+
   test("Compare the asset utxo of Koios and Yaci Store", async ({}) => {
     test.step("GIVEN: get unit and asset list information", async () => {
       let unit = await (await yaciService()).getUnitFromDetailTransaction(TxHashes.TX_HASHES_1);

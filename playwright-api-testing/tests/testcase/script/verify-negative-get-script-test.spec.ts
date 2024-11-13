@@ -1,9 +1,17 @@
 import { Empty, Null, TxHashes } from "@common/constants/project.constants";
 import { Assertions } from "@common/helpers/misc/assertions.helper";
+import { sendSlackNotification } from "@common/helpers/misc/slack-notify.helper";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
 import { test } from "@playwright/test";
 
 test.describe("@regression @script", () => {
+  // This will run after each test
+  test.afterEach(async ({}, testInfo) => {
+    if (testInfo.status === "failed") {
+      await sendSlackNotification(`Test failed: ${testInfo.title}`);
+    }
+  });
+
   test("Verfiy script API using faulty data -1", async ({}) => {
     test.step("GIVEN: Retrieve script redeemer information", async () => {
       let scriptRedeemerYaci = await (await yaciService()).getScript(TxHashes.FAULT_TX_HASHES);
