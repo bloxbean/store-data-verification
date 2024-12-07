@@ -27,13 +27,28 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@common/*": ["playwright-api-testing/common/*"],
-      "@tests/*": ["playwright-api-testing/tests/*"],
-      "@helpers/*": ["playwright-api-testing/common/helpers/*"],
-      "@utils/*": ["playwright-api-testing/common/utils/*"],
-      "@fixture/*": ["playwright-api-testing/tests/fixture/*"],
-      "@hooks/*": ["playwright-api-testing/tests/hooks/*"],
-      "@env/*": ["playwright-api-testing/env/*"]
+      "@api-common/*": ["TS-playwright-api-testing/common/*"],
+      "@api-tests/*": ["TS-playwright-api-testing/tests/*"],
+      "@api-helpers/*": ["TS-playwright-api-testing/common/helpers/*"],
+      "@api-utils/*": ["TS-playwright-api-testing/common/utils/*"],
+      "@api-fixture/*": ["TS-playwright-api-testing/tests/fixture/*"],
+      "@api-hooks/*": ["TS-playwright-api-testing/tests/hooks/*"],
+      "@api-env/*": ["TS-playwright-api-testing/env/*"],
+      "@integration-common/*": ["TS-playwright-integration-testing/common/*"],
+      "@integration-tests/*": ["TS-playwright-integration-testing/tests/*"],
+      "@integration-helpers/*": [
+        "TS-playwright-integration-testing/common/helpers/*"
+      ],
+      "@integration-utils/*": [
+        "TS-playwright-integration-testing/common/utils/*"
+      ],
+      "@integration-fixture/*": [
+        "TS-playwright-integration-testing/tests/fixture/*"
+      ],
+      "@integration-hooks/*": [
+        "TS-playwright-integration-testing/tests/hooks/*"
+      ],
+      "@integration-env/*": ["TS-playwright-integration-testing/env/*"]
     },
     "typeRoots": ["./node_modules/@types"]
   }
