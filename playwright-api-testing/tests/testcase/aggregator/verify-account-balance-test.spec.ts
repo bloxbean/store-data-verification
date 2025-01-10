@@ -1,7 +1,7 @@
 import { Assertions } from "@common/helpers/misc/assertions.helper";
 import { sendSlackNotification } from "@common/helpers/misc/slack-notify.helper";
+import { yaciAggregatorService } from "@common/service/yaci-aggregator-api-service/yaci-aggregator.service";
 import { yaciService } from "@common/service/yaci-api-service/yaci.service";
-import { yaciAggregatorService } from "@common/service/yaci_aggregator_api_service/yaci-aggregator.service";
 import { test } from "@playwright/test";
 
 test.describe("@regression @smoke @account", () => {

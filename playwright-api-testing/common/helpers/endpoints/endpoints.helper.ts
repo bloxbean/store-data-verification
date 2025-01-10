@@ -204,6 +204,54 @@ export class YaciStore {
       return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/committees/current`;
     }
   };
+
+  static getGovActionRatifier = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/GovActionRatifier`;
+    }
+  };
+
+  static getRatificationResult = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/getRatificationResult`;
+    }
+  };
+
+  static getRatificationResultForNoConfidenceAction = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/getRatificationResultForNoConfidenceAction`;
+    }
+  };
+
+  static getRatificationResultForUpdateCommitteeAction = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/getRatificationResultForUpdateCommitteeAction`;
+    }
+  };
+
+  static getRatificationResultForHardForkInitiationAction = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/getRatificationResultForHardForkInitiationAction`;
+    }
+  };
+
+  static getRatificationResultForNewConstitutionAction = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/getRatificationResultForNewConstitutionAction`;
+    }
+  };
+
+  static getRatificationResultForTreasuryWithdrawalsAction = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/getRatificationResultForTreasuryWithdrawalsAction`;
+    }
+  };
+
+  static getRatificationResultForParameterChangeAction = class {
+    public static get Base() {
+      return `${YaciStore.BASE_YACI_STORE_MAIN_NET_URL}/governance/getRatificationResultForTreasuryWithdrawalsAction`;
+    }
+  };
 }
 
 export class YaciStoreAggregator {

@@ -18,6 +18,7 @@
     "pool-test": "npx playwright test --grep '@pool'",
     "script-test": "npx playwright test --grep '@script'",
     "governance-test": "npx playwright test --grep '@governance'",
+    "governance-rule-test": "npx playwright test --grep '@governance-rule'",
     "test:smoke": "npx playwright test --grep '@smoke'",
     "test:regression": "npx playwright test --grep '@regression'",
     "lint": "eslint .",
